@@ -1,0 +1,1 @@
+export const releaseTypes = ["patch", "minor", "major"] as const
