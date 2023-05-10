@@ -4,6 +4,8 @@ export default {
 		"dx": { "title": "🔦 Development Experience" },
 		"unit": { "title": "🦠 Unit Tests" },
 		"intg": { "title": "🧪 Integration Tests" },
-		"deps": { "title": "🔗 Dependencies" }
+		"e2e": { "title": "🔄 Integration Tests" },
+		"deps": { "title": "🔗 Dependencies" },
+		"config": { "title": "⚙ Configurations" }
 	}
 }
