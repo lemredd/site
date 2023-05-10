@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 devDependencies:
+  '@types/node':
+    specifier: ^20.1.1
+    version: 20.1.1
   changelogen:
     specifier: ^0.5.3
     version: 0.5.3
