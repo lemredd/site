@@ -15,3 +15,4 @@ if (!validateReleaseTypeArg(releaseTypeArg)) {
 }
 
 generateByMode(releaseTypeArg, generatorModeArg)
+

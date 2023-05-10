@@ -1,4 +1,5 @@
 {
+	"type": "module",
 	"scripts": {
 		"release": "ts-node ./changelog/generate.ts"
 	},
