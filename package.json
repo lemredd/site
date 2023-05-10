@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"release": "ts-node ./changelog/generate.ts"
+	},
 	"devDependencies": {
 		"changelogen": "^0.5.3",
 		"ts-node": "^10.9.1"
