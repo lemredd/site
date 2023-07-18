@@ -56,7 +56,7 @@ function buildChangelogCommand(
 	return baseCommand + changelogBoundaryArg + specificReleaseVersionArg + bumpTypeArg
 }
 
-export default async function(
+export default function(
 	releaseTypeArg: ReleaseType,
 	mode: GeneratorMode = "write"
 ) {

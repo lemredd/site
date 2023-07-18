@@ -6,6 +6,7 @@
 	"devDependencies": {
 		"@types/node": "^20.1.1",
 		"changelogen": "^0.5.3",
+		"eslint": "^8.45.0",
 		"ts-node": "^10.9.1"
 	}
 }

@@ -5,7 +5,6 @@ export default {
 		"unit": { "title": "🦠 Unit Tests" },
 		"intg": { "title": "🧪 Integration Tests" },
 		"e2e": { "title": "🔄 Integration Tests" },
-		"deps": { "title": "🔗 Dependencies" },
 		"config": { "title": "⚙ Configurations" },
 		"scripts": { "title": "📜 Scripts" }
 	}
