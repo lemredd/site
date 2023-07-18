@@ -1,7 +1,11 @@
 {
 	"type": "module",
 	"scripts": {
-		"release": "ts-node ./changelog/generate.ts"
+		"release": "ts-node ./changelog/generate.ts",
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview"
 	},
 	"devDependencies": {
 		"@types/node": "^20.1.1",
