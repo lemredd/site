@@ -3,9 +3,8 @@ export default {
 	"types": {
 		"dx": { "title": "🔦 Development Experience" },
 		"unit": { "title": "🦠 Unit Tests" },
-		"intg": { "title": "🧪 Integration Tests" },
-		"e2e": { "title": "🔄 Integration Tests" },
+		"intg": { "title": "🧩 Integration Tests" },
+		"e2e": { "title": "🔄 E2E Tests" },
 		"config": { "title": "⚙ Configurations" },
-		"scripts": { "title": "📜 Scripts" }
 	}
 }
