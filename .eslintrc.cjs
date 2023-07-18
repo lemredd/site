@@ -39,11 +39,21 @@ module.exports = {
 			"never"
 		],
 		"no-unused-vars": "off",
+
+		// typescript-eslint
 		"@typescript-eslint/no-unused-vars": [
 			"error",
-			{ "argsIgnorePattern": "^unused", "varsIgnorePattern": "^unused" }
+			{ "argsIgnorePattern": "^unused|_", "varsIgnorePattern": "^unused|_" }
 		],
 		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				"selector": "variable",
+				"format": ["snake_case", "UPPER_CASE"]
+			}
+		],
+
 		"space-before-function-paren": ["error", "never"],
 		"object-curly-spacing": ["error", "always"],
 	}
