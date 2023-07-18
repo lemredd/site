@@ -53,6 +53,7 @@ module.exports = {
 				"format": ["snake_case", "UPPER_CASE"]
 			}
 		],
+		"@typescript-eslint/explicit-function-return-type": "error",
 
 		"space-before-function-paren": ["error", "never"],
 		"object-curly-spacing": ["error", "always"],
