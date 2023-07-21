@@ -10,14 +10,21 @@ const { page_title } = Astro.props;
 	</head>
 	<body>
 		<Header />
-		<h1>{page_title}</h1>
 
-		<slot />
+		<div class="container">
+			<h1>{page_title}</h1>
+			<slot />
+		</div>
 	</body>
 </html>
 
-<style>
-body {
-	@apply container mx-[auto];
+<style lang="scss">
+$header-height: 64px;
+:global(header) {
+	height: $header-height;
+}
+.container {
+	@apply mx-auto;
+	margin-top: $header-height;
 }
 </style>
