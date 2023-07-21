@@ -5,7 +5,9 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview"
+		"preview": "astro preview",
+
+		"template:update": "git remote add template git@github.com:lemredd/web-template.git && git checkout -b updated_template && git pull template astro && git merge main"
 	},
 	"devDependencies": {
 		"@types/node": "^20.1.1",
