@@ -1,37 +1,11 @@
+---
+import Nav from "@components/Nav.astro";
+---
+
 <header>
 	<div class="logo">
 		<h1><a href="/">lemredd</a></h1>
 	</div>
-	<nav class="mobile">
-		<ul class="nav-menu">
-			<li><a href="/about">about</a></li>
-			<li><a href="/blog">blog</a></li>
-		</ul>
-	</nav>
-	<nav class="desktop">
-		<a href="/about">about</a>
-		<a href="/blog">blog</a>
-	</nav>
+	<Nav />
 </header>
 
-<style lang="scss">
-header {
-	nav.mobile .nav-menu {
-		display: none;
-	}
-
-	nav.desktop {
-		display: none;
-	}
-}
-
-@screen sm {
-	nav.mobile {
-		display: none;
-	}
-
-	nav.desktop {
-		display: block;
-	}
-}
-</style>
