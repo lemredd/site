@@ -17,6 +17,9 @@ devDependencies:
   '@unocss/reset':
     specifier: ^0.53.5
     version: 0.53.5
+  '@unocss/transformer-directives':
+    specifier: ^0.53.5
+    version: 0.53.5
   astro:
     specifier: ^2.8.4
     version: 2.8.4(@types/node@20.1.1)
