@@ -6,7 +6,6 @@
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-
 		"template:remote:add": "git remote add template git@github.com:lemredd/web-template.git",
 		"template:remote:rm": "git remote remove template",
 		"template:checkout": "git checkout -b updated_template",
@@ -23,6 +22,7 @@
 		"eslint-plugin-astro": "^0.27.2",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
 		"ts-node": "^10.9.1",
-		"typescript": "^5.1.6"
+		"typescript": "^5.1.6",
+		"unocss": "^0.53.5"
 	}
 }
