@@ -3,14 +3,23 @@ import Nav from "@components/Nav.astro";
 ---
 
 <header>
-	<div class="logo">
-		<h1><a href="/">lemredd</a></h1>
+	<div class="container">
+		<div class="logo">
+			<h1><a href="/">lemredd</a></h1>
+		</div>
+		<Nav />
 	</div>
-	<Nav />
 </header>
 
 <style lang="scss">
 header {
-	@apply mx-[1rem] flex justify-between;
+	@apply px-[2rem];
+
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+.container {
+	@apply mx-auto h-full flex items-center justify-between;
 }
 </style>
