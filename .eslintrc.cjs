@@ -111,5 +111,8 @@ module.exports = {
 
 		"space-before-function-paren": ["error", "never"],
 		"object-curly-spacing": ["error", "always"],
+
+		// Astro linting rules
+		"astro/no-set-html-directive": "error"
 	}
 }
