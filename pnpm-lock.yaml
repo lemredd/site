@@ -22,7 +22,7 @@ devDependencies:
     version: 0.53.5
   astro:
     specifier: ^2.8.4
-    version: 2.8.4(@types/node@20.1.1)
+    version: 2.8.4(@types/node@20.1.1)(sass@1.64.0)
   changelogen:
     specifier: ^0.5.3
     version: 0.5.3
@@ -35,6 +35,9 @@ devDependencies:
   eslint-plugin-jsx-a11y:
     specifier: ^6.7.1
     version: 6.7.1(eslint@8.45.0)
+  sass:
+    specifier: ^1.64.0
+    version: 1.64.0
   ts-node:
     specifier: ^10.9.1
     version: 10.9.1(@types/node@20.1.1)(typescript@5.1.6)
@@ -104,7 +107,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.8.4(@types/node@20.1.1)
+      astro: 2.8.4(@types/node@20.1.1)(sass@1.64.0)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -1422,7 +1425,7 @@ packages:
       chokidar: 3.5.3
       fast-glob: 3.3.0
       magic-string: 0.30.1
-      vite: 4.4.4(@types/node@20.1.1)
+      vite: 4.4.4(@types/node@20.1.1)(sass@1.64.0)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -1630,7 +1633,7 @@ packages:
       - supports-color
     dev: true
 
-  /astro@2.8.4(@types/node@20.1.1):
+  /astro@2.8.4(@types/node@20.1.1)(sass@1.64.0):
     resolution: {integrity: sha512-XTfMN6MszrkePcaLt19eQl5BA3Mg8Jqvb7wDWBYoQAJQwU0YE3BBbAwFgWosA1rBv4wClWIne8CKq5iBDklrOQ==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
@@ -1691,7 +1694,7 @@ packages:
       typescript: 5.1.6
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.4.4(@types/node@20.1.1)
+      vite: 4.4.4(@types/node@20.1.1)(sass@1.64.0)
       vitefu: 0.2.4(vite@4.4.4)
       which-pm: 2.0.0
       yargs-parser: 21.1.1
@@ -3005,6 +3008,10 @@ packages:
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
+    dev: true
+
+  /immutable@4.3.1:
+    resolution: {integrity: sha512-lj9cnmB/kVS0QHsJnYKD1uo3o39nrbKxszjnqS9Fr6NB7bZzW45U6WSGBPKXDL/CvDKqDNPA4r3DoDQ8GTxo2A==}
     dev: true
 
   /import-fresh@3.3.0:
@@ -4514,6 +4521,16 @@ packages:
       suf-log: 2.5.3
     dev: true
 
+  /sass@1.64.0:
+    resolution: {integrity: sha512-m7YtAGmQta9uANIUJwXesAJMSncqH+3INc8kdVXs6eV6GUC8Qu2IYKQSN8PRLgiQfpca697G94klm2leYMxSHw==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.1
+      source-map-js: 1.0.2
+    dev: true
+
   /scule@1.0.0:
     resolution: {integrity: sha512-4AsO/FrViE/iDNEPaAQlb77tf0csuq27EsVpy6ett584EcRTp6pTDLoGWVxCD77y5iU5FauOvhsI4o1APwPoSQ==}
     dev: true
@@ -5121,7 +5138,7 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
-  /vite@4.4.4(@types/node@20.1.1):
+  /vite@4.4.4(@types/node@20.1.1)(sass@1.64.0):
     resolution: {integrity: sha512-4mvsTxjkveWrKDJI70QmelfVqTm+ihFAb6+xf4sjEU2TmUCTlVX87tmg/QooPEMQb/lM9qGHT99ebqPziEd3wg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -5153,6 +5170,7 @@ packages:
       esbuild: 0.18.14
       postcss: 8.4.26
       rollup: 3.26.3
+      sass: 1.64.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -5165,7 +5183,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.4(@types/node@20.1.1)
+      vite: 4.4.4(@types/node@20.1.1)(sass@1.64.0)
     dev: true
 
   /vscode-css-languageservice@6.2.6:
