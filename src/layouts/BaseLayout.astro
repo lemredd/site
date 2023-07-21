@@ -12,15 +12,7 @@ const { page_title } = Astro.props;
 		<Header />
 		<h1>{page_title}</h1>
 
-		<div class="container">
-			<slot />
-		</div>
-
+		<slot />
 	</body>
 </html>
 
-<style>
-.container {
-	@apply mx-auto;
-}
-</style>
