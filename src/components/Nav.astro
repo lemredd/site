@@ -1,4 +1,8 @@
 <nav class="mobile">
+	<input type="checkbox" id="toggler" hidden />
+	<label for="toggler">
+		Hamburger
+	</label>
 	<ul class="menu">
 		<li><a href="/about">about</a></li>
 		<li><a href="/blog">blog</a></li>
@@ -12,6 +16,12 @@
 <style lang="scss">
 .menu, nav.desktop {
 	display: none;
+}
+
+nav.mobile {
+	#toggler:checked ~ .menu {
+		display: block;
+	}
 }
 
 
