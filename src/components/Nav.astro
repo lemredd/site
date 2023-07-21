@@ -1,0 +1,27 @@
+<nav class="mobile">
+	<ul class="menu">
+		<li><a href="/about">about</a></li>
+		<li><a href="/blog">blog</a></li>
+	</ul>
+</nav>
+<nav class="desktop">
+	<a href="/about">about</a>
+	<a href="/blog">blog</a>
+</nav>
+
+<style lang="scss">
+.menu, nav.desktop {
+	display: none;
+}
+
+
+@screen sm {
+	nav.mobile {
+		display: none;
+	}
+
+	nav.desktop {
+		display: block;
+	}
+}
+</style>
