@@ -13,3 +13,25 @@
 		<a href="/blog">blog</a>
 	</nav>
 </header>
+
+<style lang="scss">
+header {
+	nav.mobile .nav-menu {
+		display: none;
+	}
+
+	nav.desktop {
+		display: none;
+	}
+}
+
+@screen sm {
+	nav.mobile {
+		display: none;
+	}
+
+	nav.desktop {
+		display: block;
+	}
+}
+</style>
