@@ -11,10 +11,10 @@ const { page_title } = Astro.props;
 	<body>
 		<Header />
 
-		<div class="container">
+		<main class="content">
 			<h1>{page_title}</h1>
 			<slot />
-		</div>
+		</main>
 	</body>
 </html>
 
@@ -23,8 +23,7 @@ $header-height: 64px;
 :global(header) {
 	height: $header-height;
 }
-.container {
-	@apply mx-auto;
+.content {
 	margin-top: $header-height;
 }
 </style>
