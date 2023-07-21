@@ -3,7 +3,7 @@
 	// Change it by how strict you want your types to be (https://docs.astro.build/en/install/manual/#6-add-typescript-support)
 	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
-		"baseUrl": "."
+		"baseUrl": ".",
 		"target": "ESNext",
 		"module": "ESNext",
 		"paths": {
