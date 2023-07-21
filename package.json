@@ -7,7 +7,10 @@
 		"build": "astro build",
 		"preview": "astro preview",
 
-		"template:update": "git remote add template git@github.com:lemredd/web-template.git && git checkout -b updated_template && git pull template astro && git merge main && git remote remove template"
+		"template:remote:add": "git remote add template git@github.com:lemredd/web-template.git",
+		"template:remote:rm": "git remote remove template",
+		"template:checkout": "git checkout -b updated_template",
+		"template:update": "npm run template:remote:add && npm run template:checkout && npm run template:pull && git merge main && npm run template:remote:rm"
 	},
 	"devDependencies": {
 		"@types/node": "^20.1.1",
