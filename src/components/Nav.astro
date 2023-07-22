@@ -27,11 +27,12 @@ nav.mobile {
 		z-index: 999;
 	}
 
-	#toggler:checked ~ :is(.menu, .menu-backdrop) {
-		display: block;
+	#toggler:checked ~ .menu {
+		@apply flex flex-col items-center justify-center;
 	}
 	#toggler:checked ~ .menu-backdrop {
 		@apply bg-white bg-opacity-90;
+		display: block;
 		position: fixed;
 		inset: 0;
 	}
