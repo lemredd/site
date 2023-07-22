@@ -25,8 +25,13 @@ nav.mobile {
 		right: 0;
 	}
 
-	#toggler:checked ~ .menu {
+	#toggler:checked ~ :is(.menu, .menu-backdrop) {
 		display: block;
+	}
+	#toggler:checked ~ .menu-backdrop {
+		@apply bg-white bg-opacity-90;
+		position: fixed;
+		inset: 0;
 	}
 }
 
