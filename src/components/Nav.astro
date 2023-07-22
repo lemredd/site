@@ -1,0 +1,58 @@
+<nav class="mobile">
+	<input type="checkbox" id="toggler" hidden />
+	<label for="toggler" class="toggler-icon">
+		Hamburger
+	</label>
+	<label for="toggler" class="menu-backdrop" />
+	<ul class="menu">
+		<li><a href="/about">about</a></li>
+		<li><a href="/blog">blog</a></li>
+	</ul>
+</nav>
+<nav class="desktop">
+	<a href="/about">about</a>
+	<a href="/blog">blog</a>
+</nav>
+
+<style lang="scss">
+.menu, .menu-backdrop, nav.desktop {
+	display: none;
+}
+
+nav.mobile {
+	
+	.menu {
+		position: fixed;
+		inset: 50%;
+		z-index: 999;
+
+		li {
+			@apply my-4;
+		}
+	}
+
+	#toggler:checked ~ .menu {
+		@apply flex flex-col items-center justify-center;
+	}
+	#toggler:checked ~ .menu-backdrop {
+		@apply bg-white bg-opacity-90;
+		display: block;
+		position: fixed;
+		inset: 0;
+	}
+}
+
+nav.desktop a:not(:first-of-type) {
+	@apply ml-[1.5rem];
+}
+
+@media screen and (min-width: 640px) {
+	nav.mobile {
+		display: none;
+	}
+
+	nav.desktop {
+		display: block;
+	}
+}
+</style>

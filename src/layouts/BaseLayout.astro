@@ -1,4 +1,5 @@
 ---
+import Header from "@components/Header.astro";
 const { page_title } = Astro.props;
 ---
 <html lang="en">
@@ -8,22 +9,21 @@ const { page_title } = Astro.props;
 		<title>{page_title}</title>
 	</head>
 	<body>
-		<nav>
-			<a href="#">Home</a>
-			<a href="#">Posts</a>
-			<a href="#">Contact</a>
-		</nav>
-		<h1>{page_title}</h1>
+		<Header />
 
-		<div class="container">
+		<main class="content">
+			<h1>{page_title}</h1>
 			<slot />
-		</div>
-
+		</main>
 	</body>
 </html>
 
-<style>
-.container {
-	@apply mx-auto;
+<style lang="scss">
+$header-height: 64px;
+:global(header) {
+	height: $header-height;
+}
+.content {
+	margin-top: $header-height;
 }
 </style>
