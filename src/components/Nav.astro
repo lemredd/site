@@ -20,9 +20,11 @@
 }
 
 nav.mobile {
+	
 	.menu {
 		position: fixed;
-		right: 0;
+		inset: 50%;
+		z-index: 999;
 	}
 
 	#toggler:checked ~ :is(.menu, .menu-backdrop) {
