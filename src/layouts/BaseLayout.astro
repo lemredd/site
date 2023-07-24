@@ -39,5 +39,19 @@ body > :global(*) {
 
 .content {
 	margin-top: $header-height;
+#dark-mode-toggler {
+	z-index: 1000;
+}
+.dark-mode-toggler-icon {
+	background-color: transparent !important;
+	position: fixed;
+	top: 50%;
+}
+#dark-mode-toggler:checked ~ :global(*) {
+	$bg: #222;
+	$text: #fff;
+
+	color: $text !important;
+	background-color: $bg;
 }
 </style>
