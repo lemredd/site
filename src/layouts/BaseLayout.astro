@@ -30,11 +30,11 @@ $header-height: 64px;
 }
 
 body > :global(*) {
-	$bg: #fff;
-	$text: #000;
+	@apply color-dark bg-white;
 
-	color: $text;
-	background-color: $bg;
+	transition:
+		color 300ms ease,
+		background-color 300ms ease;
 }
 
 .content {
@@ -50,17 +50,14 @@ body > :global(*) {
 	position: fixed;
 	top: 50%;
 }
-#dark-mode-toggler:checked ~ :global(*) {
-	$bg: #222;
-	$text: #fff;
+#dark-mode-toggler:checked {
+	& ~ :global(*) {
+		@apply bg-dark color-white;
 
-	color: $text !important;
-	background-color: $bg;
 		
 		:global(label.menu-backdrop) {
 			@apply bg-dark bg-opacity-90;
 		}
 	}
 }
-
 </style>
