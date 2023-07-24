@@ -15,16 +15,18 @@
 </nav>
 
 <style lang="scss">
-.menu, .menu-backdrop, nav.desktop {
+nav.desktop {
 	display: none;
 }
 
 nav.mobile {
-	
 	.menu {
+		visibility: hidden;
 		position: fixed;
+		opacity: 0;
 		inset: 50%;
 		z-index: 999;
+		transition: opacity 300ms ease;
 
 		li {
 			@apply my-4;
@@ -33,6 +35,8 @@ nav.mobile {
 
 	#toggler:checked ~ .menu {
 		@apply flex flex-col items-center justify-center;
+		visibility: visible;
+		opacity: 1;
 	}
 	#toggler:checked ~ .menu-backdrop {
 		@apply bg-white bg-opacity-90;
