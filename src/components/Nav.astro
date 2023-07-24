@@ -25,24 +25,26 @@ nav.mobile {
 		pointer-events: none;
 		opacity: 0;
 		transition: opacity 300ms ease;
+	}
+	.menu {
+		@apply flex flex-col items-center justify-center;
+
 		inset: 50%;
 		z-index: 999;
-		transition: opacity 300ms ease;
 
 		li {
 			@apply my-4;
 		}
 	}
+	.menu-backdrop {
+		@apply bg-white bg-opacity-90;
+	}
 
 	#toggler:checked ~ .menu {
-		@apply flex flex-col items-center justify-center;
-		visibility: visible;
 		opacity: 1;
 	}
 	#toggler:checked ~ .menu-backdrop {
-		@apply bg-white bg-opacity-90;
 		display: block;
-		position: fixed;
 		inset: 0;
 	}
 }
