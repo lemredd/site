@@ -20,10 +20,11 @@ nav.desktop {
 }
 
 nav.mobile {
-	.menu {
-		visibility: hidden;
+	.menu, .menu-backdrop {
 		position: fixed;
+		pointer-events: none;
 		opacity: 0;
+		transition: opacity 300ms ease;
 		inset: 50%;
 		z-index: 999;
 		transition: opacity 300ms ease;
