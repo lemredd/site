@@ -1,10 +1,11 @@
-import { defineConfig, presetTypography, presetWind } from "unocss";
 import transformerDirectives from "@unocss/transformer-directives";
+import { defineConfig, presetIcons, presetTypography, presetWind } from "unocss";
 
 export default defineConfig({
 	"presets": [
 		presetTypography(),
-		presetWind()
+		presetWind(),
+		presetIcons()
 	],
 	"transformers": [
 		transformerDirectives()

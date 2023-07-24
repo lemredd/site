@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  '@iconify-json/material-symbols':
+    specifier: ^1.1.52
+    version: 1.1.52
   '@types/node':
     specifier: ^20.1.1
     version: 20.1.1
@@ -863,6 +866,12 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/material-symbols@1.1.52:
+    resolution: {integrity: sha512-mwkD0ndI3Rd3RcfptcVLfWxlmhMgMEsZ9z5T8hr9ejHObNv25PKpmMX9q9tQif3TxeTgnuT5i/YFNcC3oQW76Q==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:
