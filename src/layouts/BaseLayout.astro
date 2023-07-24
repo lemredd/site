@@ -1,5 +1,6 @@
 ---
 import Header from "@components/Header.astro";
+
 const { page_title } = Astro.props;
 ---
 <html lang="en">
@@ -9,7 +10,10 @@ const { page_title } = Astro.props;
 		<title>{page_title}</title>
 	</head>
 	<body>
-		<Header />
+		<Header>
+			<input type="checkbox" id="dark-mode-toggler" hidden>
+			<label for="dark-mode-toggler" tabindex="0" class="dark-mode-toggler-icon">Dark Mode</label>
+		</Header>
 
 		<main class="content">
 			<h1>{page_title}</h1>
@@ -20,10 +24,40 @@ const { page_title } = Astro.props;
 
 <style lang="scss">
 $header-height: 64px;
+
 :global(header) {
 	height: $header-height;
 }
+
+body > :global(*) {
+	@apply color-dark bg-white;
+
+	transition:
+		color 300ms ease,
+		background-color 300ms ease;
+}
+
 .content {
 	margin-top: $header-height;
+	height: calc(100vh - $header-height);
+}
+
+#dark-mode-toggler {
+	z-index: 1000;
+}
+.dark-mode-toggler-icon {
+	background-color: transparent !important;
+	position: fixed;
+	top: 50%;
+}
+#dark-mode-toggler:checked {
+	& ~ :global(*) {
+		@apply bg-dark color-white;
+
+		
+		:global(label.menu-backdrop) {
+			@apply bg-dark bg-opacity-90;
+		}
+	}
 }
 </style>
