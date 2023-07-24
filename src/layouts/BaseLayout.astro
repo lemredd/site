@@ -24,9 +24,19 @@ const { page_title } = Astro.props;
 
 <style lang="scss">
 $header-height: 64px;
+
 :global(header) {
 	height: $header-height;
 }
+
+body > :global(*) {
+	$bg: #fff;
+	$text: #000;
+
+	color: $text;
+	background-color: $bg;
+}
+
 .content {
 	margin-top: $header-height;
 }
