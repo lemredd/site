@@ -11,8 +11,6 @@ const { page_title } = Astro.props;
 	</head>
 	<body>
 		<Header>
-			<input type="checkbox" id="dark-mode-toggler" hidden>
-			<label for="dark-mode-toggler" tabindex="0" class="dark-mode-toggler-icon">Dark Mode</label>
 		</Header>
 
 		<main class="content">
@@ -42,15 +40,8 @@ body > :global(*) {
 	height: calc(100vh - $header-height);
 }
 
-#dark-mode-toggler {
-	z-index: 1000;
-}
-.dark-mode-toggler-icon {
-	background-color: transparent !important;
-	position: fixed;
-	top: 50%;
-}
-#dark-mode-toggler:checked {
+
+:global(#dark-mode-toggler:checked) {
 	& ~ :global(*) {
 		@apply bg-dark color-white;
 
