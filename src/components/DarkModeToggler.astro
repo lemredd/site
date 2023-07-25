@@ -5,9 +5,21 @@
 #dark-mode-toggler {
 	z-index: 1000;
 }
+
 .dark-mode-toggler-icon {
 	background-color: transparent !important;
 	position: fixed;
 	top: 50%;
+}
+
+#dark-mode-toggler:checked {
+	& ~ :global(*) {
+		@apply bg-dark color-white;
+
+		
+		:global(label.menu-backdrop) {
+			@apply bg-dark bg-opacity-90;
+		}
+	}
 }
 </style>

@@ -40,16 +40,4 @@ body > :global(*) {
 	margin-top: $header-height;
 	height: calc(100vh - $header-height);
 }
-
-
-:global(#dark-mode-toggler:checked) {
-	& ~ :global(*) {
-		@apply bg-dark color-white;
-
-		
-		:global(label.menu-backdrop) {
-			@apply bg-dark bg-opacity-90;
-		}
-	}
-}
 </style>
