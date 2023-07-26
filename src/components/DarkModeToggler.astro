@@ -1,6 +1,11 @@
 <script>
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+if (!preferred_color_scheme) {
+	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+} else {
+}
 </script>
 
 <input type="checkbox" id="dark-mode-toggler" hidden>
