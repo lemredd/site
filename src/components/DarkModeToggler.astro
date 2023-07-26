@@ -1,0 +1,61 @@
+<script>
+const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
+let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+if (!preferred_color_scheme) {
+	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+} else {
+	document.querySelector("#dark-mode-toggler").checked = preferred_color_scheme === "dark";
+}
+
+document.querySelector("#dark-mode-toggler").addEventListener("change", (event: Event) => {
+	const { checked } = event.target;
+	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+});
+</script>
+
+<input type="checkbox" id="dark-mode-toggler" hidden>
+<label for="dark-mode-toggler" tabindex="0" class="dark-mode-toggler-icon">
+	<div class="icon on i-material-symbols:toggle-on" />
+	<div class="icon off i-material-symbols:toggle-off" />
+</label>
+
+<style lang="scss">
+#dark-mode-toggler {
+	z-index: 1000;
+}
+
+.dark-mode-toggler-icon {
+	background-color: transparent !important;
+	position: fixed;
+	top: 50%;
+}
+
+.icon {
+	@apply text-[1.75rem];
+	&.on {
+		display: none;
+	}
+}
+
+#dark-mode-toggler:checked {
+	& ~ :global(*) {
+		@apply bg-dark color-white;
+
+		
+		:global(label.menu-backdrop) {
+			@apply bg-dark bg-opacity-90;
+		}
+	}
+	& + .dark-mode-toggler-icon {
+		.icon.on {
+			display: inline-block;
+		}
+
+		.icon.off {
+			display: none;
+		}
+	}
+}
+</style>

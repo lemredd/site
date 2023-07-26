@@ -1,5 +1,6 @@
 ---
 import Header from "@components/Header.astro";
+import DarkModeToggler from "@components/DarkModeToggler.astro";
 
 const { page_title } = Astro.props;
 ---
@@ -10,10 +11,8 @@ const { page_title } = Astro.props;
 		<title>{page_title}</title>
 	</head>
 	<body>
-		<Header>
-			<input type="checkbox" id="dark-mode-toggler" hidden>
-			<label for="dark-mode-toggler" tabindex="0" class="dark-mode-toggler-icon">Dark Mode</label>
-		</Header>
+		<DarkModeToggler />
+		<Header />
 
 		<main class="content">
 			<h1>{page_title}</h1>
@@ -40,24 +39,5 @@ body > :global(*) {
 .content {
 	margin-top: $header-height;
 	height: calc(100vh - $header-height);
-}
-
-#dark-mode-toggler {
-	z-index: 1000;
-}
-.dark-mode-toggler-icon {
-	background-color: transparent !important;
-	position: fixed;
-	top: 50%;
-}
-#dark-mode-toggler:checked {
-	& ~ :global(*) {
-		@apply bg-dark color-white;
-
-		
-		:global(label.menu-backdrop) {
-			@apply bg-dark bg-opacity-90;
-		}
-	}
 }
 </style>
