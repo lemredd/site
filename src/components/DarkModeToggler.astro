@@ -7,6 +7,12 @@ if (!preferred_color_scheme) {
 } else {
 	document.querySelector("#dark-mode-toggler").checked = preferred_color_scheme === "dark";
 }
+
+document.querySelector("#dark-mode-toggler").addEventListener("change", (event: Event) => {
+	const { checked } = event.target;
+	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+});
 </script>
 
 <input type="checkbox" id="dark-mode-toggler" hidden>
