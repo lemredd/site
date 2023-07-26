@@ -5,6 +5,7 @@ if (!preferred_color_scheme) {
 	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 } else {
+	document.querySelector("#dark-mode-toggler").checked = preferred_color_scheme === "dark";
 }
 </script>
 
