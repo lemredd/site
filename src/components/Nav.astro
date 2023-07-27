@@ -24,6 +24,7 @@ const links = {
 <style lang="scss">
 nav.desktop {
 	display: none;
+	text-transform: uppercase;
 }
 
 nav.mobile {
@@ -34,7 +35,7 @@ nav.mobile {
 		transition: opacity 300ms ease;
 	}
 	.menu {
-		@apply flex flex-col items-center justify-center;
+		@apply flex flex-col items-center justify-center uppercase;
 
 		inset: 50%;
 		z-index: 999;
