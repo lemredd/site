@@ -18,6 +18,13 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 <style>
 /* Add class to a slotted element if you want to style it! */
+.container {
+	@apply
+		mx-auto px-[1rem]
+		sm:px-0
+	;
+}
+
 .title {
 	@apply my-5 text-2xl text-center;
 }
