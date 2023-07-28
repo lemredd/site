@@ -44,7 +44,15 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 .nicknames {
 	@apply my-[2rem];
 }
+
 #projects {
 	@apply text-right;
+}
+.projects-container {
+	@apply
+		grid gap-[.5rem]
+		sm:grid-cols-3 sm:grid-rows-3
+	;
+
 }
 </style>
