@@ -13,6 +13,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 		<a href="/about">more about me.</a>
 
 		<h1 id="projects" class="title">Projects</h1>
+		<ul class="projects-container">
+			{[1,2,3,4,5,6].map(item => (
+				<li>project {item}</li>
+			))}
+		</ul>
 	</div>
 </BaseLayout>
 
