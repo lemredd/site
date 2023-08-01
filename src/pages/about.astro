@@ -3,49 +3,43 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout page_title="About">
-	<div class="container">
-		<h1 class="title">Who am I?</h1>
+	<h1 class="title">Who am I?</h1>
 
-		<section class="paragraphs">
-			<div class="biography">
-				<p>My name is Jarlem Red de Peralta, born at Ilocos Norte on October 21, 2000. My first name was derived from my father's name "Raj", and mother's name "Mel" - both reversed. I've been captivated by technology, and my determination to pursue a career in the ever-evolving world of information technology has been a driving force in shaping my life.</p>
+	<section class="paragraphs">
+		<div class="biography">
+			<p>My name is Jarlem Red de Peralta, born at Ilocos Norte on October 21, 2000. My first name was derived from my father's name "Raj", and mother's name "Mel" - both reversed. I've been captivated by technology, and my determination to pursue a career in the ever-evolving world of information technology has been a driving force in shaping my life.</p>
 
-				<p>I was surrounded by gadgets, computer, and the internet. The moment I got my hands on a computer, I was curious of what I could do with it. From a young age, I was an avid gamer and I played different video games for several hours. While my gamer skills improved, my computer literacy also did. It was only during my last high school years that I discovered my passion in design and development.</p>
+			<p>I was surrounded by gadgets, computer, and the internet. The moment I got my hands on a computer, I was curious of what I could do with it. From a young age, I was an avid gamer and I played different video games for several hours. While my gamer skills improved, my computer literacy also did. It was only during my last high school years that I discovered my passion in design and development.</p>
 
-				<p>Fast forward to 2023, I graduated with a Bachelor of Science in Information Technology at Mabalacat City College. After accomplishing my capstone project along with my groupmates and my internship at a Front-end development driven company, I have been equipped with enough experience to pursue a career in web development.</p>
-			</div>
-			<div class="journey">
-				<p>My journey as a Front-End Developer has been an rewarding adventure filled with continuous learning and growth. From the moment I grew interested in technology and design, I knew that this is my calling.</p>
+			<p>Fast forward to 2023, I graduated with a Bachelor of Science in Information Technology at Mabalacat City College. After accomplishing my capstone project along with my groupmates and my internship at a Front-end development driven company, I have been equipped with enough experience to pursue a career in web development.</p>
+		</div>
+		<div class="journey">
+			<p>My journey as a Front-End Developer has been an rewarding adventure filled with continuous learning and growth. From the moment I grew interested in technology and design, I knew that this is my calling.</p>
 
-				<p>I started my career by diving into the basics of web development, learning HTML, CSS, and JavaScript. As I became more proficient in these foundational technologies, I challenged myself to explore modern frameworks like React and Angular, which opened up a whole new world of possibilities for building dynamic and interactive user interfaces.</p>
+			<p>I started my career by diving into the basics of web development, learning HTML, CSS, and JavaScript. As I became more proficient in these foundational technologies, I challenged myself to explore modern frameworks like React and Angular, which opened up a whole new world of possibilities for building dynamic and interactive user interfaces.</p>
 
-				<p>Throughout my journey, I have had the privilege of working on diverse projects with cross-functional teams, including UX/UI designers, back-end developers, and product managers. Collaborating with these professionals taught me the importance of effective communication and understanding the broader context of a project to deliver the best results.</p>
+			<p>Throughout my journey, I have had the privilege of working on diverse projects with cross-functional teams, including UX/UI designers, back-end developers, and product managers. Collaborating with these professionals taught me the importance of effective communication and understanding the broader context of a project to deliver the best results.</p>
 
-				<p>I've faced my fair share of challenges, too. Debugging complex issues, optimizing performance, and ensuring cross-browser compatibility have all tested my problem-solving skills. But with each hurdle, I've gained valuable experience that has made me a more resilient and efficient developer.</p>
+			<p>I've faced my fair share of challenges, too. Debugging complex issues, optimizing performance, and ensuring cross-browser compatibility have all tested my problem-solving skills. But with each hurdle, I've gained valuable experience that has made me a more resilient and efficient developer.</p>
 
-				<p>As technology rapidly evolves, I've made a commitment to stay updated with the latest industry trends and best practices. I attend workshops, webinars, and conferences to enhance my skills and stay connected with the developer community.</p>
+			<p>As technology rapidly evolves, I've made a commitment to stay updated with the latest industry trends and best practices. I attend workshops, webinars, and conferences to enhance my skills and stay connected with the developer community.</p>
 
-				<p>One of the most fulfilling aspects of being a Front-End Developer is witnessing my work come to life. Whether it's a sleek e-commerce platform, an engaging social media app, or an informative blog, seeing users interact with the products I've helped build brings a sense of accomplishment and purpose to my career.</p>
+			<p>One of the most fulfilling aspects of being a Front-End Developer is witnessing my work come to life. Whether it's a sleek e-commerce platform, an engaging social media app, or an informative blog, seeing users interact with the products I've helped build brings a sense of accomplishment and purpose to my career.</p>
 
-				<p>Looking ahead, I'm excited about the endless possibilities in front-end development. As I continue to grow and evolve in this ever-evolving field, I'm eager to take on new challenges, embrace emerging technologies, and contribute to the advancement of the digital landscape. My journey as a Front-End Developer has just begun, and I can't wait to see where it takes me next.</p>
-			</div>
-		</section>
-	</div>
+			<p>Looking ahead, I'm excited about the endless possibilities in front-end development. As I continue to grow and evolve in this ever-evolving field, I'm eager to take on new challenges, embrace emerging technologies, and contribute to the advancement of the digital landscape. My journey as a Front-End Developer has just begun, and I can't wait to see where it takes me next.</p>
+		</div>
+	</section>
 </BaseLayout>
 
 <style lang="scss">
-.container {
-	@apply mx-auto px-[1.5rem] sm:px-0;
+.title {
+	@apply my-5 text-2xl text-center;
+}
+.paragraphs {
+	@apply max-w-[640px];
 
-	.title {
-		@apply my-5 text-2xl text-center;
-	}
-	.paragraphs {
-		@apply max-w-[640px];
-
-		div > p {
-			@apply pb-[1.5rem];
-		}
+	div > p {
+		@apply pb-[1.5rem];
 	}
 }
 </style>

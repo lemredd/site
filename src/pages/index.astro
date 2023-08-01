@@ -3,40 +3,32 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout page_title="Home">
-	<div class="container">
-		<section class="about-me">
-			<h1 class="title">Welcome.</h1>
-			<p class="description">I am Jarlem de Peralta, a front-end web developer and UX/UI designer. I use my skills to create impressive solutions that can be used on an everyday basis.</p>
-			<div class="nicknames">
-				<!-- TODO: add animations -->
-				You may call me lem/red/lemredd/lemmy.
-			</div>
-			<a href="/about">more about me.</a>
-		</section>
+	<section class="about-me">
+		<h1 class="title">Welcome.</h1>
+		<p class="description">I am Jarlem de Peralta, a front-end web developer and UX/UI designer. I use my skills to create impressive solutions that can be used on an everyday basis.</p>
+		<div class="nicknames">
+			<!-- TODO: add animations -->
+			You may call me lem/red/lemredd/lemmy.
+		</div>
+		<a href="/about">more about me.</a>
+	</section>
 
-		<section class="projects">
-			<h1 id="projects" class="title">Projects</h1>
-			<ul class="projects-container">
-				{[1,2,3,4,5,6].map(item => (
-					<li class={`project-item project-${item}`}>project {item}</li>
-				))}
-			</ul>
-			<!-- TODO: make `/projects` page -->
-			<a href="/projects">See all the things I've built</a>
-		</section>
-	</div>
+	<section class="projects">
+		<h1 id="projects" class="title">Projects</h1>
+		<ul class="projects-container">
+			{[1,2,3,4,5,6].map(item => (
+				<li class={`project-item project-${item}`}>project {item}</li>
+			))}
+		</ul>
+		<!-- TODO: make `/projects` page -->
+		<a href="/projects">See all the things I've built</a>
+	</section>
 </BaseLayout>
 
 <style lang="scss">
 /* Add class to a slotted element if you want to style it! */
-.container {
-	@apply
-		mx-auto px-[1rem]
-	;
-	
-	section {
-		@apply pb-[2rem]
-	}
+section {
+	@apply pb-[2rem]
 }
 
 .title {
