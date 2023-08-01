@@ -5,7 +5,9 @@ export default defineConfig({
 	"presets": [
 		presetTypography(),
 		presetWind(),
-		presetIcons()
+		presetIcons({
+			"extraProperties": { "display": "inline-block" }
+		})
 	],
 	"transformers": [
 		transformerDirectives()
