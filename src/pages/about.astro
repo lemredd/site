@@ -1,12 +1,16 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+
+import HashedLink from "@components/HashedLink.astro";
 ---
 
 <BaseLayout page_title="About">
 	<h1 class="title">Who am I?</h1>
 
 	<section class="biography">
-		<h2 id="biography" class="section-heading">biography</h2>
+		<h2 id="biography" class="section-heading">
+			<HashedLink link="biography">Biography</HashedLink>
+		</h2>
 		<p>My name is Jarlem Red de Peralta, born at Ilocos Norte on October 21, 2000. My first name was derived from my father's name "Raj", and mother's name "Mel" - both reversed. I've been captivated by technology, and my determination to pursue a career in the ever-evolving world of information technology has been a driving force in shaping my life.</p>
 
 		<p>I was surrounded by gadgets, computer, and the internet. The moment I got my hands on a computer, I was curious of what I could do with it. From a young age, I was an avid gamer and I played different video games for several hours. While my gamer skills improved, my computer literacy also did. It was only during my last high school years that I discovered my passion in design and development.</p>
@@ -28,16 +32,22 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 	</section>
 
 	<section class="experience">
-		<h2 id="experience" class="section-heading">Experience</h2>
+		<h2 id="experience" class="section-heading">
+			<HashedLink link="biography">Experience</HashedLink>
+		</h2>
 
-		<h3 id="collaborative-works">Collaborative Works</h3>
+		<h3 id="collaborative-works">
+			<HashedLink link="biography">Collaborative Works</HashedLink>
+		</h3>
 		<ul class="collaborative-works">
 			{[1,2,3].map(idx => (
 				<li class={`item item-${idx}`}>Collab {idx}</li>
 			))}
 		</ul>
 
-		<h3 id="certifications">Certifications</h3>
+		<h3 id="certifications">
+			<HashedLink link="biography">Certifications</HashedLink>
+		</h3>
 		<ul class="certifications">
 			{[1,2,3].map(idx => (
 				<li class={`item item-${idx}`}>Cert {idx}</li>
