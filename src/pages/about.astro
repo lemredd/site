@@ -37,6 +37,8 @@ import HashedLink from "@components/HashedLink.astro";
 			<HashedLink link="experience">Experience</HashedLink>
 		</h2>
 
+		<!-- TODO: use real works -->
+
 		<h3 id="individual-works">
 			<HashedLink link="individual-works">Individual Works</HashedLink>
 		</h3>
@@ -69,6 +71,35 @@ import HashedLink from "@components/HashedLink.astro";
 		<h2 id="skills" class="section-heading">
 			<HashedLink link="skills">Skills</HashedLink>
 		</h2>
+
+		<!-- TODO: use real tools -->
+
+		<h3 id="front-end">
+			<HashedLink link="front-end">Front-End</HashedLink>
+		</h3>
+		<ul class="front-end">
+			{[1,2,3].map(idx => (
+				<li class={`item item-${idx}`}>Tech {idx}</li>
+			))}
+		</ul>
+
+		<h3 id="back-end">
+			<HashedLink link="back-end">Back-End</HashedLink>
+		</h3>
+		<ul class="back-end">
+			{[1,2,3].map(idx => (
+				<li class={`item item-${idx}`}>Tech {idx}</li>
+			))}
+		</ul>
+
+		<h3 id="tools-and-collaboration">
+			<HashedLink link="tools-and-collaboration">Tools and Collaboration</HashedLink>
+		</h3>
+		<ul class="tools-and-collaboration">
+			{[1,2,3].map(idx => (
+				<li class={`item item-${idx}`}>Tech {idx}</li>
+			))}
+		</ul>
 	</section>
 </BaseLayout>
 
@@ -98,7 +129,7 @@ section {
 	}
 }
 
-.experience {
+.experience, .skills {
 	ul {
 		@apply mb-[2rem] pl-[1rem];
 	}
