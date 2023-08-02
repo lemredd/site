@@ -1,0 +1,28 @@
+---
+interface Props {
+	link: string
+}
+
+const { link } = Astro.props as Props;
+---
+
+<a class="hashed-link" href={`#${link}`}>
+	<slot />
+	<span id="hash-link-icon" class="icon i-material-symbols:link" />
+</a>
+
+<style lang="scss">
+a {
+	@apply inline-flex gap-x-[.5rem] items-center;
+
+	&:hover {
+		.icon {
+			@apply visible;
+		}
+	}
+}
+.icon {
+	@apply invisible;
+}
+</style>
+
