@@ -36,6 +36,15 @@ import HashedLink from "@components/HashedLink.astro";
 			<HashedLink link="experience">Experience</HashedLink>
 		</h2>
 
+		<h3 id="individual-works">
+			<HashedLink link="individual-works">Individual Works</HashedLink>
+		</h3>
+		<ul class="individual-works">
+			{[1,2,3].map(idx => (
+				<li class={`item item-${idx}`}>Indiv {idx}</li>
+			))}
+		</ul>
+
 		<h3 id="collaborative-works">
 			<HashedLink link="collaborative-works">Collaborative Works</HashedLink>
 		</h3>
