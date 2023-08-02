@@ -6,7 +6,7 @@ interface Props {
 const { link } = Astro.props as Props;
 ---
 
-<a href={`#${link}`}>
+<a class="hashed-link" href={`#${link}`}>
 	<slot />
 	<span id="hash-link-icon" class="icon i-material-symbols:link" />
 </a>
