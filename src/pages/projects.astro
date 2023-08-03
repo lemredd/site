@@ -8,19 +8,21 @@ const projects = Array.from({ "length": 20 }, (_, idx) => idx);
 
 <BaseLayout page_title="Projects">
 	<!-- TODO: make `#page-heading` text interchange -->
-	<div class="page-heading">
+	<section class="page-heading">
 		<h1>Practice makes perfect.</h1>
 		<p>Here are the list of projects that I have accomplished during my entire career. Courtesy of GitHub API.</p>
-	</div>
+	</section>
 
 	<div class="search-bar">
 	</div>
 
-	<ul class="projects">
-		{projects.map(item => (
-			<li class="project">{item}</li>
-		))}
-	</ul>
+	<section class="projects">
+		<ul class="projects-list">
+			{projects.map(item => (
+				<li class="project">{item}</li>
+			))}
+		</ul>
+	</section>
 </BaseLayout>
 
 <style lang="scss">
@@ -28,7 +30,7 @@ const projects = Array.from({ "length": 20 }, (_, idx) => idx);
 	@apply mb-[2rem];
 }
 
-.projects {
+.projects-list {
 	@apply grid grid-rows-3 grid-cols-3 gap-[1rem];
 	
 	.project {
