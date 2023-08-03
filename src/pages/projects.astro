@@ -1,0 +1,102 @@
+
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+// TODO: Use real projects fetched from GitHub.
+const projects = Array.from({ "length": 20 }, (_, idx) => ({
+	"id": idx,
+	"img": "https://source.unsplash.com/random/1920x1080?monochrome",
+	"name": `Project #${idx}`,
+	"description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+}));
+---
+
+<BaseLayout page_title="Projects">
+	<!-- TODO: make `#page-heading` text interchange -->
+	<section class="page-heading">
+		<h1>Practice makes perfect.</h1>
+		<p>Here are the list of projects that I have accomplished during my entire career. Courtesy of GitHub API.</p>
+	</section>
+
+	<section class="filters">
+		{/* TODO: make into client-side component */}
+		<label for="search-input" class="search-bar">
+			<input type="text" id="search-input"placeholder="Enter the name of project here..." />
+			<span class="search-icon i-material-symbols:search" />
+		</label>
+	</section>
+
+	<section class="projects">
+		<ul class="projects-list">
+			{projects.map(({ img, name, description }) => (
+				<li class="project">
+					<img src={img} alt="project image" loading="lazy" />
+					<div class="details">
+						<h4>{name}</h4>
+						<p>{description}</p>
+					</div>
+				</li>
+			))}
+		</ul>
+	</section>
+</BaseLayout>
+
+<style lang="scss">
+.page-heading {
+	@apply my-[8rem];
+	h1 { @apply text-[2.5rem]; }
+}
+
+.filters {
+	@apply
+		sticky top-[64px]
+		my-[2rem]
+		bg-white // TODO: add dark mode background color.
+		z-999
+	;
+
+	.search-bar {
+		@apply
+			w-[100%]
+			border border-neutral rounded
+			p-2
+			flex items-center gap-x-[.5rem]
+		;
+
+		.search-icon {
+			@apply text-xl cursor-pointer;
+		}
+		
+		#search-input {
+			@apply grow;
+		}
+	}
+}
+
+.search-bar {
+	@apply
+}
+
+.projects-list {
+	@apply
+		grid gap-[1rem]
+		sm:grid-rows-3 sm:grid-cols-3
+	;
+	
+	.project {
+		@apply border border-neutral rounded transition-transform;
+
+		&:hover, &:active, &:focus {
+			@apply scale-[1.025];
+		}
+
+		.details {
+			@apply py-6 px-3;
+		}
+
+		.details h4 {
+			@apply mb-2 text-xl;
+		}
+	}
+}
+</style>
