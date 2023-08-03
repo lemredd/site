@@ -9,5 +9,14 @@ const projects = Array.from({ "length": 20 }, (_, idx) => idx);
 <BaseLayout page_title="Projects">
 	<!-- TODO: make `#page-heading` text interchange -->
 	<h1 class="page-heading">Practice makes perfect.</h1>
+
+	<div class="search-bar">
+	</div>
+
+	<ul class="projects">
+		{projects.map(item => (
+			<li>{item}</li>
+		))}
+	</ul>
 </BaseLayout>
 
