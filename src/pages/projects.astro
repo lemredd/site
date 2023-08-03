@@ -8,7 +8,10 @@ const projects = Array.from({ "length": 20 }, (_, idx) => idx);
 
 <BaseLayout page_title="Projects">
 	<!-- TODO: make `#page-heading` text interchange -->
-	<h1 class="page-heading">Practice makes perfect.</h1>
+	<div class="page-heading">
+		<h1>Practice makes perfect.</h1>
+		<p>Here are the list of projects that I have accomplished during my entire career. Courtesy of GitHub API.</p>
+	</div>
 
 	<div class="search-bar">
 	</div>
@@ -21,6 +24,10 @@ const projects = Array.from({ "length": 20 }, (_, idx) => idx);
 </BaseLayout>
 
 <style lang="scss">
+.page-heading {
+	@apply mb-[2rem];
+}
+
 .projects {
 	@apply grid grid-rows-3 grid-cols-3 gap-[1rem];
 	
