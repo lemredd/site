@@ -5,7 +5,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 // TODO: Use real projects fetched from GitHub.
 const projects = Array.from({ "length": 20 }, (_, idx) => ({
 	"id": idx,
-	"img": "https://source.unsplash.com/random/1920x1080",
+	"img": "https://source.unsplash.com/random/1920x1080?monochrome",
 	"name": `Project #${idx}`,
 	"description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
 }));
@@ -25,6 +25,7 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 		<ul class="projects-list">
 			{projects.map(({ img, name, description }) => (
 				<li class="project">
+					<img src={img} alt="project image" loading="lazy" />
 					<div class="details">
 						<h4>{name}</h4>
 						<p>{description}</p>
