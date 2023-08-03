@@ -18,8 +18,13 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 		<p>Here are the list of projects that I have accomplished during my entire career. Courtesy of GitHub API.</p>
 	</section>
 
-	<div class="search-bar">
-	</div>
+	<section class="filters">
+		{/* TODO: make into client-side component */}
+		<label for="search-input" class="search-bar">
+			<input type="text" id="search-input"placeholder="Enter the name of project here..." />
+			<span class="search-icon i-material-symbols:search" />
+		</label>
+	</section>
 
 	<section class="projects">
 		<ul class="projects-list">
@@ -37,8 +42,29 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 </BaseLayout>
 
 <style lang="scss">
-.page-heading {
-	@apply mb-[2rem];
+.filters {
+	@apply my-[2rem];
+
+	.search-bar {
+		@apply
+			w-[100%]
+			border border-neutral rounded
+			p-2
+			flex items-center gap-x-[.5rem]
+		;
+
+		.search-icon {
+			@apply text-xl cursor-pointer;
+		}
+		
+		#search-input {
+			@apply grow;
+		}
+	}
+}
+
+.search-bar {
+	@apply
 }
 
 .projects-list {
