@@ -48,7 +48,19 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 	;
 	
 	.project {
-		@apply border border-neutral;
+		@apply border border-neutral rounded transition-transform;
+
+		&:hover, &:active, &:focus {
+			@apply scale-[1.025];
+		}
+
+		.details {
+			@apply py-6 px-3;
+		}
+
+		.details h4 {
+			@apply mb-2 text-xl;
+		}
 	}
 }
 </style>
