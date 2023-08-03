@@ -48,7 +48,12 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 }
 
 .filters {
-	@apply my-[2rem];
+	@apply
+		sticky top-[64px]
+		my-[2rem]
+		bg-white // TODO: add dark mode background color.
+		z-999
+	;
 
 	.search-bar {
 		@apply
