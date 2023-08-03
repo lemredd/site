@@ -15,8 +15,17 @@ const projects = Array.from({ "length": 20 }, (_, idx) => idx);
 
 	<ul class="projects">
 		{projects.map(item => (
-			<li>{item}</li>
+			<li class="project">{item}</li>
 		))}
 	</ul>
 </BaseLayout>
 
+<style lang="scss">
+.projects {
+	@apply grid grid-rows-3 grid-cols-3 gap-[1rem];
+	
+	.project {
+		@apply border border-neutral;
+	}
+}
+</style>
