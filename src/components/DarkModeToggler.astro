@@ -1,6 +1,6 @@
 <script>
 const dark_mode_btn = document.querySelector("#dark-mode-toggler") as  HTMLInputElement;
-const { body } = document;
+const { "documentElement": root } = document;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
@@ -10,7 +10,7 @@ if (!preferred_color_scheme) {
 	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 } else if (preferred_color_scheme === "dark") {
 	dark_mode_btn.checked = true;
-	body.classList.add("dark");
+	root.classList.add("dark");
 }
 
 dark_mode_btn.addEventListener("change", (event: Event) => {
@@ -18,7 +18,7 @@ dark_mode_btn.addEventListener("change", (event: Event) => {
 	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
 	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 
-	body.classList.toggle("dark");
+	root.classList.toggle("dark");
 });
 </script>
 
