@@ -83,17 +83,13 @@ nav.mobile {
 	}
 }
 
-nav.desktop a:not(:first-of-type) {
-	@apply ml-[1.5rem];
-}
-
 @media screen and (min-width: 640px) {
 	nav.mobile {
 		display: none;
 	}
 
 	nav.desktop {
-		display: block;
+		@apply flex gap-x-[1.5rem];
 	}
 }
 </style>
