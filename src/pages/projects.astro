@@ -51,8 +51,10 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 	@apply
 		sticky top-[64px]
 		my-[2rem]
-		bg-[inherit]
+		py-[1rem]
+		bg-white
 		z-999
+		dark:bg-dark
 	;
 
 	.search-bar {
@@ -68,7 +70,7 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 		}
 		
 		#search-input {
-			@apply grow;
+			@apply grow bg-transparent;
 		}
 	}
 }
