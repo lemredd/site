@@ -17,6 +17,8 @@ dark_mode_btn.addEventListener("change", (event: Event) => {
 	const { checked } = event.target as HTMLInputElement;
 	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
 	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+
+	body.classList.toggle("dark");
 });
 </script>
 
