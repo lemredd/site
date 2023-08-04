@@ -1,7 +1,10 @@
 <script>
-const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 const dark_mode_btn = document.querySelector("#dark-mode-toggler") as  HTMLInputElement;
+const { body } = document;
+
+const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+
 if (!preferred_color_scheme) {
 	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
