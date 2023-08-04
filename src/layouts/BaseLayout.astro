@@ -30,12 +30,8 @@ $header-height: 64px;
 }
 
 body {
-	@apply bg-white color-neutral-600;
+	@apply bg-white color-neutral-600 transition-colors;
 
-	transition:
-		color 300ms ease,
-		background-color 300ms ease;
-	
 	&.dark {
 		@apply bg-dark color-white;
 	}
