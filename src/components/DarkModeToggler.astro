@@ -1,15 +1,16 @@
 <script>
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
+const dark_mode_btn = document.querySelector("#dark-mode-toggler") as  HTMLInputElement;
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 if (!preferred_color_scheme) {
 	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 } else {
-	document.querySelector("#dark-mode-toggler").checked = preferred_color_scheme === "dark";
+	dark_mode_btn.checked = preferred_color_scheme === "dark";
 }
 
-document.querySelector("#dark-mode-toggler").addEventListener("change", (event: Event) => {
-	const { checked } = event.target;
+dark_mode_btn.addEventListener("change", (event: Event) => {
+	const { checked } = event.target as HTMLInputElement;
 	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
 	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 });
