@@ -29,12 +29,16 @@ $header-height: 64px;
 	height: $header-height;
 }
 
-body > :global(*) {
-	@apply color-neutral-600 bg-white;
+body {
+	@apply bg-white color-neutral-600;
 
 	transition:
 		color 300ms ease,
 		background-color 300ms ease;
+	
+	&.dark {
+		@apply bg-dark color-white;
+	}
 }
 
 .content {

@@ -47,14 +47,6 @@ dark_mode_btn.addEventListener("change", (event: Event) => {
 }
 
 #dark-mode-toggler:checked {
-	& ~ :global(*) {
-		@apply bg-dark color-white;
-
-		
-		:global(label.menu-backdrop) {
-			@apply bg-dark bg-opacity-90;
-		}
-	}
 	& + .dark-mode-toggler-icon {
 		.icon.on {
 			display: inline-block;
