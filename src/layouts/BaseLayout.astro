@@ -1,9 +1,9 @@
 ---
 import Header from "@components/Header.astro";
-import DarkModeToggler from "@components/DarkModeToggler.astro";
 
 const { page_title } = Astro.props;
 ---
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -11,7 +11,6 @@ const { page_title } = Astro.props;
 		<title>{page_title}</title>
 	</head>
 	<body>
-		<DarkModeToggler />
 		<Header />
 
 		<main class="content">
@@ -19,6 +18,13 @@ const { page_title } = Astro.props;
 				<slot />
 			</div>
 		</main>
+
+		<script is:inline>
+			const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
+			let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+
+			if (preferred_color_scheme === "dark") document.documentElement.classList.add("dark");
+		</script>
 	</body>
 </html>
 
@@ -29,12 +35,12 @@ $header-height: 64px;
 	height: $header-height;
 }
 
-body > :global(*) {
-	@apply color-neutral-600 bg-white;
+:root {
+	@apply bg-white color-neutral-600;
 
-	transition:
-		color 300ms ease,
-		background-color 300ms ease;
+	&.dark {
+		@apply bg-dark color-white;
+	}
 }
 
 .content {

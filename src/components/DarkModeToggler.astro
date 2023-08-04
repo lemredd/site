@@ -1,17 +1,24 @@
 <script>
+const dark_mode_btn = document.querySelector("#dark-mode-toggler") as  HTMLInputElement;
+const { "documentElement": root } = document;
+
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+
 if (!preferred_color_scheme) {
 	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
-} else {
-	document.querySelector("#dark-mode-toggler").checked = preferred_color_scheme === "dark";
+} else if (preferred_color_scheme === "dark") {
+	dark_mode_btn.checked = true;
+	root.classList.add("dark");
 }
 
-document.querySelector("#dark-mode-toggler").addEventListener("change", (event: Event) => {
-	const { checked } = event.target;
+dark_mode_btn.addEventListener("change", (event: Event) => {
+	const { checked } = event.target as HTMLInputElement;
 	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
 	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+
+	root.classList.toggle("dark");
 });
 </script>
 
@@ -27,9 +34,8 @@ document.querySelector("#dark-mode-toggler").addEventListener("change", (event: 
 }
 
 .dark-mode-toggler-icon {
+	@apply inline-flex;
 	background-color: transparent !important;
-	position: fixed;
-	top: 50%;
 }
 
 .icon {
@@ -39,23 +45,13 @@ document.querySelector("#dark-mode-toggler").addEventListener("change", (event: 
 	}
 }
 
-#dark-mode-toggler:checked {
-	& ~ :global(*) {
-		@apply bg-dark color-white;
-
-		
-		:global(label.menu-backdrop) {
-			@apply bg-dark bg-opacity-90;
-		}
+#dark-mode-toggler:checked + .dark-mode-toggler-icon {
+	.icon.on {
+		display: inline-block;
 	}
-	& + .dark-mode-toggler-icon {
-		.icon.on {
-			display: inline-block;
-		}
 
-		.icon.off {
-			display: none;
-		}
+	.icon.off {
+		display: none;
 	}
 }
 </style>

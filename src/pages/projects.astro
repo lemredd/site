@@ -5,7 +5,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 // TODO: Use real projects fetched from GitHub.
 const projects = Array.from({ "length": 20 }, (_, idx) => ({
 	"id": idx,
-	"img": "https://source.unsplash.com/random/1920x1080?monochrome",
+	"img": "https://source.unsplash.com/random/1920x1080/?monochrome",
 	"name": `Project #${idx}`,
 	"description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
 }));
@@ -20,10 +20,10 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 
 	<section class="filters">
 		{/* TODO: make into client-side component */}
-		<label for="search-input" class="search-bar">
+		<div class="search-bar">
 			<input type="text" id="search-input"placeholder="Enter the name of project here..." />
 			<span class="search-icon i-material-symbols:search" />
-		</label>
+		</div>
 	</section>
 
 	<section class="projects">
@@ -51,8 +51,9 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 	@apply
 		sticky top-[64px]
 		my-[2rem]
-		bg-white // TODO: add dark mode background color.
-		z-999
+		py-[1rem]
+		bg-white
+		dark:bg-dark
 	;
 
 	.search-bar {
@@ -68,7 +69,7 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 		}
 		
 		#search-input {
-			@apply grow;
+			@apply grow bg-transparent;
 		}
 	}
 }
@@ -84,11 +85,7 @@ const projects = Array.from({ "length": 20 }, (_, idx) => ({
 	;
 	
 	.project {
-		@apply border border-neutral rounded transition-transform;
-
-		&:hover, &:active, &:focus {
-			@apply scale-[1.025];
-		}
+		@apply border border-neutral rounded;
 
 		.details {
 			@apply py-6 px-3;

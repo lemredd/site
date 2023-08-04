@@ -1,5 +1,7 @@
 ---
-const links = {
+import DarkModeToggler from "@components/DarkModeToggler.astro";
+
+const links: Record<string, string> = {
 	"/#projects": "projects",
 	"/about": "about",
 	"/blog": "blog",
@@ -13,8 +15,13 @@ const links = {
 		<div class="i-material-symbols:menu" />
 	</label>
 	<label for="toggler" class="menu-backdrop" />
+
 	<ul class="menu">
 		{Object.keys(links).map(link => <li><a href={link}>{links[link]}</a></li>)}
+		<li class="appearance">
+			Appearance
+			<DarkModeToggler />
+		</li>
 	</ul>
 </nav>
 <nav class="desktop">
@@ -33,19 +40,28 @@ nav.mobile {
 		pointer-events: none;
 		opacity: 0;
 		transition: opacity 300ms ease;
+		z-index: 999;
 	}
 	.menu {
-		@apply flex flex-col items-center justify-center uppercase;
+		@apply flex flex-col justify-center uppercase;
 
-		inset: 50%;
+		inset: 50% 10%;
+		transform: translateY(-50%);
 		z-index: 999;
 
 		li {
 			@apply my-4;
 		}
+
+		.appearance {
+			@apply h-full flex items-center justify-between;
+		}
 	}
 	.menu-backdrop {
-		@apply bg-white bg-opacity-90;
+		@apply
+			bg-white bg-opacity-95
+			dark:bg-dark dark:bg-opacity-95
+		;
 		inset: 0;
 	}
 
@@ -67,17 +83,13 @@ nav.mobile {
 	}
 }
 
-nav.desktop a:not(:first-of-type) {
-	@apply ml-[1.5rem];
-}
-
 @media screen and (min-width: 640px) {
 	nav.mobile {
 		display: none;
 	}
 
 	nav.desktop {
-		display: block;
+		@apply flex gap-x-[1.5rem];
 	}
 }
 </style>
