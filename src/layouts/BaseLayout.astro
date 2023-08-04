@@ -3,6 +3,7 @@ import Header from "@components/Header.astro";
 
 const { page_title } = Astro.props;
 ---
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -27,7 +28,7 @@ $header-height: 64px;
 	height: $header-height;
 }
 
-body {
+:root {
 	@apply bg-white color-neutral-600 transition-colors;
 
 	& :global(*) {
