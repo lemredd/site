@@ -8,8 +8,9 @@ let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 if (!preferred_color_scheme) {
 	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
-} else {
-	dark_mode_btn.checked = preferred_color_scheme === "dark";
+} else if (preferred_color_scheme === "dark") {
+	dark_mode_btn.checked = true;
+	body.classList.add("dark");
 }
 
 dark_mode_btn.addEventListener("change", (event: Event) => {
