@@ -32,6 +32,10 @@ $header-height: 64px;
 body {
 	@apply bg-white color-neutral-600 transition-colors;
 
+	& :global(*) {
+		@apply transition-colors;
+	}
+		
 	&.dark {
 		@apply bg-dark color-white;
 	}
