@@ -1,6 +1,5 @@
 ---
 import Header from "@components/Header.astro";
-import DarkModeToggler from "@components/DarkModeToggler.astro";
 
 const { page_title } = Astro.props;
 ---
@@ -11,7 +10,6 @@ const { page_title } = Astro.props;
 		<title>{page_title}</title>
 	</head>
 	<body>
-		<DarkModeToggler />
 		<Header />
 
 		<main class="content">

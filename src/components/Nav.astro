@@ -1,4 +1,6 @@
 ---
+import DarkModeToggler from "@components/DarkModeToggler.astro";
+
 const links = {
 	"/#projects": "projects",
 	"/about": "about",
@@ -13,8 +15,13 @@ const links = {
 		<div class="i-material-symbols:menu" />
 	</label>
 	<label for="toggler" class="menu-backdrop" />
+
 	<ul class="menu">
 		{Object.keys(links).map(link => <li><a href={link}>{links[link]}</a></li>)}
+		<li class="appearance">
+			Appearance
+			<DarkModeToggler />
+		</li>
 	</ul>
 </nav>
 <nav class="desktop">
