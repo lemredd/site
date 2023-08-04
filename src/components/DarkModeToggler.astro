@@ -45,15 +45,13 @@ dark_mode_btn.addEventListener("change", (event: Event) => {
 	}
 }
 
-#dark-mode-toggler:checked {
-	& + .dark-mode-toggler-icon {
-		.icon.on {
-			display: inline-block;
-		}
+#dark-mode-toggler:checked + .dark-mode-toggler-icon {
+	.icon.on {
+		display: inline-block;
+	}
 
-		.icon.off {
-			display: none;
-		}
+	.icon.off {
+		display: none;
 	}
 }
 </style>
