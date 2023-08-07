@@ -37,10 +37,6 @@ dark_mode_btn.addEventListener("change", (event: Event) => {
 </label>
 
 <style lang="scss">
-#dark-mode-toggler {
-	z-index: 1000;
-}
-
 .dark-mode-toggler-icon {
 	@apply inline-flex;
 	background-color: transparent !important;
@@ -53,7 +49,7 @@ dark_mode_btn.addEventListener("change", (event: Event) => {
 	}
 }
 
-#dark-mode-toggler:checked + .dark-mode-toggler-icon {
+.dark-mode-toggler:checked + .dark-mode-toggler-icon {
 	.icon.on {
 		display: inline-block;
 	}
