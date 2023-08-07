@@ -30,8 +30,8 @@ dark_mode_btn.addEventListener("change", (event: Event) => {
 });
 </script>
 
-<input type="checkbox" id="dark-mode-toggler" hidden>
-<label for="dark-mode-toggler" tabindex="0" class="dark-mode-toggler-icon">
+<input type="checkbox" id={`dark-mode-toggler-${viewport}`} class="dark-mode-toggler" hidden>
+<label for={`dark-mode-toggler-${viewport}`} tabindex="0" class="dark-mode-toggler-icon">
 	<div class="icon on i-material-symbols:toggle-on" />
 	<div class="icon off i-material-symbols:toggle-off" />
 </label>
