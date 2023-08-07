@@ -1,3 +1,11 @@
+---
+interface Props {
+	viewport: "mobile"|"desktop"
+}
+
+const { viewport = "mobile" } = Astro.props;
+---
+
 <script>
 const dark_mode_btn = document.querySelector("#dark-mode-toggler") as  HTMLInputElement;
 const { "documentElement": root } = document;
