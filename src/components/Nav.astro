@@ -26,6 +26,7 @@ const links: Record<string, string> = {
 </nav>
 <nav class="desktop">
 	{Object.keys(links).map(link => <a href={link}>{links[link]}</a>)}
+	<DarkModeToggler viewport="desktop"/>
 </nav>
 
 <style lang="scss">
