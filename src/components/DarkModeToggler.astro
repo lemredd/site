@@ -17,16 +17,18 @@ if (!preferred_color_scheme) {
 	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 	preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 } else if (preferred_color_scheme === "dark") {
-	dark_mode_btn.checked = true;
+	dark_mode_btns.forEach(checkbox => checkbox.checked = true);
 	root.classList.add("dark");
 }
 
-dark_mode_btn.addEventListener("change", (event: Event) => {
-	const { checked } = event.target as HTMLInputElement;
-	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
-	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+dark_mode_btns.forEach(checkbox => {
+	checkbox.addEventListener("change", (event: Event) => {
+		const { checked } = event.target as HTMLInputElement;
+		if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+		else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 
-	root.classList.toggle("dark");
+		root.classList.toggle("dark");
+	});
 });
 </script>
 
