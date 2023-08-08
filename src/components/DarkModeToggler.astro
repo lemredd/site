@@ -33,13 +33,13 @@ function toggle_checkboxes_simultaneously(event: Event, counterpart: HTMLInputEl
 }
 
 checkbox_mobile?.addEventListener("change", event => toggle_checkboxes_simultaneously(event, checkbox_desktop as HTMLInputElement));
-checkbox_desktop?.addEventListener("change", (event: Event) => toggle_checkboxes_simultaneously(event, checkbox_mobile as HTMLInputElement));
+checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultaneously(event, checkbox_mobile as HTMLInputElement));
 </script>
 
 <input type="checkbox" id={`dark-mode-toggler-${viewport}`} class="dark-mode-toggler" hidden />
 <label for={`dark-mode-toggler-${viewport}`} tabindex="0" class="dark-mode-toggler-icon">
-	<div class="icon on i-material-symbols:toggle-on" />
-	<div class="icon off i-material-symbols:toggle-off" />
+	<div class="icon on i-material-symbols:dark-mode" />
+	<div class="icon off i-material-symbols:light-mode" />
 </label>
 
 <style lang="scss">
