@@ -23,26 +23,20 @@ if (!preferred_color_scheme) {
 }
 
 const [checkbox_mobile, checkbox_desktop] = dark_mode_checkboxes;
-checkbox_mobile?.addEventListener("change", event => {
+function toggle_checkboxes_simultaneously(event: Event, counterpart: HTMLInputElement): void {
 	const { checked } = event.target as HTMLInputElement;
 	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
 	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 
-	checkbox_desktop!.checked = checked;
+	counterpart!.checked = checked;
 	root.classList.toggle("dark");
-});
+}
 
-checkbox_desktop?.addEventListener("change", (event: Event) => {
-	const { checked } = event.target as HTMLInputElement;
-	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
-	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
-
-	checkbox_mobile!.checked = checked;
-	root.classList.toggle("dark");
-});
+checkbox_mobile?.addEventListener("change", event => toggle_checkboxes_simultaneously(event, checkbox_desktop as HTMLInputElement));
+checkbox_desktop?.addEventListener("change", (event: Event) => toggle_checkboxes_simultaneously(event, checkbox_mobile as HTMLInputElement));
 </script>
 
-<input type="checkbox" id={`dark-mode-toggler-${viewport}`} class="dark-mode-toggler" hidden>
+<input type="checkbox" id={`dark-mode-toggler-${viewport}`} class="dark-mode-toggler" >
 <label for={`dark-mode-toggler-${viewport}`} tabindex="0" class="dark-mode-toggler-icon">
 	<div class="icon on i-material-symbols:toggle-on" />
 	<div class="icon off i-material-symbols:toggle-off" />
