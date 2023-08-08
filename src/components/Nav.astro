@@ -18,10 +18,10 @@ const links: Record<string, string> = {
 
 	<ul class="menu">
 		{Object.keys(links).map(link => <li><a href={link}>{links[link]}</a></li>)}
-		<li class="appearance">
-			<label for="dark-mode-toggler-mobile">Appearance</label>
+		<label for="dark-mode-toggler-mobile" class="appearance">
+			<span>Appearance</span>
 			<DarkModeToggler viewport="mobile" />
-		</li>
+		</label>
 	</ul>
 </nav>
 <nav class="desktop">
