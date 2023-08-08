@@ -55,7 +55,7 @@ checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultan
 }
 
 .icon {
-	@apply absolute transition-opacity;
+	@apply absolute transition-opacity duration-300 cursor-pointer;
 
 	// `text-$var` class does not work.
 	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
