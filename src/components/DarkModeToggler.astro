@@ -46,11 +46,16 @@ checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultan
 .dark-mode-toggler-icon {
 	--ICON_SIZE: 1.75rem;
 	--TOP_INSET: calc(calc(var(--ICON_SIZE) * -1) / 2);
-	@apply flex relative mr-8 top-$TOP_INSET sm:top-unset;
+	@apply flex relative mr-8 top-$TOP_INSET sm:top-[-1px];
 }
 
 .icon {
 	@apply absolute transition-opacity;
+
+	// `text-$var` class does not work.
+	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
+	font-size: var(--ICON_SIZE);
+
 	&.off {
 		@apply delay-150;
 	}
