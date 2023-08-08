@@ -2,7 +2,7 @@
 import DarkModeToggler from "@components/DarkModeToggler.astro";
 
 const links: Record<string, string> = {
-	"/#projects": "projects",
+	"/projects": "projects",
 	"/about": "about",
 	"/blog": "blog",
 	"/contact": "contact"
@@ -18,15 +18,16 @@ const links: Record<string, string> = {
 
 	<ul class="menu">
 		{Object.keys(links).map(link => <li><a href={link}>{links[link]}</a></li>)}
-		<li class="appearance">
-			Appearance
+		<hr />
+		<label for="dark-mode-toggler-mobile" class="appearance">
+			<span>Appearance</span>
 			<DarkModeToggler viewport="mobile" />
-		</li>
+		</label>
 	</ul>
 </nav>
 <nav class="desktop">
-	{Object.keys(links).map(link => <a href={link}>{links[link]}</a>)}
 	<DarkModeToggler viewport="desktop"/>
+	{Object.keys(links).map(link => <a href={link}>{links[link]}</a>)}
 </nav>
 
 <style lang="scss">
@@ -50,12 +51,22 @@ nav.mobile {
 		transform: translateY(-50%);
 		z-index: 999;
 
-		li {
+		li, hr {
 			@apply my-4;
 		}
 
+		hr {
+			@apply border-t-neutral;
+		}
 		.appearance {
-			@apply h-full flex items-center justify-between;
+			@apply
+				mt-4
+				border border-neutral rounded
+				px-4 py-2.5
+				flex items-center justify-between
+				dark:color-white dark:bg-neutral-800
+				capitalize text-sm
+			;
 		}
 	}
 	.menu-backdrop {
