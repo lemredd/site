@@ -20,12 +20,13 @@ const links: Record<string, string> = {
 		{Object.keys(links).map(link => <li><a href={link}>{links[link]}</a></li>)}
 		<li class="appearance">
 			Appearance
-			<DarkModeToggler />
+			<DarkModeToggler viewport="mobile" />
 		</li>
 	</ul>
 </nav>
 <nav class="desktop">
 	{Object.keys(links).map(link => <a href={link}>{links[link]}</a>)}
+	<DarkModeToggler viewport="desktop"/>
 </nav>
 
 <style lang="scss">
