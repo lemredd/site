@@ -44,10 +44,9 @@ checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultan
 
 <style lang="scss">
 .dark-mode-toggler-icon {
-	@apply inline-flex;
-	background-color: transparent !important;
 	--ICON_SIZE: 1.75rem;
 	--TOP_INSET: calc(calc(var(--ICON_SIZE) * -1) / 2);
+	@apply flex relative mr-8 top-$TOP_INSET sm:top-unset;
 }
 
 .icon {
