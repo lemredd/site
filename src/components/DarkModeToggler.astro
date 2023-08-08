@@ -7,7 +7,9 @@ const { viewport = "mobile" } = Astro.props;
 ---
 
 <script>
-const dark_mode_btns = document.querySelectorAll(".dark-mode-toggler") as NodeListOf<HTMLInputElement>;
+type ColorScheme = string|null
+
+const dark_mode_checkboxes = document.querySelectorAll(".dark-mode-toggler") as NodeListOf<HTMLInputElement>;
 const { "documentElement": root } = document;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
