@@ -50,6 +50,9 @@ checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultan
 
 .icon {
 	@apply text-[1.75rem] transition-opacity;
+	&.off {
+		@apply delay-150;
+	}
 	&.on {
 		@apply opacity-0 pointer-events-none;
 	}
