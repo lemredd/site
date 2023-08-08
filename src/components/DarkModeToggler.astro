@@ -22,14 +22,23 @@ if (!preferred_color_scheme) {
 	root.classList.add("dark");
 }
 
-dark_mode_btns.forEach(checkbox => {
-	checkbox.addEventListener("change", (event: Event) => {
-		const { checked } = event.target as HTMLInputElement;
-		if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
-		else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+const [checkbox_mobile, checkbox_desktop] = dark_mode_checkboxes;
+checkbox_mobile?.addEventListener("change", event => {
+	const { checked } = event.target as HTMLInputElement;
+	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
 
-		root.classList.toggle("dark");
-	});
+	checkbox_desktop!.checked = checked;
+	root.classList.toggle("dark");
+});
+
+checkbox_desktop?.addEventListener("change", (event: Event) => {
+	const { checked } = event.target as HTMLInputElement;
+	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+
+	checkbox_mobile!.checked = checked;
+	root.classList.toggle("dark");
 });
 </script>
 
