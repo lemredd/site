@@ -57,7 +57,7 @@ checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultan
 
 .dark-mode-toggler:checked + .dark-mode-toggler-icon {
 	.icon.on {
-		display: inline-block;
+		@apply opacity-[1] pointer-events-auto delay-150;
 	}
 
 	.icon.off {
