@@ -21,12 +21,12 @@ const links: Record<string, string> = {
 		<hr />
 		<label for="dark-mode-toggler-mobile" class="appearance">
 			<span>Appearance</span>
-			<DarkModeToggler viewport="mobile" client:visible />
+			<DarkModeToggler viewport="mobile" client:only />
 		</label>
 	</ul>
 </nav>
 <nav class="desktop">
-	<DarkModeToggler viewport="desktop" client:visible />
+	<DarkModeToggler viewport="desktop" client:only />
 	{Object.keys(links).map(link => <a href={link}>{links[link]}</a>)}
 </nav>
 
