@@ -1,7 +1,6 @@
 <script lang="ts">
 import { onMount } from "svelte";
 
-type ColorScheme = string|null;
 type Viewport = "mobile"|"desktop";
 
 export let viewport: Viewport = "mobile";
@@ -10,7 +9,7 @@ let dark_mode_checkbox: HTMLInputElement;
 const { "documentElement": root } = document;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
-const preferred_color_scheme = (): ColorScheme => localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 
 function toggle_checkbox(event: Event): void {
 	const { checked } = event.target as HTMLInputElement;
