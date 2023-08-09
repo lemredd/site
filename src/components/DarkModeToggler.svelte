@@ -32,7 +32,6 @@ onMount(() => {
 		dark_mode_checkbox.checked = true;
 		root.classList.add("dark");
 	}
-	dark_mode_checkbox.addEventListener("change", toggle_checkbox);
 })
 </script>
 
@@ -41,6 +40,7 @@ onMount(() => {
 	id="dark-mode-toggler-{viewport}"
 	class="dark-mode-toggler"
 	bind:this={dark_mode_checkbox}
+	on:change={toggle_checkbox}
 	hidden
 />
 <label for="dark-mode-toggler-{viewport}" class="dark-mode-toggler-icon">
