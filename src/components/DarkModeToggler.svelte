@@ -9,8 +9,6 @@ let dark_mode_checkbox: HTMLInputElement;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
-$: prefers_dark = preferred_color_scheme === "dark";
-$: prefers_light = preferred_color_scheme === "light";
 
 function toggle_checkbox(event: Event): void {
 		const { "documentElement": root } = document;
@@ -40,13 +38,8 @@ onMount(() => {
 	on:change={toggle_checkbox}
 />
 <label for="dark-mode-toggler-{viewport}" class="dark-mode-toggler-icon">
-	<div
-		class="icon"
-		class:on={prefers_dark}
-		class:off={prefers_light}
-		class:i-material-symbols-dark-mode={prefers_dark}
-		class:i-material-symbols-light-mode={prefers_light}
-	/>
+	<div class="icon on i-material-symbols:dark-mode" />
+	<div class="icon off i-material-symbols:light-mode" />
 </label>
 
 <style lang="scss">
