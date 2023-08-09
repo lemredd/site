@@ -31,23 +31,28 @@ onMount(() => {
 })
 </script>
 
+<!-- TODO: use `button` with `aria-checked` -->
 <input
 	type="checkbox"
 	id="dark-mode-toggler-{viewport}"
 	class="dark-mode-toggler"
 	bind:this={dark_mode_checkbox}
 	on:change={toggle_checkbox}
-	hidden
 />
 <label for="dark-mode-toggler-{viewport}" class="dark-mode-toggler-icon">
 	<div
 		class="icon"
+		class:on={prefers_dark}
+		class:off={prefers_light}
 		class:i-material-symbols-dark-mode={prefers_dark}
 		class:i-material-symbols-light-mode={prefers_light}
 	/>
 </label>
 
 <style lang="scss">
+.dark-mode-toggler {
+	appearance: none;
+}
 .dark-mode-toggler-icon {
 	--TOP_INSET: calc(calc(1.5rem * -1) / 2);
 	--at-apply:
