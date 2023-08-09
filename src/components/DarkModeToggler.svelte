@@ -26,12 +26,8 @@ function toggle_checkbox(event: Event): void {
 }
 
 onMount(() => {
-	if (!preferred_color_scheme) {
-		localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
-	} else if (preferred_color_scheme() === "dark") {
-		dark_mode_checkbox.checked = true;
-		root.classList.add("dark");
-	}
+	if (!preferred_color_scheme) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+	else if (preferred_color_scheme === "dark") dark_mode_checkbox.checked = true;
 })
 </script>
 
