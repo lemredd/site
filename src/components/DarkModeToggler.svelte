@@ -10,6 +10,8 @@ const { "documentElement": root } = document;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+$: prefers_dark = preferred_color_scheme === "dark";
+$: prefers_light = preferred_color_scheme === "light";
 
 function toggle_checkbox(event: Event): void {
 	const { checked } = event.target as HTMLInputElement;
