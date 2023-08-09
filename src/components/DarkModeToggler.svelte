@@ -12,6 +12,14 @@ const { "documentElement": root } = document;
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 const preferred_color_scheme = (): ColorScheme => localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 
+function toggle_checkbox(event: Event): void {
+	const { checked } = event.target as HTMLInputElement;
+	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+
+	root.classList.toggle("dark");
+}
+
 onMount(() => {
 	if (!preferred_color_scheme) {
 		localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
@@ -19,20 +27,8 @@ onMount(() => {
 		dark_mode_checkbox.checked = true;
 		root.classList.add("dark");
 	}
+	dark_mode_checkbox.addEventListener("change", toggle_checkbox);
 })
-
-const [checkbox_mobile, checkbox_desktop] = dark_mode_checkboxes;
-function toggle_checkboxes_simultaneously(event: Event, counterpart: HTMLInputElement): void {
-	const { checked } = event.target as HTMLInputElement;
-	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
-	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
-
-	counterpart!.checked = checked;
-	root.classList.toggle("dark");
-}
-
-checkbox_mobile?.addEventListener("change", event => toggle_checkboxes_simultaneously(event, checkbox_desktop as HTMLInputElement));
-checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultaneously(event, checkbox_mobile as HTMLInputElement));
 </script>
 
 <input
