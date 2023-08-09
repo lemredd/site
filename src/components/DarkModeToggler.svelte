@@ -1,7 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 
-type ColorScheme = string|null
+type ColorScheme = string|null;
 type Viewport = "mobile"|"desktop";
 
 export let viewport: Viewport = "mobile";
@@ -38,14 +38,13 @@ onMount(() => {
 	bind:this={dark_mode_checkbox}
 	hidden
 />
-<label for="dark-mode-toggler-{viewport}"  tabindex="0" class="dark-mode-toggler-icon">
+<label for="dark-mode-toggler-{viewport}" class="dark-mode-toggler-icon">
 	<div class="icon on i-material-symbols:dark-mode" />
 	<div class="icon off i-material-symbols:light-mode" />
 </label>
 
 <style lang="scss">
 .dark-mode-toggler-icon {
-	--ICON_SIZE: 1.75rem;
 	--TOP_INSET: calc(calc(var(--ICON_SIZE) * -1) / 2);
 	@apply
 		mr-6
@@ -60,7 +59,6 @@ onMount(() => {
 
 	// `text-$var` class does not work.
 	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
-	font-size: var(--ICON_SIZE);
 
 	&.off {
 		@apply delay-150;
