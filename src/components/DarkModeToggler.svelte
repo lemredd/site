@@ -40,8 +40,11 @@ onMount(() => {
 	hidden
 />
 <label for="dark-mode-toggler-{viewport}" class="dark-mode-toggler-icon">
-	<div class="icon on i-material-symbols:dark-mode" />
-	<div class="icon off i-material-symbols:light-mode" />
+	<div
+		class="icon"
+		class:i-material-symbols-dark-mode={prefers_dark}
+		class:i-material-symbols-light-mode={prefers_light}
+	/>
 </label>
 
 <style lang="scss">
