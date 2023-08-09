@@ -6,7 +6,6 @@ type Viewport = "mobile"|"desktop";
 export let viewport: Viewport = "mobile";
 
 let dark_mode_checkbox: HTMLInputElement;
-const { "documentElement": root } = document;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
@@ -14,11 +13,16 @@ $: prefers_dark = preferred_color_scheme === "dark";
 $: prefers_light = preferred_color_scheme === "light";
 
 function toggle_checkbox(event: Event): void {
-	const { checked } = event.target as HTMLInputElement;
-	if (checked) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
-	else localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+		const { "documentElement": root } = document;
+		const { checked } = event.target as HTMLInputElement;
 
-	root.classList.toggle("dark");
+		if (checked) {
+			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+		} else {
+			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light")
+		}
+		preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+		root.classList.toggle("dark");
 }
 
 onMount(() => {
