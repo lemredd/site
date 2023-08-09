@@ -1,5 +1,5 @@
 ---
-import DarkModeToggler from "@components/DarkModeToggler.astro";
+import DarkModeToggler from "@components/DarkModeToggler.svelte";
 
 const links: Record<string, string> = {
 	"/projects": "projects",
@@ -21,12 +21,12 @@ const links: Record<string, string> = {
 		<hr />
 		<label for="dark-mode-toggler-mobile" class="appearance">
 			<span>Appearance</span>
-			<DarkModeToggler viewport="mobile" />
+			<DarkModeToggler viewport="mobile" client:visible />
 		</label>
 	</ul>
 </nav>
 <nav class="desktop">
-	<DarkModeToggler viewport="desktop"/>
+	<DarkModeToggler viewport="desktop" client:visible />
 	{Object.keys(links).map(link => <a href={link}>{links[link]}</a>)}
 </nav>
 
