@@ -46,7 +46,7 @@ onMount(() => {
 <style lang="scss">
 .dark-mode-toggler-icon {
 	--TOP_INSET: calc(calc(var(--ICON_SIZE) * -1) / 2);
-	@apply
+	--at-apply:
 		mr-6
 		inline-flex
 		relative top-$TOP_INSET
@@ -55,26 +55,26 @@ onMount(() => {
 }
 
 .icon {
-	@apply absolute transition-opacity duration-300 cursor-pointer;
+	--at-apply: absolute transition-opacity duration-300 cursor-pointer;
 
 	// `text-$var` class does not work.
 	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
 
 	&.off {
-		@apply delay-150;
+		--at-apply: delay-150;
 	}
 	&.on {
-		@apply opacity-0 pointer-events-none;
+		--at-apply: opacity-0 pointer-events-none;
 	}
 }
 
 .dark-mode-toggler:checked + .dark-mode-toggler-icon {
 	.icon.on {
-		@apply opacity-[1] pointer-events-auto delay-150;
+		--at-apply: opacity-[1] pointer-events-auto delay-150;
 	}
 
 	.icon.off {
-		@apply opacity-0 pointer-events-none delay-0;
+		--at-apply: opacity-0 pointer-events-none delay-0;
 	}
 }
 </style>
