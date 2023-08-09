@@ -1,4 +1,6 @@
 <script lang="ts">
+import { onMount } from "svelte";
+
 type ColorScheme = string|null
 type Viewport = "mobile"|"desktop";
 
@@ -10,12 +12,14 @@ const { "documentElement": root } = document;
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 const preferred_color_scheme = (): ColorScheme => localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 
-if (!preferred_color_scheme) {
-	localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
-} else if (preferred_color_scheme() === "dark") {
-	dark_mode_checkboxes.forEach(checkbox => checkbox.checked = true);
-	root.classList.add("dark");
-}
+onMount(() => {
+	if (!preferred_color_scheme) {
+		localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+	} else if (preferred_color_scheme() === "dark") {
+		dark_mode_checkbox.checked = true;
+		root.classList.add("dark");
+	}
+})
 
 const [checkbox_mobile, checkbox_desktop] = dark_mode_checkboxes;
 function toggle_checkboxes_simultaneously(event: Event, counterpart: HTMLInputElement): void {
