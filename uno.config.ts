@@ -6,7 +6,10 @@ export default defineConfig({
 		presetTypography(),
 		presetWind(),
 		presetIcons({
-			"extraProperties": { "display": "inline-block" }
+			"extraProperties": {
+				"display": "inline-block",
+				"font-size": "1.5rem"
+			}
 		})
 	],
 	"transformers": [
