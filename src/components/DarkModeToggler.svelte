@@ -1,0 +1,82 @@
+<script lang="ts">
+import { onMount } from "svelte";
+
+type Viewport = "mobile"|"desktop";
+
+export let viewport: Viewport = "mobile";
+
+let dark_mode_checkbox: HTMLInputElement;
+
+const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
+let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+
+function toggle_checkbox(event: Event): void {
+		const { "documentElement": root } = document;
+		const { checked } = event.target as HTMLInputElement;
+
+		if (checked) {
+			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+		} else {
+			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light")
+		}
+		preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+		root.classList.toggle("dark");
+}
+
+onMount(() => {
+	if (!preferred_color_scheme) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
+	else if (preferred_color_scheme === "dark") dark_mode_checkbox.checked = true;
+})
+</script>
+
+<!-- TODO: use `button` with `aria-checked` -->
+<input
+	type="checkbox"
+	id="dark-mode-toggler-{viewport}"
+	class="dark-mode-toggler"
+	bind:this={dark_mode_checkbox}
+	on:change={toggle_checkbox}
+/>
+<label for="dark-mode-toggler-{viewport}" class="dark-mode-toggler-icon">
+	<div class="icon on i-material-symbols:dark-mode" />
+	<div class="icon off i-material-symbols:light-mode" />
+</label>
+
+<style lang="scss">
+.dark-mode-toggler {
+	appearance: none;
+}
+.dark-mode-toggler-icon {
+	--TOP_INSET: calc(calc(1.5rem * -1) / 2);
+	--at-apply:
+		mr-6
+		inline-flex
+		relative top-$TOP_INSET
+		sm:mr-6 sm:top-[-1px]
+	;
+}
+
+.icon {
+	--at-apply: absolute transition-opacity duration-300 cursor-pointer;
+
+	// `text-$var` class does not work.
+	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
+
+	&.off {
+		--at-apply: delay-150;
+	}
+	&.on {
+		--at-apply: opacity-0 pointer-events-none;
+	}
+}
+
+.dark-mode-toggler:checked + .dark-mode-toggler-icon {
+	.icon.on {
+		--at-apply: opacity-[1] pointer-events-auto delay-150;
+	}
+
+	.icon.off {
+		--at-apply: opacity-0 pointer-events-none delay-0;
+	}
+}
+</style>
