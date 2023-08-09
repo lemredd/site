@@ -30,6 +30,7 @@
 		"unocss": "^0.53.5"
 	},
 	"dependencies": {
-		"@astrojs/svelte": "^3.1.0"
+		"@astrojs/svelte": "^3.1.0",
+		"svelte": "^4.1.2"
 	}
 }
