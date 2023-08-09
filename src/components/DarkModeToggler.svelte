@@ -4,7 +4,7 @@ type Viewport = "mobile"|"desktop";
 
 export let viewport: Viewport = "mobile";
 
-const dark_mode_checkboxes = document.querySelectorAll(".dark-mode-toggler") as NodeListOf<HTMLInputElement>;
+let dark_mode_checkbox: HTMLInputElement;
 const { "documentElement": root } = document;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
@@ -31,7 +31,13 @@ checkbox_mobile?.addEventListener("change", event => toggle_checkboxes_simultane
 checkbox_desktop?.addEventListener("change", event => toggle_checkboxes_simultaneously(event, checkbox_mobile as HTMLInputElement));
 </script>
 
-<input type="checkbox" id="dark-mode-toggler-{viewport}" class="dark-mode-toggler" hidden />
+<input
+	type="checkbox"
+	id="dark-mode-toggler-{viewport}"
+	class="dark-mode-toggler"
+	bind:this={dark_mode_checkbox}
+	hidden
+/>
 <label for="dark-mode-toggler-{viewport}"  tabindex="0" class="dark-mode-toggler-icon">
 	<div class="icon on i-material-symbols:dark-mode" />
 	<div class="icon off i-material-symbols:light-mode" />
