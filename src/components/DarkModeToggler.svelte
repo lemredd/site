@@ -49,12 +49,12 @@ onMount(() => {
 
 <style lang="scss">
 .dark-mode-toggler-icon {
-	--TOP_INSET: calc(calc(var(--ICON_SIZE) * -1) / 2);
+	--TOP_INSET: calc(calc(1.5rem * -1) / 2);
 	--at-apply:
 		mr-6
 		inline-flex
 		relative top-$TOP_INSET
-		sm:mr-8 sm:top-[-1px]
+		sm:mr-6 sm:top-[-1px]
 	;
 }
 
