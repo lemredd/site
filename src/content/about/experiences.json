@@ -1,6 +1,8 @@
 {
 	"category-items": [
-		"item-title": "Foo",
-		"item-link": "bar"
+		{
+			"item-title": "Foo",
+			"item-link": "https://www.example.com"
+		}
 	]
 }
