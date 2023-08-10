@@ -8,7 +8,6 @@ const category_item = Validator.object({
 const about = defineCollection({
 	"type": "data",
 	"schema": Validator.object({
-		"category": Validator.string(),
 		"category-items": Validator.array(category_item)
 	})
 });
