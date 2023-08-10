@@ -2,7 +2,7 @@ import { z as Validator, defineCollection } from "astro:content";
 
 const category_item = Validator.object({
 	"item-title": Validator.string(),
-	"item-link": Validator.string().optional() // TODO: validate link
+	"item-link": Validator.string().url().optional()
 });
 
 const about = defineCollection({
