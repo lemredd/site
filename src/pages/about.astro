@@ -1,7 +1,11 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
 
+import BaseLayout from "@layouts/BaseLayout.astro";
 import HashedLink from "@components/HashedLink.astro";
+
+const experiences = await getEntry("about", "experiences");
+console.log(experiences);
 ---
 
 <BaseLayout page_title="About">
