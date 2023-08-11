@@ -7,6 +7,7 @@ const valid_subcategories = [
 	"certifications",
 
 ] as const;
+type ValidSubcategory = typeof valid_subcategories[number];
 const category_item = Validator.object({
 	"item-title": Validator.string(),
 	"item-subcategory": Validator.string(),
