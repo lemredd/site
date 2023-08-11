@@ -10,15 +10,15 @@ const valid_subcategories = [
 type ValidSubcategory = typeof valid_subcategories[number];
 const is_valid_subcategory = (subcategory: string): subcategory is ValidSubcategory => valid_subcategories.indexOf(subcategory as ValidSubcategory) !== -1;
 const category_item = Validator.object({
-	"item-title": Validator.string().refine(is_valid_subcategory),
-	"item-subcategory": Validator.string(),
-	"item-link": Validator.string().url().optional()
+	"item_title": Validator.string().refine(is_valid_subcategory),
+	"item_subcategory": Validator.string(),
+	"item_link": Validator.string().url().optional()
 });
 
 const about = defineCollection({
 	"type": "data",
 	"schema": Validator.object({
-		"category-items": Validator.array(category_item)
+		"category_items": Validator.array(category_item)
 	})
 });
 

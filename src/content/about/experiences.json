@@ -1,14 +1,14 @@
 {
-	"category-items": [
+	"category_items": [
 		{
-			"item-title": "Foo",
-			"item-subcategory": "individual"
-			"item-link": "https://www.example.com"
+			"item_title": "Foo",
+			"item_subcategory": "individual",
+			"item_link": "https://www.example.com"
 		},
 		{
-			"item-title": "Bar",
-			"item-subcategory": "individual"
-			"item-link": "https://www.example.com"
+			"item_title": "Bar",
+			"item_subcategory": "individual",
+			"item_link": "https://www.example.com"
 		}
 	]
 }
