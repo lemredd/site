@@ -2,6 +2,7 @@ import { z as Validator, defineCollection } from "astro:content";
 
 const category_item = Validator.object({
 	"item-title": Validator.string(),
+	"item-subcategory": Validator.string(),
 	"item-link": Validator.string().url().optional()
 });
 
