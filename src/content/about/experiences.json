@@ -5,6 +5,9 @@
 			"item-subcategory": "individual"
 			"item-link": "https://www.example.com"
 		},
+		{
+			"item-title": "Bar",
+			"item-subcategory": "individual"
 			"item-link": "https://www.example.com"
 		}
 	]
