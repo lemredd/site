@@ -10,8 +10,8 @@ const valid_subcategories = [
 type ValidSubcategory = typeof valid_subcategories[number];
 const is_valid_subcategory = (subcategory: string): subcategory is ValidSubcategory => valid_subcategories.indexOf(subcategory as ValidSubcategory) !== -1;
 const category_item = Validator.object({
-	"item_title": Validator.string().refine(is_valid_subcategory),
-	"item_subcategory": Validator.string(),
+	"item_title": Validator.string(),
+	"item_subcategory": Validator.string().refine(is_valid_subcategory),
 	"item_link": Validator.string().url().optional()
 });
 
