@@ -1,5 +1,12 @@
 import { z as Validator, defineCollection } from "astro:content";
 
+const valid_subcategories = [
+	// Experiences
+	"individual",
+	"collaborative",
+	"certifications",
+
+] as const;
 const category_item = Validator.object({
 	"item-title": Validator.string(),
 	"item-subcategory": Validator.string(),
