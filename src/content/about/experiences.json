@@ -2,6 +2,9 @@
 	"category-items": [
 		{
 			"item-title": "Foo",
+			"item-subcategory": "individual"
+			"item-link": "https://www.example.com"
+		},
 			"item-link": "https://www.example.com"
 		}
 	]
