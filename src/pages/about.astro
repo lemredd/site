@@ -1,7 +1,18 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
 
+import BaseLayout from "@layouts/BaseLayout.astro";
 import HashedLink from "@components/HashedLink.astro";
+
+const { "data": experiences } = await getEntry("about", "experiences");
+const individual_works = experiences.category_items.filter(item => item.item_subcategory === "individual");
+const collaborative_works = experiences.category_items.filter(item => item.item_subcategory === "collaborative");
+const certifications = experiences.category_items.filter(item => item.item_subcategory === "certification");
+
+const { "data": skills } = await getEntry("about", "skills");
+const front_end = skills.category_items.filter(item => item.item_subcategory === "front-end");
+const back_end = skills.category_items.filter(item => item.item_subcategory === "back-end");
+const tools = skills.category_items.filter(item => item.item_subcategory === "tools");
 ---
 
 <BaseLayout page_title="About">
@@ -43,27 +54,21 @@ import HashedLink from "@components/HashedLink.astro";
 			<HashedLink link="individual-works">Individual Works</HashedLink>
 		</h3>
 		<ul class="individual-works">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Indiv {idx}</li>
-			))}
+			{individual_works.map(({ item_title, item_link }) => <li class="individual-work"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
 		<h3 id="collaborative-works">
 			<HashedLink link="collaborative-works">Collaborative Works</HashedLink>
 		</h3>
 		<ul class="collaborative-works">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Collab {idx}</li>
-			))}
+			{collaborative_works.map(({ item_title, item_link }) => <li class="collaborative-work"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
 		<h3 id="certifications">
 			<HashedLink link="certifications">Certifications</HashedLink>
 		</h3>
 		<ul class="certifications">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Cert {idx}</li>
-			))}
+			{certifications.map(({ item_title, item_link }) => <li class="certification"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
 		<a href="/projects">See more of my experiences</a>
@@ -80,8 +85,10 @@ import HashedLink from "@components/HashedLink.astro";
 			<HashedLink link="front-end">Front-End</HashedLink>
 		</h3>
 		<ul class="front-end">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Tech {idx}</li>
+			{front_end.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
 			))}
 		</ul>
 
@@ -89,8 +96,10 @@ import HashedLink from "@components/HashedLink.astro";
 			<HashedLink link="back-end">Back-End</HashedLink>
 		</h3>
 		<ul class="back-end">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Tech {idx}</li>
+			{back_end.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
 			))}
 		</ul>
 
@@ -98,8 +107,10 @@ import HashedLink from "@components/HashedLink.astro";
 			<HashedLink link="tools-and-collaboration">Tools and Collaboration</HashedLink>
 		</h3>
 		<ul class="tools-and-collaboration">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Tech {idx}</li>
+			{tools.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
 			))}
 		</ul>
 	</section>

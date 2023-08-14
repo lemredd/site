@@ -1,0 +1,36 @@
+{
+	"category_items": [
+		{
+			"item_title": "Foo",
+			"item_subcategory": "individual",
+			"item_link": "https://www.example.com"
+		},
+		{
+			"item_title": "Bar",
+			"item_subcategory": "individual",
+			"item_link": "https://www.example.com"
+		},
+
+		{
+			"item_title": "Foo",
+			"item_subcategory": "collaborative",
+			"item_link": "https://www.example.com"
+		},
+		{
+			"item_title": "Bar",
+			"item_subcategory": "collaborative",
+			"item_link": "https://www.example.com"
+		},
+
+		{
+			"item_title": "Foo",
+			"item_subcategory": "certification",
+			"item_link": "https://www.example.com"
+		},
+		{
+			"item_title": "Bar",
+			"item_subcategory": "certification",
+			"item_link": "https://www.example.com"
+		}
+	]
+}
