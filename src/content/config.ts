@@ -6,6 +6,11 @@ const valid_subcategories = [
 	"collaborative",
 	"certification",
 
+	// Skills
+	"front-end",
+	"back-end",
+	"tools",
+
 ] as const;
 type ValidSubcategory = typeof valid_subcategories[number];
 const is_valid_subcategory = (subcategory: string): subcategory is ValidSubcategory => valid_subcategories.indexOf(subcategory as ValidSubcategory) !== -1;
