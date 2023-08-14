@@ -4,7 +4,7 @@ const valid_subcategories = [
 	// Experiences
 	"individual",
 	"collaborative",
-	"certifications",
+	"certification",
 
 ] as const;
 type ValidSubcategory = typeof valid_subcategories[number];
