@@ -8,7 +8,8 @@ export default defineConfig({
 		presetIcons({
 			"extraProperties": {
 				"display": "inline-block",
-				"font-size": "1.5rem"
+				"font-size": "1.5rem",
+				"vertical-align": "middle"
 			}
 		})
 	],
