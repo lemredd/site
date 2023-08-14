@@ -4,8 +4,10 @@ import { getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HashedLink from "@components/HashedLink.astro";
 
-const experiences = await getEntry("about", "experiences");
-const individual_works = experiences.data.category_items.filter(item => item.item_subcategory === "individual");
+const { "data": experiences } = await getEntry("about", "experiences");
+const individual_works = experiences.category_items.filter(item => item.item_subcategory === "individual");
+const collaborative_works = experiences.category_items.filter(item => item.item_subcategory === "collaborative");
+const certifications = experiences.category_items.filter(item => item.item_subcategory === "certification");
 ---
 
 <BaseLayout page_title="About">
@@ -54,18 +56,14 @@ const individual_works = experiences.data.category_items.filter(item => item.ite
 			<HashedLink link="collaborative-works">Collaborative Works</HashedLink>
 		</h3>
 		<ul class="collaborative-works">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Collab {idx}</li>
-			))}
+			{collaborative_works.map(({ item_title, item_link }) => <li class="collaborative-work"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
 		<h3 id="certifications">
 			<HashedLink link="certifications">Certifications</HashedLink>
 		</h3>
 		<ul class="certifications">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Cert {idx}</li>
-			))}
+			{certifications.map(({ item_title, item_link }) => <li class="certification"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
 		<a href="/projects">See more of my experiences</a>
