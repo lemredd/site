@@ -1,0 +1,36 @@
+{
+	"category_items": [
+		{
+			"item_title": "Foo",
+			"item_subcategory": "front-end",
+			"item_link": "https://www.example.com"
+		},
+		{
+			"item_title": "Bar",
+			"item_subcategory": "front-end",
+			"item_link": "https://www.example.com"
+		},
+
+		{
+			"item_title": "Foo",
+			"item_subcategory": "back-end",
+			"item_link": "https://www.example.com"
+		},
+		{
+			"item_title": "Bar",
+			"item_subcategory": "back-end",
+			"item_link": "https://www.example.com"
+		},
+
+		{
+			"item_title": "Foo",
+			"item_subcategory": "tools",
+			"item_link": "https://www.example.com"
+		},
+		{
+			"item_title": "Bar",
+			"item_subcategory": "tools",
+			"item_link": "https://www.example.com"
+		}
+	]
+}
