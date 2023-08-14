@@ -5,7 +5,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import HashedLink from "@components/HashedLink.astro";
 
 const experiences = await getEntry("about", "experiences");
-console.log(experiences);
+const individual_works = experiences.data.category_items.filter(item => item.item_subcategory === "individual");
 ---
 
 <BaseLayout page_title="About">
@@ -47,9 +47,7 @@ console.log(experiences);
 			<HashedLink link="individual-works">Individual Works</HashedLink>
 		</h3>
 		<ul class="individual-works">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Indiv {idx}</li>
-			))}
+			{individual_works.map(({ item_title, item_link }) => <li class="individual-work"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
 		<h3 id="collaborative-works">
