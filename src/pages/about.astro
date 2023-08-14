@@ -8,6 +8,11 @@ const { "data": experiences } = await getEntry("about", "experiences");
 const individual_works = experiences.category_items.filter(item => item.item_subcategory === "individual");
 const collaborative_works = experiences.category_items.filter(item => item.item_subcategory === "collaborative");
 const certifications = experiences.category_items.filter(item => item.item_subcategory === "certification");
+
+const { "data": skills } = await getEntry("about", "skills");
+const front_end = skills.category_items.filter(item => item.item_subcategory === "front-end");
+const back_end = skills.category_items.filter(item => item.item_subcategory === "back-end");
+const tools = skills.category_items.filter(item => item.item_subcategory === "tools");
 ---
 
 <BaseLayout page_title="About">
@@ -80,8 +85,10 @@ const certifications = experiences.category_items.filter(item => item.item_subca
 			<HashedLink link="front-end">Front-End</HashedLink>
 		</h3>
 		<ul class="front-end">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Tech {idx}</li>
+			{front_end.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
 			))}
 		</ul>
 
@@ -89,8 +96,10 @@ const certifications = experiences.category_items.filter(item => item.item_subca
 			<HashedLink link="back-end">Back-End</HashedLink>
 		</h3>
 		<ul class="back-end">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Tech {idx}</li>
+			{back_end.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
 			))}
 		</ul>
 
@@ -98,8 +107,10 @@ const certifications = experiences.category_items.filter(item => item.item_subca
 			<HashedLink link="tools-and-collaboration">Tools and Collaboration</HashedLink>
 		</h3>
 		<ul class="tools-and-collaboration">
-			{[1,2,3].map(idx => (
-				<li class={`item item-${idx}`}>Tech {idx}</li>
+			{tools.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
 			))}
 		</ul>
 	</section>
