@@ -9,6 +9,7 @@ export let viewport: Viewport = "mobile";
 
 let dark_mode_button: HTMLButtonElement;
 
+let dark_mode_button_state: "true" | "false";
 $: dark_mode_button_state = $preferred_color_scheme === "dark" ? "true" : "false";
 
 function toggle_color_scheme(): void {
