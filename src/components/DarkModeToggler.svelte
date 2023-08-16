@@ -1,34 +1,33 @@
 <script lang="ts">
 import { onMount } from "svelte";
 
+import { preferred_color_scheme, set_preferred_color_scheme } from "@components/store"
+
 type Viewport = "mobile"|"desktop";
 
 export let viewport: Viewport = "mobile";
 
 let dark_mode_button: HTMLButtonElement;
 
-const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
-let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
-$: dark_mode_button_state = preferred_color_scheme === "dark" ? "true" : "false";
+$: dark_mode_button_state = $preferred_color_scheme === "dark" ? "true" : "false";
 
 function toggle_color_scheme(): void {
 		const { "documentElement": root } = document;
 		const pressed = dark_mode_button.getAttribute("aria-pressed");
 
 		if (pressed === "false") {
-			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+			set_preferred_color_scheme("dark");
 			dark_mode_button.setAttribute("aria-pressed", "true");
 		} else {
-			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light")
+			set_preferred_color_scheme("light");
 			dark_mode_button.setAttribute("aria-pressed", "false");
 		}
-		preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 		root.classList.toggle("dark");
 }
 
 onMount(() => {
-	if (!preferred_color_scheme) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
-	else if (preferred_color_scheme === "dark") dark_mode_button.setAttribute("aria-pressed", "true");
+	if (!$preferred_color_scheme) set_preferred_color_scheme("light");
+	else if ($preferred_color_scheme === "dark") dark_mode_button.setAttribute("aria-pressed", "true");
 })
 </script>
 
@@ -39,7 +38,7 @@ onMount(() => {
 	aria-pressed={dark_mode_button_state}
 	on:click|self={toggle_color_scheme}
 >
-	<div class="icon i-material-symbols:{preferred_color_scheme}-mode" />
+	<div class="icon i-material-symbols:{$preferred_color_scheme}-mode" />
 </button>
 
 <style lang="scss">
@@ -52,6 +51,7 @@ onMount(() => {
 		w-12
 		p-1
 		sm:top-[-1px]
+		dark:bg-dark-200
 	;
 }
 
@@ -65,9 +65,6 @@ onMount(() => {
 }
 
 .dark-mode-toggler-btn[aria-pressed=true] {
-	.dark-mode-toggler-btn {
-		--at-apply: bg-dark;
-	}
 	.icon {
 		--at-apply: translate-x-6;
 	}
