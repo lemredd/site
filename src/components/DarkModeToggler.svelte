@@ -33,52 +33,43 @@ onMount(() => {
 </script>
 
 <button
-	class="dark-mode-toggler-icon"
+	class="dark-mode-toggler-btn"
 	id="dark-mode-toggler-{viewport}"
 	bind:this={dark_mode_button}
 	aria-pressed={dark_mode_button_state}
 	on:click|self={toggle_color_scheme}
 >
-	<div class="icon on i-material-symbols:dark-mode" />
-	<div class="icon off i-material-symbols:light-mode" />
+	<div class="icon i-material-symbols:{preferred_color_scheme}-mode" />
 </button>
 
 <style lang="scss">
-.dark-mode-toggler-icon {
+.dark-mode-toggler-btn {
 	--TOP_INSET: calc(calc(1.5rem * -1) / 2);
 	--at-apply:
-		mr-6
 		inline-flex
 		top-$TOP_INSET
-		sm:mr-6 sm:top-[-1px]
+		border border-neutral rounded-full
+		w-12
+		p-1
+		sm:top-[-1px]
 	;
-	width: fit-content;
 }
 
 .icon {
 	--at-apply:
-		transition-opacity duration-300
+		transition-opacity transition-transform duration-300
 		cursor-pointer pointer-events-none
+		translate-x-0
+		text-4
 	;
-
-	// `text-$var` class does not work.
-	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
-
-	&.off {
-		--at-apply: delay-150;
-	}
-	&.on {
-		--at-apply: opacity-0 pointer-events-none;
-	}
 }
 
-.dark-mode-toggler:checked + .dark-mode-toggler-icon {
-	.icon.on {
-		--at-apply: opacity-[1] pointer-events-auto delay-150;
+.dark-mode-toggler-btn[aria-pressed=true] {
+	.dark-mode-toggler-btn {
+		--at-apply: bg-dark;
 	}
-
-	.icon.off {
-		--at-apply: opacity-0 pointer-events-none delay-0;
+	.icon {
+		--at-apply: translate-x-6;
 	}
 }
 </style>
