@@ -5,19 +5,22 @@ type Viewport = "mobile"|"desktop";
 
 export let viewport: Viewport = "mobile";
 
-let dark_mode_checkbox: HTMLInputElement;
+let dark_mode_button: HTMLButtonElement;
 
 const PREFERRED_COLOR_SCHEME_KEY = "preferred_color_scheme";
 let preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
+$: dark_mode_button_state = preferred_color_scheme === "dark" ? "true" : "false";
 
-function toggle_checkbox(event: Event): void {
+function toggle_color_scheme(): void {
 		const { "documentElement": root } = document;
-		const { checked } = event.target as HTMLInputElement;
+		const pressed = dark_mode_button.getAttribute("aria-pressed");
 
-		if (checked) {
+		if (pressed === "false") {
 			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "dark");
+			dark_mode_button.setAttribute("aria-pressed", "true");
 		} else {
 			localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light")
+			dark_mode_button.setAttribute("aria-pressed", "false");
 		}
 		preferred_color_scheme = localStorage.getItem(PREFERRED_COLOR_SCHEME_KEY);
 		root.classList.toggle("dark");
@@ -25,39 +28,35 @@ function toggle_checkbox(event: Event): void {
 
 onMount(() => {
 	if (!preferred_color_scheme) localStorage.setItem(PREFERRED_COLOR_SCHEME_KEY, "light");
-	else if (preferred_color_scheme === "dark") dark_mode_checkbox.checked = true;
+	else if (preferred_color_scheme === "dark") dark_mode_button.setAttribute("aria-pressed", "true");
 })
 </script>
 
-<!-- TODO: use `button` with `aria-checked` -->
-<input
-	type="checkbox"
+<button
+	class="dark-mode-toggler-icon"
 	id="dark-mode-toggler-{viewport}"
-	class="dark-mode-toggler"
-	bind:this={dark_mode_checkbox}
-	on:change={toggle_checkbox}
-/>
-<label for="dark-mode-toggler-{viewport}" class="dark-mode-toggler-icon">
+	bind:this={dark_mode_button}
+	aria-pressed={dark_mode_button_state}
+	on:click|self={toggle_color_scheme}
+>
 	<div class="icon on i-material-symbols:dark-mode" />
 	<div class="icon off i-material-symbols:light-mode" />
-</label>
+</button>
 
 <style lang="scss">
-.dark-mode-toggler {
-	appearance: none;
-}
 .dark-mode-toggler-icon {
 	--TOP_INSET: calc(calc(1.5rem * -1) / 2);
 	--at-apply:
 		mr-6
 		inline-flex
-		relative top-$TOP_INSET
+		top-$TOP_INSET
 		sm:mr-6 sm:top-[-1px]
 	;
+	width: fit-content;
 }
 
 .icon {
-	--at-apply: absolute transition-opacity duration-300 cursor-pointer;
+	--at-apply: transition-opacity duration-300 cursor-pointer;
 
 	// `text-$var` class does not work.
 	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
