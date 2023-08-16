@@ -56,7 +56,10 @@ onMount(() => {
 }
 
 .icon {
-	--at-apply: transition-opacity duration-300 cursor-pointer;
+	--at-apply:
+		transition-opacity duration-300
+		cursor-pointer pointer-events-none
+	;
 
 	// `text-$var` class does not work.
 	// UnoCSS gets confused in determining if variable is used for `color` or `font-size`
