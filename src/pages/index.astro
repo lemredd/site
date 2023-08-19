@@ -3,10 +3,10 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout page_title="Home">
-	<section class="hero about-me flex flex-col items-center justify-center">
 		<h1 class="title">Hello. Welcome to my website.</h1>
+	<section class="hero about-me">
 		<p class="description">
-			My name Is Jarlem, but you may call me
+			My name Is Jarlem Red, but you can call me
 			<!-- TODO: make interchangeable  -->
 			lem/red/lemredd/lemmy.
 		</p>
@@ -33,11 +33,14 @@ section {
 }
 
 .hero {
+	@apply flex flex-col items-center justify-center text-center;
+
 	background-image: linear-gradient(#0008, #0008), url("src/assets/hero_portrait.jpg");
 	background-origin: border-box;
 	background-position: center;
 	background-size: cover;
 	height: 100vh;
+
 }
 
 .container {
