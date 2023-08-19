@@ -5,10 +5,12 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 <BaseLayout page_title="Home">
 	<section class="hero about-me">
 		<div class="container">
-			<h1 class="title">Hello, I'm</h1>
-			<p class="description">
-				My name Is Jarlem Red, but you can call me
-				lem.
+			<h1 class="title">
+				Hello, I'm
+				<strong class="name">Jarlem Red</strong>
+			</h1>
+			<p class="nickname">
+				but you can call me lem.
 			</p>
 			<a class="about-link" href="/about#me">Get to know more about me.</a>
 		</div>
@@ -42,6 +44,10 @@ section {
 
 	.container {
 		@apply flex flex-col items-center justify-center text-center h-[inherit];
+	}
+
+	h1 .name {
+		@apply block;
 	}
 
 	.about-link {
