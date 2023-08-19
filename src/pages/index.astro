@@ -13,16 +13,17 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 		<a href="/about#me">Get to know more about me.</a>
 	</section>
 
-	<section class="projects">
-		<h1 id="projects" class="title">Projects</h1>
-		<ul class="projects-container">
-			{[1,2,3,4,5,6].map(item => (
-				<li class={`project-item project-${item}`}>project {item}</li>
-			))}
-		</ul>
-		<!-- TODO: make `/projects` page -->
-		<a href="/projects">See all the things I've built</a>
-	</section>
+	<div class="container">
+		<section id="projects" class="projects">
+			<h1 id="projects" class="title">Projects</h1>
+			<ul class="projects-container">
+				{[1,2,3,4,5,6].map(item => (
+					<li class={`project-item project-${item}`}>project {item}</li>
+				))}
+			</ul>
+			<a href="/projects">See all the things I've built</a>
+		</section>
+	</div>
 </BaseLayout>
 
 <style lang="scss">
@@ -37,6 +38,10 @@ section {
 	background-position: center;
 	background-size: cover;
 	height: 100vh;
+}
+
+.container {
+	@apply mx-auto px-[1.5rem] sm:px-0;
 }
 
 .title {
