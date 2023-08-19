@@ -14,9 +14,7 @@ const { page_title } = Astro.props;
 		<Header />
 
 		<main class="content">
-			<div class="container">
-				<slot />
-			</div>
+			<slot />
 		</main>
 
 		<script is:inline>
@@ -47,8 +45,5 @@ $header-height: 64px;
 	margin-top: $header-height;
 	height: calc(100% - $header-height);
 
-	.container {
-		@apply mx-auto px-[1.5rem] sm:px-0;
-	}
 }
 </style>
