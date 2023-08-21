@@ -43,5 +43,9 @@ const { page_title } = Astro.props;
 
 .content {
 	height: calc(100% - $header-height);
+
+	:global(a) {
+		text-decoration-line: underline;
+	}
 }
 </style>
