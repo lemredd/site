@@ -26,13 +26,13 @@ const links: Record<string, string> = {
 	</ul>
 </nav>
 <nav class="desktop">
-	<DarkModeToggler viewport="desktop" client:only />
 	{Object.keys(links).map(link => <a href={link}>{links[link]}</a>)}
+	<DarkModeToggler viewport="desktop" client:only />
 </nav>
 
 <style lang="scss">
 nav.desktop {
-	@apply hidden uppercase;
+	@apply hidden relative uppercase;
 }
 
 nav.mobile {
