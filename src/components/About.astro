@@ -47,38 +47,36 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 	<!-- TODO: use real works -->
 
 	<h3 id="individual-works">
-		<HashedLink link="individual-works">Individual Works</HashedLink>
+		Individual Works
 	</h3>
 	<ul class="individual-works">
 		{individual_works.map(({ item_title, item_link }) => <li class="individual-work"><a href={item_link}>{item_title}</a></li>)}
 	</ul>
 
 	<h3 id="collaborative-works">
-		<HashedLink link="collaborative-works">Collaborative Works</HashedLink>
+		Collaborative Works
 	</h3>
 	<ul class="collaborative-works">
 		{collaborative_works.map(({ item_title, item_link }) => <li class="collaborative-work"><a href={item_link}>{item_title}</a></li>)}
 	</ul>
 
 	<h3 id="certifications">
-		<HashedLink link="certifications">Certifications</HashedLink>
+		Certifications
 	</h3>
 	<ul class="certifications">
 		{certifications.map(({ item_title, item_link }) => <li class="certification"><a href={item_link}>{item_title}</a></li>)}
 	</ul>
-
-	<a href="/projects">See more of my experiences</a>
 </section>
 
 <section class="skills">
 	<h2 id="skills" class="section-heading">
-		<HashedLink link="skills">Skills</HashedLink>
+		Skills
 	</h2>
 
 	<!-- TODO: use real tools -->
 
 	<h3 id="front-end">
-		<HashedLink link="front-end">Front-End</HashedLink>
+		Front-End
 	</h3>
 	<ul class="front-end">
 		{front_end.map(({ item_title, item_link }) => (
@@ -89,7 +87,7 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 	</ul>
 
 	<h3 id="back-end">
-		<HashedLink link="back-end">Back-End</HashedLink>
+		Back-End
 	</h3>
 	<ul class="back-end">
 		{back_end.map(({ item_title, item_link }) => (
@@ -100,7 +98,7 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 	</ul>
 
 	<h3 id="tools-and-collaboration">
-		<HashedLink link="tools-and-collaboration">Tools and Collaboration</HashedLink>
+		Tools and Collaboration
 	</h3>
 	<ul class="tools-and-collaboration">
 		{tools.map(({ item_title, item_link }) => (
