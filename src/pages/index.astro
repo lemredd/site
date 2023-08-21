@@ -18,7 +18,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 	<div class="container">
 		<section id="projects" class="projects">
-			<h1 id="projects" class="title">Projects</h1>
+			<h1 class="title">Projects</h1>
 			<ul class="projects-container">
 				{[1,2,3,4,5,6].map(item => (
 					<li class={`project-item project-${item}`}>project {item}</li>
@@ -33,6 +33,10 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 /* Add class to a slotted element if you want to style it! */
 section {
 	@apply pb-[2rem]
+}
+
+.container {
+	@apply mx-auto px-[1.5rem] sm:px-0;
 }
 
 .hero {
@@ -55,10 +59,6 @@ section {
 	}
 }
 
-.container {
-	@apply mx-auto px-[1.5rem] sm:px-0;
-}
-
 .title {
 	@apply my-5 text-8 sm:text-12;
 }
@@ -70,7 +70,11 @@ section {
 }
 
 #projects {
-	@apply text-right;
+	@apply mt-12 text-center;
+
+	.title {
+		@apply font-bold;
+	}
 }
 .projects-container {
 	@apply
