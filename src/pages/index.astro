@@ -40,6 +40,13 @@ import About from "@components/About.astro";
 	<div class="container">
 		<section id="contact">
 			<h1 class="title">Get in touch</h1>
+			<form class="email-form">
+				<!-- TODO: make into component and functional -->
+				<input type="email">
+				<textarea name="" id="" cols="30" rows="10"></textarea>
+				<small>Or send an email at <a href="jarlemdeperalta@gmail.com">jarlemdeperalta@gmail.com</a></small>
+				<button type="submit">Send</button>
+			</form>
 		</section>
 	</div>
 </BaseLayout>
@@ -112,6 +119,25 @@ section {
 
 	.project-1, .project-4, .project-5 {
 		@apply sm:col-span-2;
+	}
+}
+
+.email-form {
+	@apply flex flex-col gap-y-2 items-start;
+
+	& > *:not(small) {
+		@apply
+			rounded
+			bg-neutral-200 dark:bg-dark-300
+		;
+	}
+
+	input, textarea {
+		@apply px-4 py-2 w-full;
+	}
+
+	button {
+		@apply px-4 py-2 bg-neutral-200;
 	}
 }
 </style>
