@@ -119,7 +119,10 @@ article, section {
 	margin-bottom: calc(#{$negated-header-height} + 2rem);
 
 	.section-heading {
-		@apply text-[1.5rem] uppercase font-semibold;
+		@apply
+			mb-4
+			text-[1.5rem] uppercase font-semibold
+		;
 
 		padding-top: calc(#{$header-height} + 4px);
 	}
