@@ -113,12 +113,15 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 @import "@styles/variables";
 
 article, section {
+	$negated-header-height: calc(#{$header-height} * -1);
 	@apply max-w-[640px];
+
+	margin-bottom: calc(#{$negated-header-height} + 2rem);
 
 	.section-heading {
 		@apply text-[1.5rem] uppercase font-semibold;
 
-		padding-top: $header-height;
+		padding-top: calc(#{$header-height} + 4px);
 	}
 
 	p {
