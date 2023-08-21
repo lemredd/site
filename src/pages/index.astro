@@ -1,49 +1,109 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+
+import About from "@components/About.astro";
 ---
 
 <BaseLayout page_title="Home">
-	<section class="about-me">
-		<h1 class="title">Welcome.</h1>
-		<p class="description">I am Jarlem de Peralta, a front-end web developer and UX/UI designer. I use my skills to create impressive solutions that can be used on an everyday basis.</p>
-		<div class="nicknames">
-			<!-- TODO: add animations -->
-			You may call me lem/red/lemredd/lemmy.
+	<section class="hero about-me">
+		<div class="container">
+			<h1 class="title">
+				Hello, I'm
+				<strong class="name">Jarlem Red</strong>
+			</h1>
+			<p class="nickname">
+				but you can call me <strong>lem</strong>.
+			</p>
+			<a class="about-link" href="/about#me">Get to know more about me.</a>
 		</div>
-		<a href="/about">more about me.</a>
 	</section>
 
-	<section class="projects">
-		<h1 id="projects" class="title">Projects</h1>
-		<ul class="projects-container">
-			{[1,2,3,4,5,6].map(item => (
-				<li class={`project-item project-${item}`}>project {item}</li>
-			))}
-		</ul>
-		<!-- TODO: make `/projects` page -->
-		<a href="/projects">See all the things I've built</a>
-	</section>
+	<div class="container">
+		<section id="projects">
+			<h1 class="title">Projects</h1>
+			<ul class="projects-container">
+				{[1,2,3,4,5,6].map(item => (
+					<li class={`project-item project-${item}`}>project {item}</li>
+				))}
+			</ul>
+			<a href="/projects">See all the things I've built</a>
+		</section>
+	</div>
+
+	<div class="container">
+		<section id="about">
+			<h1 class="title">Who am I?</h1>
+			<About />
+		</section>
+	</div>
+
+	<div class="container">
+		<section id="contact">
+			<h1 class="title">Get in touch</h1>
+			<form class="email-form">
+				<!-- TODO: make into component and functional -->
+				<input type="email">
+				<textarea name="" id="" cols="30" rows="10"></textarea>
+				<small>Or send an email at <a href="jarlemdeperalta@gmail.com">jarlemdeperalta@gmail.com</a></small>
+				<button type="submit">Send</button>
+			</form>
+		</section>
+	</div>
 </BaseLayout>
 
 <style lang="scss">
-/* Add class to a slotted element if you want to style it! */
+@import "@styles/variables";
+
 section {
 	@apply pb-[2rem]
 }
 
-.title {
-	@apply my-5 text-[3rem];
-}
-.description {
-	max-width: 500px;
-}
-.nicknames {
-	@apply my-[2rem];
+.container {
+	@apply mx-auto px-[1.5rem] sm:px-0;
 }
 
-#projects {
-	@apply text-right;
+.hero {
+	@apply pt-16;
+	background-image: linear-gradient(#0008, #0008), url("src/assets/hero_portrait.jpg");
+	background-origin: border-box;
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+
+	.container {
+		@apply
+			h-[inherit]
+			flex flex-col items-center justify-center
+			text-center text-white
+		;
+	}
+
+	h1 .name {
+		@apply block text-16;
+	}
+
+	.nickname {
+		@apply uppercase text-neutral-300;
+	}
+
+	.about-link {
+		@apply mt-8;
+	}
 }
+
+.title {
+	@apply my-8 text-8 sm:text-12;
+}
+
+#projects, #about, #contact {
+
+	padding-top: $header-height;
+
+	.title {
+		@apply text-center font-bold;
+	}
+}
+
 .projects-container {
 	@apply
 		mb-[1rem]
@@ -52,16 +112,32 @@ section {
 	;
 
 	.project-item {
-		@apply
-			border border-neutral rounded
-			py-5rem
-		;
+		@apply rounded py-20 bg-neutral-200 dark:bg-dark-300;
 
 		text-align: center;
 	}
 
 	.project-1, .project-4, .project-5 {
 		@apply sm:col-span-2;
+	}
+}
+
+.email-form {
+	@apply flex flex-col gap-y-2 items-start;
+
+	& > *:not(small) {
+		@apply
+			rounded
+			bg-neutral-200 dark:bg-dark-300
+		;
+	}
+
+	input, textarea {
+		@apply px-4 py-2 w-full;
+	}
+
+	button {
+		@apply px-4 py-2 bg-neutral-200;
 	}
 }
 </style>

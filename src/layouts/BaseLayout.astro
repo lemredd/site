@@ -14,9 +14,7 @@ const { page_title } = Astro.props;
 		<Header />
 
 		<main class="content">
-			<div class="container">
-				<slot />
-			</div>
+			<slot />
 		</main>
 
 		<script is:inline>
@@ -29,14 +27,14 @@ const { page_title } = Astro.props;
 </html>
 
 <style lang="scss">
-$header-height: 64px;
+@import "@styles/variables";
 
 :global(header) {
 	height: $header-height;
 }
 
 :root {
-	@apply bg-white color-neutral-600;
+	@apply bg-white color-neutral-600 scroll-smooth;
 
 	&.dark {
 		@apply bg-dark color-white;
@@ -44,11 +42,10 @@ $header-height: 64px;
 }
 
 .content {
-	margin-top: $header-height;
 	height: calc(100% - $header-height);
 
-	.container {
-		@apply mx-auto px-[1.5rem] sm:px-0;
+	:global(a) {
+		text-decoration-line: underline;
 	}
 }
 </style>
