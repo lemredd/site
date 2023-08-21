@@ -30,7 +30,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 </BaseLayout>
 
 <style lang="scss">
-/* Add class to a slotted element if you want to style it! */
+@import "@styles/variables";
+
 section {
 	@apply pb-[2rem]
 }
@@ -70,7 +71,9 @@ section {
 }
 
 #projects {
-	@apply mt-12 text-center;
+	@apply text-center;
+
+	padding-top: $header-height;
 
 	.title {
 		@apply font-bold;
