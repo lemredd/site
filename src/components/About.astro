@@ -70,7 +70,7 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 
 <section class="skills">
 	<h2 id="skills" class="section-heading">
-		Skills
+		<HashedLink link="skills">Skills</HashedLink>
 	</h2>
 
 	<!-- TODO: use real tools -->
@@ -110,21 +110,15 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 </section>
 
 <style lang="scss">
-section {
-	@apply
-		max-w-[640px]
-		mt-[-5rem] pb-[2rem]
-	;
+@import "@styles/variables";
 
-	&:first-of-type {
-		@apply mt-[-2.5rem];
-	}
+section {
+	@apply max-w-[640px];
 
 	.section-heading {
-		@apply
-			mb-[1rem] pt-[5rem]
-			text-[1.5rem] uppercase font-semibold
-		;
+		@apply text-[1.5rem] uppercase font-semibold;
+
+		padding-top: $header-height;
 	}
 
 	p {
