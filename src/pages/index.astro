@@ -4,34 +4,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import About from "@components/About.astro";
 ---
 
-<script>
-function set_header_bg():void {
-	const sections_container = document.getElementById("hero") as HTMLDivElement;
-	const header = document.querySelector("header") as HTMLElement;
-	const must_set_solid_bg = window.location.pathname === "/"
-		&& sections_container.getBoundingClientRect().y <= (window.innerHeight * -1); // !: works on homepage only
-
-	// TODO: refactor!
-	if (must_set_solid_bg) {
-		header.classList.add("bg-white");
-		header.classList.add("dark:bg-dark");
-
-		header.classList.add("text-neutral-600");
-		header.classList.add("dark:text-white");
-		header.classList.remove("text-white");
-	} else {
-		header.classList.remove("bg-white");
-		header.classList.remove("dark:bg-dark");
-
-		header.classList.remove("text-neutral-600");
-		header.classList.remove("dark:text-white");
-		header.classList.add("text-white");
-	}
-}
-window.addEventListener("load", set_header_bg);
-window.addEventListener("scroll", set_header_bg);
-</script>
-
 <BaseLayout page_title="Home">
 	<section class="hero about-me" id="hero">
 		<div class="container">

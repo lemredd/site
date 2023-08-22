@@ -2,6 +2,35 @@
 import Nav from "@components/Nav.astro";
 ---
 
+<script>
+function set_header_bg():void {
+	const sections_container = document.getElementById("hero") as HTMLDivElement;
+	const header = document.querySelector("header") as HTMLElement;
+	const is_on_homepage = window.location.pathname === "/";
+	const must_set_solid_bg = is_on_homepage && sections_container.getBoundingClientRect().y <= (window.innerHeight * -1);
+
+	// TODO: refactor!
+	if (must_set_solid_bg) {
+		header.classList.add("bg-white");
+		header.classList.add("dark:bg-dark");
+
+		header.classList.add("text-neutral-600");
+		header.classList.add("dark:text-white");
+		header.classList.remove("text-white");
+	} else {
+		header.classList.remove("bg-white");
+		header.classList.remove("dark:bg-dark");
+
+		header.classList.remove("text-neutral-600");
+		header.classList.remove("dark:text-white");
+		header.classList.add("text-white");
+	}
+}
+window.addEventListener("load", set_header_bg);
+window.addEventListener("scroll", set_header_bg);
+</script>
+
+
 <header>
 	<div class="container">
 		<Nav />
