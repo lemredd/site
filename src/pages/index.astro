@@ -5,7 +5,7 @@ import About from "@components/About.astro";
 ---
 
 <BaseLayout page_title="Home">
-	<section class="hero about-me">
+	<section class="hero about-me" id="hero">
 		<div class="container">
 			<h1 class="title">
 				Hello, I'm
@@ -14,11 +14,11 @@ import About from "@components/About.astro";
 			<p class="nickname">
 				but you can call me <strong>lem</strong>.
 			</p>
-			<a class="about-link" href="/about#me">Get to know more about me.</a>
+			<a class="about-link" href="/#about">Get to know more about me.</a>
 		</div>
 	</section>
 
-	<div class="container">
+	<div class="container" id="sections-container">
 		<section id="projects">
 			<h1 class="title">Projects</h1>
 			<ul class="projects-container">
@@ -28,16 +28,12 @@ import About from "@components/About.astro";
 			</ul>
 			<a href="/projects">See all the things I've built</a>
 		</section>
-	</div>
 
-	<div class="container">
 		<section id="about">
 			<h1 class="title">Who am I?</h1>
 			<About />
 		</section>
-	</div>
 
-	<div class="container">
 		<section id="contact">
 			<h1 class="title">Get in touch</h1>
 			<form class="email-form">
@@ -63,8 +59,8 @@ section {
 }
 
 .hero {
-	@apply pt-16;
-	background-image: linear-gradient(#0008, #0008), url("src/assets/hero_portrait.jpg");
+	@apply pt-20;
+	background-image: linear-gradient(#000a, #000a), url("src/assets/hero_portrait.jpg");
 	background-origin: border-box;
 	background-position: center;
 	background-size: cover;
@@ -79,7 +75,7 @@ section {
 	}
 
 	h1 .name {
-		@apply block text-16;
+		@apply block text-12 sm:text-16;
 	}
 
 	.nickname {

@@ -46,12 +46,12 @@ onMount(() => {
 .dark-mode-toggler-btn {
 	--TOP_INSET: calc(calc(1.5rem * -1) / 2);
 	--at-apply:
-		absolute -right-20
 		w-12
 		inline-flex
 		border border-neutral rounded-full
 		p-1
 		sm:top-[-1px]
+		sm:absolute sm:-right-20
 		dark:bg-dark-200
 	;
 }
