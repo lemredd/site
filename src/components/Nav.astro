@@ -45,7 +45,11 @@ nav.mobile {
 		z-index: 999;
 	}
 	.menu {
-		@apply flex flex-col justify-center uppercase;
+		@apply
+			flex flex-col justify-center
+			uppercase
+			text-neutral-600 dark:text-white;
+		;
 
 		inset: 50% 10%;
 		transform: translateY(-50%);
