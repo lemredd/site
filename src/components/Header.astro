@@ -12,7 +12,9 @@ function set_header_bg() {
 
 	// TODO: refactor!
 	if (is_on_homepage) {
-		const must_set_solid_bg = sections_container.getBoundingClientRect().y <= ((window.innerHeight / 3) * -1);
+		const must_set_solid_bg = sections_container.getBoundingClientRect().y <= ((window.innerHeight) * -1);
+
+		header.classList.add("loaded");
 
 		if (must_set_solid_bg) {
 			header.classList.add("bg-white");
@@ -44,7 +46,10 @@ window.addEventListener("scroll", set_header_bg);
 
 <style lang="scss">
 header {
-	@apply px-[1.5rem] bg-white dark:bg-dark;
+	@apply px-[1.5rem];
+	
+	&.loaded {
+	}
 
 	position: fixed;
 	width: 100%;
