@@ -10,6 +10,7 @@ export let viewport: Viewport = "mobile";
 let dark_mode_button: HTMLButtonElement;
 
 let initial_pressed_state: "true" | "false" = $preferred_color_scheme === "dark" ? "true" : "false";
+$: prefers_dark = $preferred_color_scheme === "dark";
 
 function toggle_color_scheme(): void {
 		const { "documentElement": root } = document;
@@ -40,8 +41,8 @@ onMount(() => {
 >
 	<div
 		class="icon"
-		class:i-material-symbols-dark-mode={$preferred_color_scheme === "dark"}
-		class:i-material-symbols-light-mode={$preferred_color_scheme === "light"}
+		class:i-material-symbols-dark-mode={prefers_dark}
+		class:i-material-symbols-light-mode={!prefers_dark}
 	/>
 </button>
 
