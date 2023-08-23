@@ -1,10 +1,10 @@
 import transformerDirectives from "@unocss/transformer-directives";
-import { defineConfig, presetIcons, presetTypography, presetWind } from "unocss";
+import { defineConfig, presetIcons, presetTypography, presetUno } from "unocss";
 
 export default defineConfig({
 	"presets": [
 		presetTypography(),
-		presetWind(),
+		presetUno(),
 		presetIcons({
 			"extraProperties": {
 				"display": "inline-block",
