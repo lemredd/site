@@ -39,14 +39,14 @@ onMount(() => {
 	aria-pressed={initial_pressed_state}
 	on:click|self={toggle_color_scheme}
 >
-	<div
-		class="icon"
-		class:i-material-symbols-dark-mode={prefers_dark}
-		class:i-material-symbols-light-mode={!prefers_dark}
-	/>
+	<div class="icon material-symbols-outlined">
+		{$preferred_color_scheme}_mode
+	</div>
 </button>
 
 <style lang="scss">
+@import "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200";
+
 .dark-mode-toggler-btn {
 	--TOP_INSET: calc(calc(1.5rem * -1) / 2);
 	--at-apply:
