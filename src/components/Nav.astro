@@ -9,10 +9,20 @@ const links: Record<string, string> = {
 };
 ---
 
+<script>
+const mobile_links = document.querySelectorAll(".menu li a") as NodeListOf<HTMLAnchorElement>;
+const toggler = document.getElementById("toggler") as HTMLInputElement;
+mobile_links.forEach(
+	link => link.addEventListener("mouseup", () => toggler.checked = !toggler.checked)
+);
+</script>
+
 <nav class="mobile">
 	<input type="checkbox" id="toggler" hidden />
 	<label for="toggler" class="toggler-icon">
-		<div class="i-material-symbols:menu" />
+		<span class="material-icons">
+			menu
+		</span>
 	</label>
 	<label for="toggler" class="menu-backdrop" />
 

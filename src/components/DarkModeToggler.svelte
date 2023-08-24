@@ -9,8 +9,8 @@ export let viewport: Viewport = "mobile";
 
 let dark_mode_button: HTMLButtonElement;
 
-let dark_mode_button_state: "true" | "false";
-$: dark_mode_button_state = $preferred_color_scheme === "dark" ? "true" : "false";
+let initial_pressed_state: "true" | "false" = $preferred_color_scheme === "dark" ? "true" : "false";
+$: prefers_dark = $preferred_color_scheme === "dark";
 
 function toggle_color_scheme(): void {
 		const { "documentElement": root } = document;
@@ -36,10 +36,12 @@ onMount(() => {
 	class="dark-mode-toggler-btn"
 	id="dark-mode-toggler-{viewport}"
 	bind:this={dark_mode_button}
-	aria-pressed={dark_mode_button_state}
+	aria-pressed={initial_pressed_state}
 	on:click|self={toggle_color_scheme}
 >
-	<div class="icon i-material-symbols:{$preferred_color_scheme}-mode" />
+	<span class="icon material-icons">
+		{$preferred_color_scheme}_mode
+	</span>
 </button>
 
 <style lang="scss">
