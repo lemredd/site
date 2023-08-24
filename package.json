@@ -14,7 +14,6 @@
 		"template:update": "npm run template:remote:add && npm run template:checkout && npm run template:pull && git merge main && npm run template:remote:rm"
 	},
 	"devDependencies": {
-		"@iconify-json/material-symbols": "^1.1.52",
 		"@types/node": "^20.1.1",
 		"@typescript-eslint/eslint-plugin": "^6.1.0",
 		"@typescript-eslint/parser": "^6.1.0",
