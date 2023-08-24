@@ -16,6 +16,7 @@
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
+	vertical-align: middle;
 
 	font-smooth: always;
 	/* Support for all WebKit browsers. */
