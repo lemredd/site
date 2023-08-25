@@ -9,5 +9,6 @@ export default defineConfig({
 		UnoCSS({
 			"injectReset": true
 		})
-	]
+	],
+	"output": "hybrid"
 });
