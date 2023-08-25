@@ -1,13 +1,13 @@
-<form class="email-form">
+<form id="email-form">
 	<!-- TODO: make it functional -->
-	<input type="email">
+	<input type="email" name="email">
 	<textarea name="" id="" cols="30" rows="10"></textarea>
 	<small>Or send an email at <a href="jarlemdeperalta@gmail.com">jarlemdeperalta@gmail.com</a></small>
 	<button type="submit">Send</button>
 </form>
 
 <style lang="scss">
-.email-form {
+#email-form {
 	@apply flex flex-col gap-y-2 items-start;
 
 	& > *:not(small) {
