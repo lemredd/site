@@ -1,4 +1,15 @@
 ---
+import { createTransport } from "nodemailer";
+
+const transporter = createTransport({
+	"service": "gmail",
+	"host": "smtp.gmail.com",
+	"auth": {
+		"user": import.meta.env.SECRET_MAIL_EMAIL,
+		"pass": import.meta.env.SECRET_MAIL_PASS
+	}
+});
+
 if(Astro.request.method === "POST") {
 	try {
 		const data = await Astro.request.formData();
