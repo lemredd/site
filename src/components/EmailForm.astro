@@ -1,0 +1,28 @@
+<form class="email-form">
+	<!-- TODO: make into component and functional -->
+	<input type="email">
+	<textarea name="" id="" cols="30" rows="10"></textarea>
+	<small>Or send an email at <a href="jarlemdeperalta@gmail.com">jarlemdeperalta@gmail.com</a></small>
+	<button type="submit">Send</button>
+</form>
+
+<style lang="scss">
+.email-form {
+	@apply flex flex-col gap-y-2 items-start;
+
+	& > *:not(small) {
+		@apply
+			rounded
+			bg-neutral-200 dark:bg-dark-300
+		;
+	}
+
+	input, textarea {
+		@apply px-4 py-2 w-full;
+	}
+
+	button {
+		@apply px-4 py-2 bg-neutral-200;
+	}
+}
+</style>
