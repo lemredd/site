@@ -21,6 +21,12 @@ if(Astro.request.method === "POST") {
 			"subject": `New email from ${email} - lemredd.pages.dev`,
 			"text": String(body)
 		};
+
+		transporter.sendMail(mail, (error, info) => {
+			// TODO: show status using URL search params
+			if (error) console.error(error);
+			else console.info(info);
+		});
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error(error.message);
@@ -28,6 +34,7 @@ if(Astro.request.method === "POST") {
 	}
 }
 ---
+
 <form id="email-form" method="POST">
 	<input type="email" name="email" required />
 	<textarea name="body" id="" cols="30" rows="10" required></textarea>
