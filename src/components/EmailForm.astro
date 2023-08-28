@@ -15,8 +15,12 @@ if(Astro.request.method === "POST") {
 		const data = await Astro.request.formData();
 		const email = data.get("email");
 		const body = data.get("body");
-		console.log(email, body);
-	// Do something with the data
+		const mail = {
+			"from": String(email), // Useless when using Gmail as service and host
+			"to": import.meta.env.SECRET_MAIL_EMAIL,
+			"subject": `New email from ${email} - lemredd.pages.dev`,
+			"text": String(body)
+		};
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error(error.message);
