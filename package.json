@@ -5,7 +5,7 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview",
+		"preview": "wrangler pages dev ./dist",
 		"prod": "astro build && astro preview",
 		"template:remote:add": "git remote add template git@github.com:lemredd/web-template.git",
 		"template:remote:rm": "git remote remove template",
