@@ -10,7 +10,7 @@ const transporter = createTransport({
 	}
 });
 
-export async function post({ request }: APIContext): Response {
+export async function post({ request }: APIContext): Promise<Response> {
 	const data = await request.formData();
 	const email = data.get("email");
 	const body = data.get("body");
@@ -21,10 +21,13 @@ export async function post({ request }: APIContext): Response {
 		"text": String(body)
 	};
 
-	transporter.sendMail(mail, (error) => {
-	// TODO: show status using URL search params
-		if (error) return new Response(JSON.stringify(error), { "status": 500, "statusText": "something went wrong..." });
-		return new Response(null, { "status": 200, "statusText": "email sent" });
-	});
-	
+	return await new Promise((resolve, reject) => {
+		transporter.sendMail(mail, (error, info) => {
+		// TODO: show status using URL search params
+			if (error) reject(error);
+			else resolve(info);
+		});
+	})
+		.then(() => new Response(null, { "status": 200, "statusText": "email sent" }))
+		.catch(error => new Response(JSON.stringify(error), { "status": 500, "statusText": "something went wrong..." }));
 }
