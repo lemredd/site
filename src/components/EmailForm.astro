@@ -1,8 +1,19 @@
-<form id="email-form" method="POST" action="/email">
+<script>
+const email_form = document.getElementById("email-form") as HTMLFormElement;
+
+email_form.addEventListener("submit", async event => {
+	event.preventDefault();
+	const form_data = new FormData(event.currentTarget as  HTMLFormElement);
+	const response = await fetch("/email", { "method": "POST", "body": form_data });
+	const data = await response.json();
+});
+</script>
+
+<form id="email-form" method="POST">
 	<input type="email" name="email" required />
 	<textarea name="body" id="" cols="30" rows="10" required></textarea>
 	<small>Or send an email at <a href="jarlemdeperalta@gmail.com">jarlemdeperalta@gmail.com</a></small>
-	<button type="submit">Send</button>
+	<button type="submit" id="submit-email-btn">Send</button>
 </form>
 
 <style lang="scss">
