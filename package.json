@@ -31,6 +31,7 @@
 		"unocss": "^0.53.6"
 	},
 	"dependencies": {
+		"@astrojs/cloudflare": "^7.0.0",
 		"@astrojs/svelte": "^4.0.0",
 		"nodemailer": "^6.9.4",
 		"svelte": "^4.2.0"
