@@ -28,6 +28,6 @@ export async function post({ request }: APIContext): Promise<Response> {
 			else resolve(info);
 		});
 	})
-		.then(() => new Response(null, { "status": 200, "statusText": "email sent" }))
-		.catch(error => new Response(JSON.stringify(error), { "status": 500, "statusText": "something went wrong..." }));
+		.then(() => new Response(JSON.stringify({ "status": 200 }), { "status": 200 }))
+		.catch(error => new Response(JSON.stringify(error), { "status": 500 }));
 }
