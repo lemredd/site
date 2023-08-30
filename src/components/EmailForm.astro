@@ -1,41 +1,4 @@
----
-import { createTransport } from "nodemailer";
-
-const transporter = createTransport({
-	"service": "gmail",
-	"host": "smtp.gmail.com",
-	"auth": {
-		"user": import.meta.env.SECRET_MAIL_EMAIL,
-		"pass": import.meta.env.SECRET_MAIL_PASS
-	}
-});
-
-if(Astro.request.method === "POST") {
-	try {
-		const data = await Astro.request.formData();
-		const email = data.get("email");
-		const body = data.get("body");
-		const mail = {
-			"from": String(email), // Useless when using Gmail as service and host
-			"to": import.meta.env.SECRET_MAIL_EMAIL,
-			"subject": `New email from ${email} - lemredd.pages.dev`,
-			"text": String(body)
-		};
-
-		transporter.sendMail(mail, (error, info) => {
-			// TODO: show status using URL search params
-			if (error) console.error(error);
-			else console.info(info);
-		});
-	} catch (error) {
-		if (error instanceof Error) {
-			console.error(error.message);
-		}
-	}
-}
----
-
-<form id="email-form" method="POST">
+<form id="email-form" method="POST" action="/email">
 	<input type="email" name="email" required />
 	<textarea name="body" id="" cols="30" rows="10" required></textarea>
 	<small>Or send an email at <a href="jarlemdeperalta@gmail.com">jarlemdeperalta@gmail.com</a></small>
