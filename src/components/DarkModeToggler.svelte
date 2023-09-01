@@ -12,17 +12,17 @@ let dark_mode_button: HTMLButtonElement;
 let initial_pressed_state: "true" | "false" = $preferred_color_scheme === "dark" ? "true" : "false";
 
 function toggle_color_scheme(): void {
-		const { "documentElement": root } = document;
-		const pressed = dark_mode_button.getAttribute("aria-pressed");
+	const { "documentElement": root } = document;
+	const pressed = dark_mode_button.getAttribute("aria-pressed");
 
-		if (pressed === "false") {
-			set_preferred_color_scheme("dark");
-			dark_mode_button.setAttribute("aria-pressed", "true");
-		} else {
-			set_preferred_color_scheme("light");
-			dark_mode_button.setAttribute("aria-pressed", "false");
-		}
-		root.classList.toggle("dark");
+	if (pressed === "false") {
+		set_preferred_color_scheme("dark");
+		dark_mode_button.setAttribute("aria-pressed", "true");
+	} else {
+		set_preferred_color_scheme("light");
+		dark_mode_button.setAttribute("aria-pressed", "false");
+	}
+	root.classList.toggle("dark");
 }
 
 onMount(() => {
