@@ -33,6 +33,7 @@
 	"dependencies": {
 		"@astrojs/cloudflare": "6.8.1",
 		"@astrojs/svelte": "^3.1.1",
+		"@cloudflare/pages-plugin-mailchannels": "^0.1.2",
 		"astro": "^2.10.14",
 		"nodemailer": "^6.9.4",
 		"svelte": "^4.2.0"
