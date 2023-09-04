@@ -1,5 +1,9 @@
 import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 
+interface EnvironmentVariables {
+	SECRET_MAIL_EMAIL: string
+}
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const onRequest: PagesFunction = mailChannelsPlugin({
 	"personalizations": [
