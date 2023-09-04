@@ -7,9 +7,13 @@ export const onRequest: PagesFunction = mailChannelsPlugin({
 			"to": [{ "name": "ACME Support", "email": "support@example.com" }],
 		},
 	],
-	"from": {
-		"name": "ACME Support",
-		"email": "support@example.com",
+	"from": ({ formData }) => {
+		const email = String(formData.get("email"));
+
+		return {
+			"name": email,
+			email
+		};
 	},
 	"respondWith": () => {
 		return new Response(
