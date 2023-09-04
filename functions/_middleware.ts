@@ -4,11 +4,12 @@ interface EnvironmentVariables {
 	SECRET_MAIL_EMAIL: string
 }
 
+// https://developers.cloudflare.com/pages/platform/functions/plugins/mailchannels/
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const onRequest: PagesFunction = mailChannelsPlugin({
+export const onRequest: PagesFunction<EnvironmentVariables> = context => mailChannelsPlugin({
 	"personalizations": [
 		{
-			"to": [{ "name": "ACME Support", "email": "support@example.com" }],
+			"to": [{ "name": "Jarlem Red de Peralta", "email": context.env.SECRET_MAIL_EMAIL }],
 		},
 	],
 	"from": ({ formData }) => {
@@ -24,4 +25,4 @@ export const onRequest: PagesFunction = mailChannelsPlugin({
 			"Thank you for submitting your enquiry. A member of the team will be in touch shortly."
 		);
 	},
-});
+})(context);
