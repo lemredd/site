@@ -14,6 +14,7 @@
 		"template:update": "npm run template:remote:add && npm run template:checkout && npm run template:pull && git merge main && npm run template:remote:rm"
 	},
 	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20230821.0",
 		"@types/node": "^20.5.7",
 		"@types/nodemailer": "^6.4.9",
 		"@typescript-eslint/eslint-plugin": "^6.5.0",

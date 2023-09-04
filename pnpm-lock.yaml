@@ -25,6 +25,9 @@ dependencies:
     version: 4.2.0
 
 devDependencies:
+  '@cloudflare/workers-types':
+    specifier: ^4.20230821.0
+    version: 4.20230821.0
   '@types/node':
     specifier: ^20.5.7
     version: 20.5.7
@@ -498,7 +501,6 @@ packages:
 
   /@cloudflare/workers-types@4.20230821.0:
     resolution: {integrity: sha512-lVQSyr5E4CEkQw7WIdsrMTj+kHjsm28mJ0B5AhNFByKR+16KTFsU/RW/nGLKHHW2jxT5lvYI+HjNQMzC9QR8Ng==}
-    dev: false
 
   /@cspotcode/source-map-support@0.8.1:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
