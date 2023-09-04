@@ -14,14 +14,12 @@
 		"template:update": "npm run template:remote:add && npm run template:checkout && npm run template:pull && git merge main && npm run template:remote:rm"
 	},
 	"devDependencies": {
-		"@astrojs/svelte": "^3.1.1",
 		"@types/node": "^20.5.7",
 		"@types/nodemailer": "^6.4.9",
 		"@typescript-eslint/eslint-plugin": "^6.5.0",
 		"@typescript-eslint/parser": "^6.5.0",
 		"@unocss/reset": "^0.53.6",
 		"@unocss/transformer-directives": "^0.53.6",
-		"astro": "^2.10.14",
 		"changelogen": "^0.5.5",
 		"eslint": "^8.48.0",
 		"eslint-plugin-astro": "^0.27.2",
@@ -34,6 +32,8 @@
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "6.8.1",
+		"@astrojs/svelte": "^3.1.1",
+		"astro": "^2.10.14",
 		"nodemailer": "^6.9.4",
 		"svelte": "^4.2.0"
 	}

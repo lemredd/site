@@ -8,6 +8,9 @@ dependencies:
   '@astrojs/cloudflare':
     specifier: 6.8.1
     version: 6.8.1(astro@2.10.14)
+  astro:
+    specifier: ^2.10.14
+    version: 2.10.14(@types/node@20.5.7)(sass@1.66.1)
   nodemailer:
     specifier: ^6.9.4
     version: 6.9.4
@@ -37,9 +40,6 @@ devDependencies:
   '@unocss/transformer-directives':
     specifier: ^0.53.6
     version: 0.53.6
-  astro:
-    specifier: ^2.10.14
-    version: 2.10.14(@types/node@20.5.7)(sass@1.66.1)
   changelogen:
     specifier: ^0.5.5
     version: 0.5.5
