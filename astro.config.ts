@@ -11,6 +11,6 @@ export default defineConfig({
 			"injectReset": true
 		})
 	],
-	"output": "hybrid",
+	"output": "server",
 	"adapter": cloudflare()
 });
