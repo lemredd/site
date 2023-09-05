@@ -11,7 +11,8 @@
 			"@layouts/*": ["src/layouts/*"],
 			"@styles/*": ["src/styles/*"],
 			"@pages/*": ["src/pages/*"]
-		}
+		},
+		"types": ["@cloudflare/workers-types"]
 	},
 	"ts-node": {
 		"esm": true
