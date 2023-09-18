@@ -14,7 +14,6 @@
 		"template:update": "npm run template:remote:add && npm run template:checkout && npm run template:pull && git merge main && npm run template:remote:rm"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20230821.0",
 		"@types/node": "^20.5.7",
 		"@typescript-eslint/eslint-plugin": "^6.5.0",
 		"@typescript-eslint/parser": "^6.5.0",
@@ -28,13 +27,12 @@
 		"ts-node": "^10.9.1",
 		"typescript": "^5.2.2",
 		"unocss": "^0.53.6",
-		"wrangler": "^3.6.0"
+		"wrangler": "^3.7.0"
 	},
 	"dependencies": {
-		"@astrojs/cloudflare": "6.8.1",
-		"@astrojs/svelte": "^3.1.1",
-		"@cloudflare/pages-plugin-mailchannels": "^0.1.2",
-		"astro": "^2.10.14",
+		"@astrojs/cloudflare": "7.0.2",
+		"@astrojs/svelte": "^4.0.1",
+		"astro": "^3.0.10",
 		"svelte": "^4.2.0"
 	}
 }
