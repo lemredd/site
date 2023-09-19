@@ -40,6 +40,10 @@ const { page_title } = Astro.props;
 	&.dark {
 		@apply bg-dark color-white;
 	}
+
+	@for $i from 1 through 6 {
+		:global(h#{$i}) { @apply font-heading; }
+	}
 }
 
 .content {
