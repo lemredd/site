@@ -2,8 +2,8 @@
 
 /* TYPOGRAPHY */
 $scale: 1.32;
-@for $i from 1 through 6 {
-	:root {
+:root {
+	@for $i from 1 through 6 {
 		--SITE-H#{$i}: #{math.pow($scale, (6 - $i))}rem;
 	}
 }
