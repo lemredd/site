@@ -29,13 +29,14 @@ const { page_title } = Astro.props;
 
 <style lang="scss">
 @import "@styles/variables";
+@import "@styles/globals";
 
 :global(header) {
 	height: $header-height;
 }
 
 :root {
-	@apply bg-white color-neutral-600 scroll-smooth sm:text-[1.25rem];
+	@apply bg-white color-neutral-600 scroll-smooth;
 
 	&.dark {
 		@apply bg-dark color-white;
