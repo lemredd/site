@@ -1,5 +1,10 @@
 import transformerDirectives from "@unocss/transformer-directives";
-import { defineConfig, presetTypography, presetUno } from "unocss";
+import {
+	defineConfig,
+	presetTypography,
+	presetUno,
+	presetWebFonts
+} from "unocss";
 
 // site colors
 const site = {
@@ -17,7 +22,8 @@ const site = {
 export default defineConfig({
 	"presets": [
 		presetTypography(),
-		presetUno()
+		presetUno(),
+		presetWebFonts({ "provider": "google" })
 	],
 	"transformers": [
 		transformerDirectives()
