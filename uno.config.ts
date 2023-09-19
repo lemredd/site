@@ -6,8 +6,12 @@ import {
 	presetWebFonts
 } from "unocss";
 
-// site colors
-const site = {
+const SITE_FONTS = {
+	"heading": "Montserrat:400,600",
+	"body": "Work Sans:400,600"
+};
+
+const SITE_COLORS = {
 	"primary": "#DD2121",
 	"secondary": "#FFDB89",
 	"black": "#1F1E1C",
@@ -23,12 +27,15 @@ export default defineConfig({
 	"presets": [
 		presetTypography(),
 		presetUno(),
-		presetWebFonts({ "provider": "google" })
+		presetWebFonts({
+			"provider": "google",
+			"fonts": SITE_FONTS
+		})
 	],
 	"transformers": [
 		transformerDirectives()
 	],
 	"theme": {
-		"colors": { site }
+		"colors": { "site": SITE_COLORS }
 	}
 });
