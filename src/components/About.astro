@@ -37,6 +37,13 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 
 		<!-- TODO: use real works -->
 
+		<h3 id="individual-works">
+			Individual Works
+		</h3>
+		<ul class="individual-works-works">
+			{individual_works.map(({ item_title, item_link }) => <li class="individual-work"><a href={item_link}>{item_title}</a></li>)}
+		</ul>
+
 		<h3 id="collaborative-works">
 			Collaborative Works
 		</h3>
@@ -114,6 +121,10 @@ article, section {
 	p {
 		@apply pb-[1.5rem];
 	}
+}
+
+.experiences-and-skills {
+	@apply sm:grid sm:grid-cols-2;
 }
 
 .experience, .skills {
