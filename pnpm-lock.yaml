@@ -11,6 +11,9 @@ dependencies:
   '@astrojs/svelte':
     specifier: ^4.0.1
     version: 4.0.1(astro@3.0.10)(svelte@4.2.0)(typescript@5.2.2)(vite@4.4.9)
+  '@iconify-json/simple-icons':
+    specifier: ^1.1.71
+    version: 1.1.71
   astro:
     specifier: ^3.0.10
     version: 3.0.10(@types/node@20.5.7)(sass@1.66.1)
@@ -1121,9 +1124,14 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@iconify-json/simple-icons@1.1.71:
+    resolution: {integrity: sha512-3WVgJTaWBUOvq4G99v3Qs46zqnOJGNVMMlKCw+p8/gfbVz9mEAiwiqfGr+mpraotuwvUuQoJMi4SyseO8qjYDQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils@2.1.9:
     resolution: {integrity: sha512-mo+A4n3MwLlWlg1SoSO+Dt6pOPWKElk9sSJ6ZpuzbB9OcjxN8RUWxU3ulPwB1nglErWKRam2x4BAohbYF7FiFA==}
