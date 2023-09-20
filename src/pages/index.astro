@@ -40,18 +40,6 @@ const projects = [
 		"description": "Project short description",
 		"image": "sample.jpg"
 	},
-	{
-		"id": 7,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
-	},
-	{
-		"id": 8,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
-	},
 ];
 ---
 
@@ -69,6 +57,11 @@ const projects = [
 	</section>
 
 	<div class="container" id="sections-container">
+		<section id="about">
+			<h2 class="section-heading">Who am I?</h2>
+			<About />
+		</section>
+
 		<section id="projects">
 			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
@@ -82,11 +75,6 @@ const projects = [
 				))}
 			</ul>
 			<a href="/projects">See all the things I've built</a>
-		</section>
-
-		<section id="about">
-			<h2 class="section-heading">Who am I?</h2>
-			<About />
 		</section>
 	</div>
 </BaseLayout>
