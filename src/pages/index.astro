@@ -2,6 +2,57 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 import About from "@components/About.astro";
+
+const projects = [
+	{
+		"id": 1,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 2,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 3,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 4,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 5,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 6,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 7,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 8,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+];
 ---
 
 <BaseLayout page_title="Home">
@@ -21,11 +72,11 @@ import About from "@components/About.astro";
 		<section id="projects">
 			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
-				{[1,2,3,4,5,6].map(item => (
-					<li class={`project-item project-${item}`}>
+				{projects.map(({ id, name, description }) => (
+					<li class={`project-item project-${id}`}>
 						<div class="project-info">
-							<h4>Project Title</h4>
-							<p>Project short description</p>
+							<h4>{name} #{id}</h4>
+							<p>{description}</p>
 						</div>
 					</li>
 				))}
