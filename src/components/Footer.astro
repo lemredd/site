@@ -1,23 +1,33 @@
 <footer>
 	<p class="made-with">
-		Made with 💖 + + 
+		<span>Made with 💖 + </span><span class="i-simple-icons-svelte"></span> + <span class="i-simple-icons-astro"></span>
 	</p>
+	<p class="license">Published under GPL License</p>
 
 	<ul class="plugs">
-		<span class="mdi mdi-linkedin"></span>
-		<span class="mdi mdi-github"></span>
-		<span class="mdi mdi-email"></span>
+		<span class="i-simple-icons-linkedin"></span>
+		<span class="i-simple-icons-github"></span>
+		<span class="i-simple-icons-gmail"></span>
 	</ul>
 </footer>
 
 <style lang="scss">
-@import "https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css";
-
 footer {
 	@apply
 		w-[100%]
 		
-		flex
+		grid justify-center
+		bg-site-black bg-opacity-10
+		text-center
+		dark:bg-site-footer-black dark:bg-opacity-[initial]
 	;
+}
+
+.made-with i, .plugs {
+	@apply text-[24px]
+}
+
+.plugs {
+	@apply mt-8 flex justify-center gap-4;
 }
 </style>
