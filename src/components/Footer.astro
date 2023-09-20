@@ -1,28 +1,37 @@
 <footer>
-	<p class="made-with">
-		<span>Made with 💖 + </span><span class="i-simple-icons-svelte"></span> + <span class="i-simple-icons-astro"></span>
-	</p>
-	<p class="license">Published under GPL License</p>
+	<div class="container">
+		<p class="made-with">
+			<span>Made with 💖 + </span><span class="i-simple-icons-svelte"></span> + <span class="i-simple-icons-astro"></span>
+		</p>
+		<p class="license">Published under GPL License</p>
 
-	<ul class="plugs">
-		<span class="i-simple-icons-linkedin"></span>
-		<span class="i-simple-icons-github"></span>
-		<span class="i-simple-icons-gmail"></span>
-	</ul>
+		<ul class="plugs">
+			<span class="i-simple-icons-linkedin"></span>
+			<span class="i-simple-icons-github"></span>
+			<span class="i-simple-icons-gmail"></span>
+		</ul>
+	</div>
 </footer>
 
 <style lang="scss">
 footer {
-	@apply
-		w-[100%]
-		py-8
-		
-		grid justify-center
+	@apply 
 		bg-site-black bg-opacity-10
-		text-center
 		dark:bg-site-footer-black
 		dark:bg-opacity-100
 	;
+
+	.container {
+		@apply
+			w-[100%]
+			mx-auto
+			py-8
+
+			text-center
+			sm:grid sm:justify-center
+			sm:grid-cols-2 sm:grid-rows-2 sm:grid-flow-col
+		;
+	}
 }
 
 .made-with {
