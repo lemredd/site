@@ -25,15 +25,24 @@ footer {
 	;
 }
 
-.made-with i, .plugs {
-	@apply text-6;
+.made-with {
+	@apply sm:justify-self-start;
 }
 
 .license {
-	@apply mt-4 text-3;
+	@apply
+		mt-4
+		text-3
+		sm:mt-0 sm:justify-self-start
+	;
 }
 
 .plugs {
-	@apply mt-8 flex justify-center gap-4;
+	@apply
+		mt-8
+		flex justify-center gap-4
+		text-6
+		sm:mt-0 sm:row-span-full sm:self-center sm:justify-self-end
+	;
 }
 </style>
