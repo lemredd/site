@@ -10,7 +10,8 @@ import About from "@components/About.astro";
 			<h3 class="greeting">Hello, I am Jarlem.</h3>
 			<h1 class="roles">
 				<!-- Make interchangeable -->
-				Web Developer |
+				Web Developer
+				<span class="cursor"></span>
 			</h1>
 			<h4 class="welcome">Welcome to my website.</h4>
 		</div>
@@ -62,8 +63,19 @@ section {
 	.greeting {
 		@apply text-[length:var(--SITE-H5)];
 	}
+
 	.roles {
-		@apply text-[length:var(--SITE-H4)] text-site-primary uppercase;
+		@apply
+			relative
+			text-[length:var(--SITE-H4)] text-site-primary uppercase font-bold
+		;
+	}
+	.roles .cursor {
+		@apply
+			absolute -right-1 top-0 bottom-0
+			w-[.25rem]
+			bg-site-primary
+		;
 	}
 }
 
