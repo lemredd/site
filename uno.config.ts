@@ -1,6 +1,7 @@
 import transformerDirectives from "@unocss/transformer-directives";
 import {
 	defineConfig,
+	presetIcons,
 	presetTypography,
 	presetUno,
 	presetWebFonts
@@ -26,6 +27,12 @@ const SITE_COLORS = {
 
 export default defineConfig({
 	"presets": [
+		presetIcons({
+			"extraProperties": {
+				"display": "inline-block",
+				"vertical-align": "middle",
+			}
+		}),
 		presetTypography(),
 		presetUno(),
 		presetWebFonts({
