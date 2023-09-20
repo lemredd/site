@@ -7,20 +7,18 @@ import About from "@components/About.astro";
 <BaseLayout page_title="Home">
 	<section class="hero about-me" id="hero">
 		<div class="container">
-			<h1 class="title">
-				Hello, I'm
-				<strong class="name">Jarlem Red</strong>
+			<h3 class="greeting">Hello, I am Jarlem.</h3>
+			<h1 class="roles">
+				<!-- Make interchangeable -->
+				Web Developer |
 			</h1>
-			<p class="nickname">
-				but you can call me <strong>lem</strong>.
-			</p>
-			<a class="about-link" href="/#about">Get to know more about me.</a>
+			<h4 class="welcome">Welcome to my website.</h4>
 		</div>
 	</section>
 
 	<div class="container" id="sections-container">
 		<section id="projects">
-			<h1 class="title">Projects</h1>
+			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
 				{[1,2,3,4,5,6].map(item => (
 					<li class={`project-item project-${item}`}>project {item}</li>
@@ -30,7 +28,7 @@ import About from "@components/About.astro";
 		</section>
 
 		<section id="about">
-			<h1 class="title">Who am I?</h1>
+			<h2 class="section-heading">Who am I?</h2>
 			<About />
 		</section>
 	</div>
@@ -48,8 +46,6 @@ section {
 }
 
 .hero {
-	@apply pt-20;
-	background-image: linear-gradient(#000a, #000a), url("/src/assets/hero_portrait.jpg");
 	background-origin: border-box;
 	background-position: center;
 	background-size: cover;
@@ -58,26 +54,21 @@ section {
 	.container {
 		@apply
 			h-[inherit]
-			flex flex-col items-center justify-center
-			text-center text-white
+			flex flex-col items-center justify-center gap-y-[1.5rem]
+			text-center
 		;
 	}
 
-	h1 .name {
-		@apply block text-12 sm:text-16;
+	.greeting {
+		@apply text-[length:var(--SITE-H5)];
 	}
-
-	.nickname {
-		@apply uppercase text-neutral-300;
-	}
-
-	.about-link {
-		@apply mt-8;
+	.roles {
+		@apply text-[length:var(--SITE-H4)] text-site-primary uppercase;
 	}
 }
 
-.title {
-	@apply my-8 text-[length:var(--SITE-H1)];
+.section-heading {
+	@apply my-8 text-[length:var(--SITE-H2)];
 }
 
 #projects, #about, #contact {
