@@ -17,14 +17,14 @@ function set_header_bg() {
 		header.classList.add("loaded");
 
 		if (must_set_solid_bg) {
-			header.classList.add("bg-white");
-			header.classList.add("dark:bg-dark");
+			header.classList.add("bg-site-white");
+			header.classList.add("dark:bg-site-black");
 
-			header.classList.add("text-neutral-600");
-			header.classList.add("dark:text-white");
-			header.classList.remove("text-white");
+			header.classList.add("text-site-black");
+			header.classList.add("dark:text-site-white");
+			header.classList.remove("text-site-white");
 		} else {
-			header.classList.remove("bg-white");
+			header.classList.remove("bg-site-white");
 			header.classList.remove("dark:bg-dark");
 
 			header.classList.remove("text-neutral-600");
