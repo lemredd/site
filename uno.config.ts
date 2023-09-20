@@ -20,7 +20,8 @@ const SITE_COLORS = {
 	"black-25": "#1F1E1C40",
 	"black-10": "#1F1E1C1A",
 	"black-05": "#1F1E1C0D",
-	"footer-black": "#33322E"
+	"footer-black": "#33322E",
+	"white": "#FFF7E6"
 };
 
 export default defineConfig({
