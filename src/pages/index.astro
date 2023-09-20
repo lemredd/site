@@ -22,7 +22,12 @@ import About from "@components/About.astro";
 			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
 				{[1,2,3,4,5,6].map(item => (
-					<li class={`project-item project-${item}`}>project {item}</li>
+					<li class={`project-item project-${item}`}>
+						<div class="project-info">
+							<h4>Project Title</h4>
+							<p>Project short description</p>
+						</div>
+					</li>
 				))}
 			</ul>
 			<a href="/projects">See all the things I've built</a>
@@ -95,17 +100,29 @@ section {
 .projects-container {
 	@apply
 		mb-[1rem]
-		grid gap-[2rem]
+		grid gap-[2rem] justify-center
 		sm:grid-cols-3 sm:grid-rows-3
 	;
 
 	.project-item {
 		$shadow: 0px 1.43668px 2.85018px 0px rgba(0, 0, 0, 0.10), 0px 3.34039px 6.62689px 0px rgba(0, 0, 0, 0.07), 0px 5.99856px 11.90037px 0px rgba(0, 0, 0, 0.06), 0px 9.95539px 19.7502px 0px rgba(0, 0, 0, 0.05);
 
-		@apply rounded-[.25rem] py-20 dark:bg-site-footer-black;
+		@apply
+			rounded-[.25rem]
+			w-[256px] h-[256px]
+			flex flex-col justify-end
+			dark:bg-site-footer-black
+		;
 
 		box-shadow: $shadow;
 		text-align: center;
+	}
+
+	.project-info {
+		@apply
+			ml-4 mb-4
+			text-left
+		;
 	}
 
 	.project-1, .project-4, .project-5 {
