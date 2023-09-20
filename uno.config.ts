@@ -7,7 +7,7 @@ import {
 } from "unocss";
 
 const SITE_FONTS = {
-	"heading": "Montserrat:400,600",
+	"heading": "Montserrat:400,600,700",
 	"body": "Work Sans:400,600"
 };
 
