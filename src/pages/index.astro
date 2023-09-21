@@ -149,7 +149,12 @@ section:not(.hero) {
 		@apply
 			ml-4 mb-4
 			text-left
+			opacity-0
+			transition-opacity duration-300
 		;
+	}
+	.project-item:hover .project-info {
+		@apply opacity-100;
 	}
 
 	.project-1, .project-4, .project-5 {
