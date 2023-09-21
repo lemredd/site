@@ -44,15 +44,13 @@ const projects = [
 ---
 
 <BaseLayout page_title="Home">
-	<section class="hero" id="hero">
-		<div class="container">
+	<div class="container">
+		<section class="hero">
 			<h1 class="name">Jarlem <span class="red">Red</span></h1>
 			<h4 class="roles">Developer/Designer.</h4>
 			<h4 class="welcome">Welcome to my website.</h4>
-		</div>
-	</section>
+		</section>
 
-	<div class="container" id="sections-container">
 		<section id="projects">
 			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
@@ -78,25 +76,22 @@ const projects = [
 <style lang="scss">
 @import "@styles/variables";
 
-section {
+section:not(.hero) {
 	@apply pb-[2rem]
 }
 
 .hero {
+	@apply
+		h-[inherit]
+		flex flex-col items-center justify-center gap-y-2
+		text-center
+		lg:items-start
+	;
+
 	background-origin: border-box;
 	background-position: center;
 	background-size: cover;
 	height: 100vh;
-
-	.container {
-		@apply
-			h-[inherit]
-			flex flex-col items-center justify-center gap-y-2
-			text-center
-			lg:items-start
-		;
-	}
-
 
 	.name {
 		@apply
