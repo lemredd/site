@@ -70,6 +70,16 @@ const projects = [
 			<h2 class="section-heading">Who am I?</h2>
 			<About />
 		</section>
+
+		<section id="contact">
+			<h2 class="section-heading">Get in touch</h2>
+			<ul class="plugs">
+				<!-- `unoCSS` icon presets won't work if this is refactored into constants & mapped as elements -->
+				<a href="https://linkedin.com/jarlemRed"><span class="i-simple-icons-linkedin"></span></a>
+				<a href="https://www.github.com/lemredd"><span class="i-simple-icons-github"></span></a>
+				<a href="mailto:jarlemdeperalta@gmail.com"><span class="i-simple-icons-gmail"></span></a>
+			</ul>
+		</section>
 	</div>
 </BaseLayout>
 
@@ -173,5 +183,12 @@ section:not(.hero) {
 
 #github-link {
 	@apply inline-block mt-8;
+}
+
+.plugs {
+	@apply
+		flex gap-4
+		text-6
+	;
 }
 </style>
