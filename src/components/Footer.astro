@@ -4,13 +4,6 @@
 			<span>Made with 💖 + </span><span class="i-simple-icons-svelte"></span> + <span class="i-simple-icons-astro"></span>
 		</p>
 		<p class="license">Published under GPL License</p>
-
-		<ul class="plugs">
-			<!-- `unoCSS` icon presets won't work if this is refactored into constants & mapped as elements -->
-			<a href="https://linkedin.com/jarlemRed"><span class="i-simple-icons-linkedin"></span></a>
-			<a href="https://www.github.com/lemredd"><span class="i-simple-icons-github"></span></a>
-			<a href="mailto:jarlemdeperalta@gmail.com"><span class="i-simple-icons-gmail"></span></a>
-		</ul>
 	</div>
 </footer>
 
@@ -23,35 +16,11 @@ footer {
 	;
 
 	.container {
-		@apply
-			w-[100%]
-			py-8
-
-			text-center
-			sm:grid sm:justify-center
-			sm:grid-cols-2 sm:grid-rows-2 sm:grid-flow-col
-		;
+		@apply w-[100%] py-8 text-center sm:text-left;
 	}
 }
 
-.made-with {
-	@apply sm:justify-self-start;
-}
-
 .license {
-	@apply
-		mt-2
-		text-3
-		sm:justify-self-start
-	;
-}
-
-.plugs {
-	@apply
-		mt-8
-		flex justify-center gap-4
-		text-6
-		sm:mt-0 sm:row-span-full sm:self-center sm:justify-self-end
-	;
+	@apply mt-2 text-3;
 }
 </style>
