@@ -46,11 +46,8 @@ const projects = [
 <BaseLayout page_title="Home">
 	<section class="hero" id="hero">
 		<div class="container">
-			<h3 class="greeting">Hello, I am Jarlem.</h3>
-			<h1 class="roles">
-				<!-- Make interchangeable -->
-				Web Developer
-			</h1>
+			<h1 class="name">Jarlem <span class="red">Red</span></h1>
+			<h4 class="roles">Developer/Designer.</h4>
 			<h4 class="welcome">Welcome to my website.</h4>
 		</div>
 	</section>
@@ -94,28 +91,26 @@ section {
 	.container {
 		@apply
 			h-[inherit]
-			flex flex-col items-center justify-center gap-y-6
+			flex flex-col items-center justify-center gap-y-2
 			text-center
-			lg:items-start lg:gap-y-4
+			lg:items-start
 		;
 	}
 
-	.greeting {
-		@apply text-[length:var(--SITE-H5)] lg:text-[length:var(--SITE-H3)];
-	}
 
-	.roles {
+	.name {
 		@apply
-			border-r-4 border-r-site-primary
 			relative
-			text-[length:var(--SITE-H4)] text-site-primary uppercase font-bold
-			lg:text-[length:var(--SITE-H1)] lg:font-semibold
+			text-[length:var(--SITE-H4)] font-bold
+			md:font-semibold md:text-[length:var(--SITE-H2)] lg:text-[length:var(--SITE-H1)]
 		;
 	}
+	.name .red {
+		@apply text-site-primary;
 	}
 
-	.welcome {
-		@apply lg:text-[length:var(--SITE-H4)];
+	.roles, .welcome {
+		@apply text-[length:var(--SITE-H6)] md:text-[length:var(--SITE-H5)] lg:text-[length:var(--SITE-H4)];
 	}
 }
 
