@@ -1,12 +1,1 @@
-@use "sass:math";
-
-/* TYPOGRAPHY */
-$scale: 1.32;
-:root {
-	@for $i from 1 through 6 {
-		--SITE-H#{$i}: #{math.pow($scale, (6 - $i))}rem;
-	}
-}
-
-/* COMPONENTS */
 $header-height: 64px;

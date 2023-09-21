@@ -31,7 +31,12 @@ const { page_title } = Astro.props;
 </html>
 
 <style lang="scss">
+@use "sass:math";
+
 @import "@styles/variables";
+
+/* TYPOGRAPHY */
+$scale: 1.32;
 
 :global(header) {
 	height: $header-height;
@@ -49,6 +54,7 @@ const { page_title } = Astro.props;
 	}
 
 	@for $i from 1 through 6 {
+		--SITE-H#{$i}: #{math.pow($scale, (6 - $i))}rem;
 		:global(h#{$i}) { @apply font-heading; }
 	}
 }
