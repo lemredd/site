@@ -1,8 +1,6 @@
 ---
 import { getEntry } from "astro:content";
 
-import HashedLink from "@components/HashedLink.astro";
-
 const { "data": experiences } = await getEntry("about", "experiences");
 const individual_works = experiences.category_items.filter(item => item.item_subcategory === "individual");
 const collaborative_works = experiences.category_items.filter(item => item.item_subcategory === "collaborative");
@@ -31,44 +29,36 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 
 <div class="experiences-and-skills">
 	<section class="experience">
-		<h2 id="experience" class="section-heading">
-			<HashedLink link="experience">Experience</HashedLink>
-		</h2>
-
+		<h3 class="section-heading">Experience</h3>
 		<!-- TODO: use real works -->
-
-		<h3 id="individual-works">
+		<h4 id="individual-works">
 			Individual Works
-		</h3>
+		</h4>
 		<ul class="individual-works-works">
 			{individual_works.map(({ item_title, item_link }) => <li class="individual-work"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
-		<h3 id="collaborative-works">
+		<h4 id="collaborative-works">
 			Collaborative Works
-		</h3>
+		</h4>
 		<ul class="collaborative-works">
 			{collaborative_works.map(({ item_title, item_link }) => <li class="collaborative-work"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 
-		<h3 id="certifications">
+		<h4 id="certifications">
 			Certifications
-		</h3>
+		</h4>
 		<ul class="certifications">
 			{certifications.map(({ item_title, item_link }) => <li class="certification"><a href={item_link}>{item_title}</a></li>)}
 		</ul>
 	</section>
 
 	<section class="skills">
-		<h2 id="skills" class="section-heading">
-			<HashedLink link="skills">Skills</HashedLink>
-		</h2>
-
+		<h3 id="skills" class="section-heading">Skill</h3>
 		<!-- TODO: use real tools -->
-
-		<h3 id="front-end">
+		<h4 id="front-end">
 			Front-End/UI
-		</h3>
+		</h4>
 		<ul class="front-end">
 			{front_end.map(({ item_title, item_link }) => (
 				<li class="skill">
@@ -76,10 +66,9 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 				</li>
 			))}
 		</ul>
-
-		<h3 id="back-end">
+		<h4 id="back-end">
 			Back-End
-		</h3>
+		</h4>
 		<ul class="back-end">
 			{back_end.map(({ item_title, item_link }) => (
 				<li class="skill">
@@ -87,10 +76,9 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 				</li>
 			))}
 		</ul>
-
-		<h3 id="tools-and-collaboration">
+		<h4 id="tools-and-collaboration">
 			Tools and Collaboration
-		</h3>
+		</h4>
 		<ul class="tools-and-collaboration">
 			{tools.map(({ item_title, item_link }) => (
 				<li class="skill">
