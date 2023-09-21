@@ -57,7 +57,7 @@ const projects = [
 				{projects.map(({ id, name, description }) => (
 					<li class={`project-item project-${id}`}>
 						<div class="project-info">
-							<h4>{name} #{id}</h4>
+							<h5>{name} #{id}</h5>
 							<p>{description}</p>
 						</div>
 					</li>
@@ -136,7 +136,7 @@ section:not(.hero) {
 		@apply
 			rounded-[.25rem]
 			w-full h-[256px]
-			flex flex-col justify-end
+			relative
 			dark:bg-site-footer-black
 			sm:w-[initial]
 		;
@@ -148,11 +148,19 @@ section:not(.hero) {
 	.project-info {
 		@apply
 			pl-4 pb-4
-			text-left
-			bg-gradient-to-t from-site-black
+			absolute
+			inset-0
+			flex flex-col justify-end
+			gap-y-2
+			text-site-white text-left
+			bg-gradient-to-t from-site-black to-50%
 			opacity-0
 			transition-opacity duration-300
 		;
+
+		h5 {
+			@apply text-[length:var(--SITE-H5)];
+		}
 	}
 	.project-item:hover .project-info {
 		@apply opacity-100;
