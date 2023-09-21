@@ -92,16 +92,20 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 <style lang="scss">
 @import "@styles/variables";
 
+
+@for $i from 3 through 4 {
+	h#{$i} {
+		--at-apply: text-[length:var(--SITE-H#{$i+2})] md:text-[length:var(--SITE-H#{$i+1})];
+	}
+}
+
 article, section {
 	$negated-header-height: calc(#{$header-height} * -1);
 
 	margin-bottom: calc(#{$negated-header-height} + 2rem);
 
 	.section-heading {
-		@apply
-			mb-4
-			text-[1.5rem] uppercase font-semibold
-		;
+		@apply mb-4 font-semibold;
 
 		padding-top: calc(#{$header-height} + 4px);
 	}
