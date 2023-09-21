@@ -50,7 +50,6 @@ const projects = [
 			<h1 class="roles">
 				<!-- Make interchangeable -->
 				Web Developer
-				<span class="cursor"></span>
 			</h1>
 			<h4 class="welcome">Welcome to my website.</h4>
 		</div>
@@ -107,21 +106,12 @@ section {
 
 	.roles {
 		@apply
+			border-r-4 border-r-site-primary
 			relative
 			text-[length:var(--SITE-H4)] text-site-primary uppercase font-bold
 			lg:text-[length:var(--SITE-H1)] lg:font-semibold
 		;
 	}
-	.roles .cursor {
-		@apply
-			absolute -right-1 top-0 bottom-0
-			w-[.25rem]
-			bg-site-primary
-			invisible
-		;
-	}
-	:is(.roles:hover, .roles:active) .cursor {
-		@apply visible;
 	}
 
 	.welcome {
