@@ -120,7 +120,11 @@ section:not(.hero) {
 }
 
 .section-heading {
-	@apply my-8 text-[length:var(--SITE-H4)] md:text-[length:var(--SITE-H3)] lg:text-[length:var(--SITE-H2)];
+	@apply
+		mb-8
+		text-[length:var(--SITE-H4)] font-semibold
+		md:text-[length:var(--SITE-H3)] lg:text-[length:var(--SITE-H2)]
+	;
 }
 
 #projects, #about, #contact {
