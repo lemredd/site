@@ -1,8 +1,6 @@
 ---
 import { getEntry } from "astro:content";
 
-import HashedLink from "@components/HashedLink.astro";
-
 const { "data": experiences } = await getEntry("about", "experiences");
 const individual_works = experiences.category_items.filter(item => item.item_subcategory === "individual");
 const collaborative_works = experiences.category_items.filter(item => item.item_subcategory === "collaborative");
@@ -16,89 +14,90 @@ const tools = skills.category_items.filter(item => item.item_subcategory === "to
 
 <article class="biography">
 	<!-- TODO: add floating image and change for each paragraph hovered -->
-	<p>My name is Jarlem Red de Peralta, born at Ilocos Norte on October 21, 2000. My first name was derived from my father's name "Raj", and mother's name "Mel" - both reversed. My determination to pursue a career in the ever-evolving world of information technology has been a driving force in shaping my life. At a young age, I was surrounded by various forms of modern technology, most of which are connected to the internet. I was always curious of what I could do with them. I was also an casual gamer and while my gamer skills improved, my computer literacy also did. It was only during my last high school years that I discovered my passion in design and development.</p>
+	<p>My name is Jarlem Red de Peralta, born at Ilocos Norte, Philippines on October 21, 2000. My first name was derived from my father's name "Raj", and mother's name "Mel". At a young age, I was surrounded by various forms of modern technology with internet connectivity. I was always curious of what I could do with them. I also became a casual gamer, which also improved my computer literacy.
 
-	<p>Fast forward to 2023, I graduated with a Bachelor of Science in Information Technology at Mabalacat City College. After accomplishing my capstone project along with my groupmates and my internship at a Front-end development driven company, I have been equipped with enough experience to pursue a career in web development. My journey as a Front-End Developer has been an rewarding adventure filled with continuous learning and growth. I started my career by diving into the basics of web development, learning the basics (HTML, CSS, JavaScript). As I became more proficient in these, I challenged myself to explore modern frameworks like React and Vue, which broadened my perception in building interactive user interfaces.</p>
+	<p>It was only during my late high school years that I discovered my passion in design and development. Fast forward to 2023, I graduated with a Bachelor of Science in Information Technology at Mabalacat City College. After accomplishing my capstone project along with my groupmates and my internship at a Front-end development driven company, I have been equipped with enough experience to pursue a career in web development.</p>
+
+	<p>My journey as a Front-End Developer has been an rewarding adventure filled with continuous learning and growth. I started my career by diving into the basics of web development by learning the basics (HTML, CSS, JavaScript). As I became more proficient in these, I challenged myself to explore modern frameworks like React and Vue, which broadened my perception in building interactive user interfaces.</p>
 
 	<p>Throughout my journey, I have had the privilege of working on diverse projects with cross-functional teams, including UX/UI designers, back-end developers, and product managers. Collaborating with these professionals taught me the importance of effective communication and understanding the broader context of a project to deliver the best results. I've faced my fair share of challenges, too. Debugging complex issues, optimizing performance, and ensuring cross-browser compatibility have all tested my problem-solving skills. But with each hurdle, I've gained valuable experience that has made me a more resilient and efficient developer.</p>
 
-	<p>One of the most fulfilling aspects of being a Front-End Developer is witnessing my work come to life. Whether it's a sleek e-commerce platform, an engaging social media app, or an informative blog, seeing users interact with the products I've helped build brings a sense of accomplishment and purpose to my career. As technology rapidly evolves, I've made a commitment to stay updated with the latest industry trends and best practices. I attend workshops, webinars, and conferences to enhance my skills and stay connected with the developer community.</p>
+	<p>One of the most fulfilling aspects of being a Front-End Developer is witnessing my work come to life. Whether it's a sleek e-commerce platform, an engaging social media app, or an informative blog, seeing users interact with the products I've helped build brings a sense of accomplishment and purpose to my career. As technology rapidly evolves, I've made a commitment to stay updated with the latest industry trends and best practices.</p>
 
 	<p>Looking ahead, I'm excited about the endless possibilities in front-end development. As I continue to grow and evolve in this ever-evolving field, I'm eager to take on new challenges, embrace emerging technologies, and contribute to the advancement of the digital landscape. My journey as a Front-End Developer has just begun, and I can't wait to see where it takes me next.</p>
 </article>
 
-<section class="experience">
-	<h2 id="experience" class="section-heading">
-		<HashedLink link="experience">Experience</HashedLink>
-	</h2>
+<div class="experiences-and-skills">
+	<section class="experience">
+		<h3 class="section-heading">Experience</h3>
+		<!-- TODO: use real works -->
+		<h4 id="individual-works">
+			Individual Works
+		</h4>
+		<ul class="individual-works-works">
+			{individual_works.map(({ item_title, item_link }) => <li class="individual-work"><a href={item_link}>{item_title}</a></li>)}
+		</ul>
 
-	<!-- TODO: use real works -->
+		<h4 id="collaborative-works">
+			Collaborative Works
+		</h4>
+		<ul class="collaborative-works">
+			{collaborative_works.map(({ item_title, item_link }) => <li class="collaborative-work"><a href={item_link}>{item_title}</a></li>)}
+		</ul>
 
-	<h3 id="individual-works">
-		Individual Works
-	</h3>
-	<ul class="individual-works">
-		{individual_works.map(({ item_title, item_link }) => <li class="individual-work"><a href={item_link}>{item_title}</a></li>)}
-	</ul>
+		<h4 id="certifications">
+			Certifications
+		</h4>
+		<ul class="certifications">
+			{certifications.map(({ item_title, item_link }) => <li class="certification"><a href={item_link}>{item_title}</a></li>)}
+		</ul>
+	</section>
 
-	<h3 id="collaborative-works">
-		Collaborative Works
-	</h3>
-	<ul class="collaborative-works">
-		{collaborative_works.map(({ item_title, item_link }) => <li class="collaborative-work"><a href={item_link}>{item_title}</a></li>)}
-	</ul>
-
-	<h3 id="certifications">
-		Certifications
-	</h3>
-	<ul class="certifications">
-		{certifications.map(({ item_title, item_link }) => <li class="certification"><a href={item_link}>{item_title}</a></li>)}
-	</ul>
-</section>
-
-<section class="skills">
-	<h2 id="skills" class="section-heading">
-		<HashedLink link="skills">Skills</HashedLink>
-	</h2>
-
-	<!-- TODO: use real tools -->
-
-	<h3 id="front-end">
-		Front-End
-	</h3>
-	<ul class="front-end">
-		{front_end.map(({ item_title, item_link }) => (
-			<li class="skill">
-				<a href={item_link}>{item_title}</a>
-			</li>
-		))}
-	</ul>
-
-	<h3 id="back-end">
-		Back-End
-	</h3>
-	<ul class="back-end">
-		{back_end.map(({ item_title, item_link }) => (
-			<li class="skill">
-				<a href={item_link}>{item_title}</a>
-			</li>
-		))}
-	</ul>
-
-	<h3 id="tools-and-collaboration">
-		Tools and Collaboration
-	</h3>
-	<ul class="tools-and-collaboration">
-		{tools.map(({ item_title, item_link }) => (
-			<li class="skill">
-				<a href={item_link}>{item_title}</a>
-			</li>
-		))}
-	</ul>
-</section>
+	<section class="skills">
+		<h3 id="skills" class="section-heading">Skill</h3>
+		<!-- TODO: use real tools -->
+		<h4 id="front-end">
+			Front-End/UI
+		</h4>
+		<ul class="front-end">
+			{front_end.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
+			))}
+		</ul>
+		<h4 id="back-end">
+			Back-End
+		</h4>
+		<ul class="back-end">
+			{back_end.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
+			))}
+		</ul>
+		<h4 id="tools-and-collaboration">
+			Tools and Collaboration
+		</h4>
+		<ul class="tools-and-collaboration">
+			{tools.map(({ item_title, item_link }) => (
+				<li class="skill">
+					<a href={item_link}>{item_title}</a>
+				</li>
+			))}
+		</ul>
+	</section>
+</div>
 
 <style lang="scss">
 @import "@styles/variables";
+
+
+@for $i from 3 through 4 {
+	h#{$i} {
+		--at-apply: text-[length:var(--SITE-H#{$i+2})] md:text-[length:var(--SITE-H#{$i+1})];
+	}
+}
 
 article, section {
 	$negated-header-height: calc(#{$header-height} * -1);
@@ -106,10 +105,7 @@ article, section {
 	margin-bottom: calc(#{$negated-header-height} + 2rem);
 
 	.section-heading {
-		@apply
-			mb-4
-			text-[1.5rem] uppercase font-semibold
-		;
+		@apply mb-4 font-semibold;
 
 		padding-top: calc(#{$header-height} + 4px);
 	}
@@ -117,6 +113,10 @@ article, section {
 	p {
 		@apply pb-[1.5rem];
 	}
+}
+
+.experiences-and-skills {
+	@apply sm:grid sm:grid-cols-2;
 }
 
 .experience, .skills {

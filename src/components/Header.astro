@@ -1,44 +1,8 @@
 ---
 import Nav from "@components/Nav.astro";
-
-const is_on_homepage = Astro.url.pathname === "/";
 ---
 
-<script define:vars={{ is_on_homepage }}>
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-function set_header_bg() {
-	const sections_container = document.getElementById("hero");
-	const header = document.querySelector("header");
-
-	// TODO: refactor!
-	if (is_on_homepage) {
-		const must_set_solid_bg = sections_container.getBoundingClientRect().y <= ((window.innerHeight) * -1);
-
-		header.classList.add("loaded");
-
-		if (must_set_solid_bg) {
-			header.classList.add("bg-white");
-			header.classList.add("dark:bg-dark");
-
-			header.classList.add("text-neutral-600");
-			header.classList.add("dark:text-white");
-			header.classList.remove("text-white");
-		} else {
-			header.classList.remove("bg-white");
-			header.classList.remove("dark:bg-dark");
-
-			header.classList.remove("text-neutral-600");
-			header.classList.remove("dark:text-white");
-			header.classList.add("text-white");
-		}
-	}
-}
-window.addEventListener("load", set_header_bg);
-window.addEventListener("scroll", set_header_bg);
-</script>
-
-
-<header class:list={{ "bg-white dark:bg-dark": !is_on_homepage }}>
+<header>
 	<div class="container">
 		<Nav />
 	</div>
@@ -46,17 +10,18 @@ window.addEventListener("scroll", set_header_bg);
 
 <style lang="scss">
 header {
-	@apply px-[1.5rem];
-	
-	&.loaded {
-	}
-
+	@apply
+		bg-gradient-to-b
+		from-30% from-site-white
+		dark:from-30% dark:from-site-black
+	;
 	position: fixed;
 	width: 100%;
 	top: 0;
 	z-index: 999;
 }
+
 .container {
-	@apply mx-auto h-full flex items-center justify-start sm:justify-center;
+	@apply h-full flex items-center justify-start sm:justify-center;
 }
 </style>

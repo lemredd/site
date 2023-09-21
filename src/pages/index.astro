@@ -2,36 +2,83 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 import About from "@components/About.astro";
+
+const projects = [
+	{
+		"id": 1,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 2,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 3,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 4,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 5,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+	{
+		"id": 6,
+		"name": "Project",
+		"description": "Project short description",
+		"image": "sample.jpg"
+	},
+];
 ---
 
 <BaseLayout page_title="Home">
-	<section class="hero about-me" id="hero">
-		<div class="container">
-			<h1 class="title">
-				Hello, I'm
-				<strong class="name">Jarlem Red</strong>
-			</h1>
-			<p class="nickname">
-				but you can call me <strong>lem</strong>.
-			</p>
-			<a class="about-link" href="/#about">Get to know more about me.</a>
-		</div>
-	</section>
+	<div class="container">
+		<section class="hero">
+			<h1 class="name">Jarlem <span class="red">Red</span></h1>
+			<h4 class="roles">Developer/Designer.</h4>
+			<h4 class="welcome">Welcome to my website.</h4>
+		</section>
 
-	<div class="container" id="sections-container">
 		<section id="projects">
-			<h1 class="title">Projects</h1>
+			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
-				{[1,2,3,4,5,6].map(item => (
-					<li class={`project-item project-${item}`}>project {item}</li>
+				{projects.map(({ id, name, description }) => (
+					<li class={`project-item project-${id}`}>
+						<div class="project-info">
+							<h5>{name} #{id}</h5>
+							<p>{description}</p>
+						</div>
+					</li>
 				))}
 			</ul>
-			<a href="/projects">See all the things I've built</a>
+			<a id="github-link" href="https://github.com/lemredd?tab=repositories">See all the things I've built</a>
 		</section>
 
 		<section id="about">
-			<h1 class="title">Who am I?</h1>
+			<h2 class="section-heading">Who am I?</h2>
 			<About />
+		</section>
+
+		<section id="contact">
+			<h2 class="section-heading">Get in touch</h2>
+			<ul class="plugs">
+				<!-- `unoCSS` icon presets won't work if this is refactored into constants & mapped as elements -->
+				<a href="https://linkedin.com/jarlemRed"><span class="i-simple-icons-linkedin"></span></a>
+				<a href="https://www.github.com/lemredd"><span class="i-simple-icons-github"></span></a>
+				<a href="mailto:jarlemdeperalta@gmail.com"><span class="i-simple-icons-gmail"></span></a>
+			</ul>
 		</section>
 	</div>
 </BaseLayout>
@@ -39,71 +86,113 @@ import About from "@components/About.astro";
 <style lang="scss">
 @import "@styles/variables";
 
-section {
+section:not(.hero) {
 	@apply pb-[2rem]
 }
 
-.container {
-	@apply mx-auto px-[1.5rem] sm:px-0;
-}
-
 .hero {
-	@apply pt-20;
-	background-image: linear-gradient(#000a, #000a), url("/src/assets/hero_portrait.jpg");
+	@apply
+		h-[inherit]
+		flex flex-col items-center justify-center gap-y-2
+		text-center
+		lg:items-start
+	;
+
 	background-origin: border-box;
 	background-position: center;
 	background-size: cover;
 	height: 100vh;
 
-	.container {
+	.name {
 		@apply
-			h-[inherit]
-			flex flex-col items-center justify-center
-			text-center text-white
+			relative
+			text-[length:var(--SITE-H4)] font-bold
+			md:font-semibold md:text-[length:var(--SITE-H2)] lg:text-[length:var(--SITE-H1)]
 		;
 	}
-
-	h1 .name {
-		@apply block text-12 sm:text-16;
+	.name .red {
+		@apply text-site-primary;
 	}
 
-	.nickname {
-		@apply uppercase text-neutral-300;
-	}
-
-	.about-link {
-		@apply mt-8;
+	.roles, .welcome {
+		@apply text-[length:var(--SITE-H6)] md:text-[length:var(--SITE-H5)] lg:text-[length:var(--SITE-H4)];
 	}
 }
 
-.title {
-	@apply my-8 text-8 sm:text-12;
+.section-heading {
+	@apply
+		mb-8
+		text-[length:var(--SITE-H4)] font-semibold
+		md:text-[length:var(--SITE-H3)] lg:text-[length:var(--SITE-H2)]
+	;
 }
 
 #projects, #about, #contact {
-
 	padding-top: $header-height;
-
-	.title {
-		@apply text-center font-bold;
-	}
 }
 
 .projects-container {
 	@apply
 		mb-[1rem]
-		grid gap-[.5rem]
-		sm:grid-cols-3 sm:grid-rows-3
+		grid gap-[2rem]
+		sm:grid-cols-2 sm:grid-rows-2
+		lg:grid-cols-3 lg:grid-rows-3
 	;
 
 	.project-item {
-		@apply rounded py-20 bg-neutral-200 dark:bg-dark-300;
+		$shadow:
+			0px 1.43668px 2.85018px 0px rgba(0, 0, 0, 0.10),
+			0px 3.34039px 6.62689px 0px rgba(0, 0, 0, 0.07),
+			0px 5.99856px 11.90037px 0px rgba(0, 0, 0, 0.06),
+			0px 9.95539px 19.7502px 0px rgba(0, 0, 0, 0.05)
+		;
 
+		@apply
+			rounded-[.25rem]
+			w-full h-[256px]
+			relative
+			dark:bg-site-footer-black
+			sm:w-[initial]
+		;
+
+		box-shadow: $shadow;
 		text-align: center;
 	}
 
-	.project-1, .project-4, .project-5 {
-		@apply sm:col-span-2;
+	.project-info {
+		@apply
+			pl-4 pb-4
+			absolute
+			inset-0
+			flex flex-col justify-end
+			gap-y-2
+			text-site-white text-left
+			bg-gradient-to-t from-site-black to-50%
+			opacity-0
+			transition-opacity duration-300
+		;
+
+		h5 {
+			@apply text-[length:var(--SITE-H5)];
+		}
 	}
+	.project-item:hover .project-info {
+		@apply opacity-100;
+	}
+
+	.project-1, .project-4, .project-5 {
+		@apply lg:col-span-2;
+	}
+}
+
+#github-link {
+	@apply inline-block mt-8;
+}
+
+.plugs {
+	@apply
+		flex gap-4
+		text-6
+	;
 }
 </style>

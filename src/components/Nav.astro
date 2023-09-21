@@ -4,8 +4,7 @@ import DarkModeToggler from "@components/DarkModeToggler.svelte";
 const links: Record<string, string> = {
 	"/#projects": "projects",
 	"/#about": "about",
-	"/#contact": "contact",
-	"/blog": "blog"
+	"/#contact": "contact"
 };
 ---
 
@@ -58,7 +57,7 @@ nav.mobile {
 		@apply
 			flex flex-col justify-center
 			uppercase
-			text-neutral-600 dark:text-white;
+			text-site-black dark:color-site-white;
 		;
 
 		inset: 50% 10%;
@@ -78,15 +77,15 @@ nav.mobile {
 				border border-neutral rounded
 				px-4 py-2.5
 				flex items-center justify-between
-				dark:color-white dark:bg-neutral-800
+				dark:color-site-white dark:bg-neutral-800
 				capitalize text-sm
 			;
 		}
 	}
 	.menu-backdrop {
 		@apply
-			bg-white bg-opacity-95
-			dark:bg-dark dark:bg-opacity-95
+			bg-site-white bg-opacity-95
+			dark:bg-site-black dark:bg-opacity-95
 		;
 		inset: 0;
 	}

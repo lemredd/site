@@ -1,0 +1,26 @@
+<footer>
+	<div class="container">
+		<p class="made-with">
+			<span>Made with 💖 + </span><span class="i-simple-icons-svelte"></span> + <span class="i-simple-icons-astro"></span>
+		</p>
+		<p class="license">Published under GPL License</p>
+	</div>
+</footer>
+
+<style lang="scss">
+footer {
+	@apply 
+		bg-site-black bg-opacity-10
+		dark:bg-site-footer-black
+		dark:bg-opacity-100
+	;
+
+	.container {
+		@apply w-[100%] py-8 text-center sm:text-left;
+	}
+}
+
+.license {
+	@apply mt-2 text-3;
+}
+</style>
