@@ -44,7 +44,7 @@ const projects = [
 ---
 
 <BaseLayout page_title="Home">
-	<section class="hero about-me" id="hero">
+	<section class="hero" id="hero">
 		<div class="container">
 			<h3 class="greeting">Hello, I am Jarlem.</h3>
 			<h1 class="roles">
@@ -95,19 +95,21 @@ section {
 	.container {
 		@apply
 			h-[inherit]
-			flex flex-col items-center justify-center gap-y-[1.5rem]
+			flex flex-col items-center justify-center gap-y-6
 			text-center
+			lg:items-start lg:gap-y-4
 		;
 	}
 
 	.greeting {
-		@apply text-[length:var(--SITE-H5)];
+		@apply text-[length:var(--SITE-H5)] lg:text-[length:var(--SITE-H3)];
 	}
 
 	.roles {
 		@apply
 			relative
 			text-[length:var(--SITE-H4)] text-site-primary uppercase font-bold
+			lg:text-[length:var(--SITE-H1)] lg:font-semibold
 		;
 	}
 	.roles .cursor {
@@ -115,7 +117,15 @@ section {
 			absolute -right-1 top-0 bottom-0
 			w-[.25rem]
 			bg-site-primary
+			invisible
 		;
+	}
+	:is(.roles:hover, .roles:active) .cursor {
+		@apply visible;
+	}
+
+	.welcome {
+		@apply lg:text-[length:var(--SITE-H4)];
 	}
 }
 
