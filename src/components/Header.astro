@@ -10,7 +10,10 @@ import Nav from "@components/Nav.astro";
 
 <style lang="scss">
 header {
-	@apply bg-site-white dark:bg-site-black;
+	@apply
+		bg-gradient-to-b from-20%
+		from-site-white dark:from-site-black
+	;
 	position: fixed;
 	width: 100%;
 	top: 0;
