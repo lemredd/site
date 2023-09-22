@@ -1,36 +1,46 @@
 {
 	"category_items": [
 		{
-			"item_title": "Foo",
+			"item_title": "React",
 			"item_subcategory": "front-end",
-			"item_link": "https://www.example.com"
+			"item_link": "https://react.dev/"
 		},
 		{
-			"item_title": "Bar",
+			"item_title": "VueJS",
 			"item_subcategory": "front-end",
-			"item_link": "https://www.example.com"
+			"item_link": "https://vuejs.org/"
+		},
+		{
+			"item_title": "Svelte",
+			"item_subcategory": "front-end",
+			"item_link": "https://svelte.dev/"
 		},
 
 		{
-			"item_title": "Foo",
+			"item_title": "ExpressJS",
 			"item_subcategory": "back-end",
-			"item_link": "https://www.example.com"
+			"item_link": "https://expressjs.com/"
 		},
 		{
-			"item_title": "Bar",
+			"item_title": "PostgreSQL",
 			"item_subcategory": "back-end",
-			"item_link": "https://www.example.com"
+			"item_link": "https://www.postgresql.org/"
+		},
+		{
+			"item_title": "MongoDB",
+			"item_subcategory": "back-end",
+			"item_link": "https://www.mongodb.com/"
 		},
 
 		{
-			"item_title": "Foo",
+			"item_title": "Figma",
 			"item_subcategory": "tools",
-			"item_link": "https://www.example.com"
+			"item_link": "https://www.figma.com/"
 		},
 		{
-			"item_title": "Bar",
+			"item_title": "Git",
 			"item_subcategory": "tools",
-			"item_link": "https://www.example.com"
+			"item_link": "https://git-scm.com/"
 		}
 	]
 }
