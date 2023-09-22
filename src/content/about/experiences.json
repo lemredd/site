@@ -1,14 +1,14 @@
 {
 	"category_items": [
 		{
-			"item_title": "Foo",
+			"item_title": "API-based Projects",
 			"item_subcategory": "individual",
 			"item_link": "https://www.example.com"
 		},
 		{
-			"item_title": "Bar",
+			"item_title": "Certification Projects",
 			"item_subcategory": "individual",
-			"item_link": "https://www.example.com"
+			"item_link": "https://github.com/lemredd?tab=repositories&q=topic%3Acertification-project"
 		},
 
 		{
