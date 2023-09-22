@@ -22,14 +22,19 @@
 		},
 
 		{
-			"item_title": "Foo",
+			"item_title": "ExpressJS",
 			"item_subcategory": "back-end",
-			"item_link": "https://www.example.com"
+			"item_link": "https://expressjs.com/"
 		},
 		{
-			"item_title": "Bar",
+			"item_title": "PostgreSQL",
 			"item_subcategory": "back-end",
-			"item_link": "https://www.example.com"
+			"item_link": "https://www.postgresql.org/"
+		},
+		{
+			"item_title": "MongoDB",
+			"item_subcategory": "back-end",
+			"item_link": "https://www.mongodb.com/"
 		},
 
 		{
