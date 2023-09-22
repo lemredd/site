@@ -15,11 +15,6 @@
 			"item_subcategory": "front-end",
 			"item_link": "https://svelte.dev/"
 		},
-		{
-			"item_title": "Figma",
-			"item_subcategory": "front-end",
-			"item_link": "https://www.figma.com/"
-		},
 
 		{
 			"item_title": "ExpressJS",
@@ -38,14 +33,14 @@
 		},
 
 		{
-			"item_title": "Foo",
+			"item_title": "Figma",
 			"item_subcategory": "tools",
-			"item_link": "https://www.example.com"
+			"item_link": "https://www.figma.com/"
 		},
 		{
-			"item_title": "Bar",
+			"item_title": "Git",
 			"item_subcategory": "tools",
-			"item_link": "https://www.example.com"
+			"item_link": "https://git-scm.com/"
 		}
 	]
 }
