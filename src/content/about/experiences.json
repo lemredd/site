@@ -3,7 +3,7 @@
 		{
 			"item_title": "API-based Projects",
 			"item_subcategory": "individual",
-			"item_link": "https://www.example.com"
+			"item_link": "https://github.com/lemredd?tab=repositories&q=topic%3Aapi-project"
 		},
 		{
 			"item_title": "Certification Projects",
@@ -12,14 +12,14 @@
 		},
 
 		{
-			"item_title": "Foo",
+			"item_title": "Talakutnangan (Capstone Project)",
 			"item_subcategory": "collaborative",
-			"item_link": "https://www.example.com"
+			"item_link": "https://github.com/JAJAKUnit16"
 		},
 		{
-			"item_title": "Bar",
+			"item_title": "Kotovaulo",
 			"item_subcategory": "collaborative",
-			"item_link": "https://www.example.com"
+			"item_link": "https://github.com/kotovaulo"
 		},
 
 		{
