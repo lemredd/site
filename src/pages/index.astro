@@ -4,41 +4,48 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import About from "@components/About.astro";
 
 const projects = [
+	// TODO: put in `src/content`
 	{
 		"id": 1,
 		"name": "Talakutnangan",
 		"description": "A capstone project aim to create a consultation chat platform for MCC.",
-		"image": "sample.jpg"
+		"image": "sample.jpg",
+		"link": "https://www.github.com/JAJAKUnit16/talakutnangan"
 	},
 	{
 		"id": 2,
 		"name": "7UI Web Solutions",
 		"description": "Your niche, on the web.",
-		"image": "sample.jpg"
+		"image": "sample.jpg",
+		"link": "https://techno2-landing-page.vercel.app/"
 	},
 	{
 		"id": 3,
 		"name": "Random Quote Machine",
 		"description": "A certification project from freeCodeCamp.org",
-		"image": "sample.jpg"
+		"image": "sample.jpg",
+		"link": "https://stackblitz.com/edit/lemredd-random-quote-machine"
 	},
 	{
 		"id": 4,
 		"name": "Calculator",
 		"description": "Basic Calculator Built with Vue.",
-		"image": "sample.jpg"
+		"image": "sample.jpg",
+		"link": "https://calculator-lemredd.vercel.app"
 	},
 	{
 		"id": 5,
 		"name": "Drum Machine",
 		"description": "A certification project from freeCodeCamp.org",
-		"image": "sample.jpg"
+		"image": "sample.jpg",
+		"link": "https://stackblitz.com/edit/lemredd-drum-machine"
 	},
 	{
 		"id": 6,
 		"name": "Markdown Previewer",
 		"description": "A certification project from freeCodeCamp.org",
-		"image": "sample.jpg"
+		"image": "sample.jpg",
+		"link": "https://stackblitz.com/edit/lemredd-markdown-previewer"
 	},
 ];
 ---
@@ -54,12 +61,12 @@ const projects = [
 		<section id="projects">
 			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
-				{projects.map(({ id, name, description }) => (
+				{projects.map(({ id, name, description, link }) => (
 					<li class={`project-item project-${id}`}>
-						<div class="project-info">
-							<h5>{name} #{id}</h5>
+						<a href={link} class="project-info">
+							<h5>{name}</h5>
 							<p>{description}</p>
-						</div>
+						</a>
 					</li>
 				))}
 			</ul>
@@ -161,6 +168,7 @@ section:not(.hero) {
 
 	.project-info {
 		@apply
+			block
 			pl-4 pb-4
 			absolute
 			inset-0
