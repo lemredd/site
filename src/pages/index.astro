@@ -7,44 +7,44 @@ const projects = [
 	// TODO: put in `src/content`
 	{
 		"id": 1,
-		"name": "Talakutnangan",
-		"description": "A capstone project aim to create a consultation chat platform for MCC.",
-		"image": "sample.jpg",
-		"link": "https://www.github.com/JAJAKUnit16/talakutnangan"
+		"name": "7UI Web Solutions",
+		"description": "Your niche, on the web.",
+		"image": "7ui.png",
+		"link": "https://techno2-landing-page.vercel.app/"
 	},
 	{
 		"id": 2,
-		"name": "7UI Web Solutions",
-		"description": "Your niche, on the web.",
-		"image": "sample.jpg",
-		"link": "https://techno2-landing-page.vercel.app/"
+		"name": "Talakutnangan",
+		"description": "A capstone project aim to create a consultation chat platform for MCC.",
+		"image": "talakutnangan.png",
+		"link": "https://www.github.com/JAJAKUnit16/talakutnangan"
 	},
 	{
 		"id": 3,
 		"name": "Random Quote Machine",
 		"description": "A certification project from freeCodeCamp.org",
-		"image": "sample.jpg",
+		"image": "random_quote_machine.png",
 		"link": "https://stackblitz.com/edit/lemredd-random-quote-machine"
 	},
 	{
 		"id": 4,
 		"name": "Calculator",
 		"description": "Basic Calculator Built with Vue.",
-		"image": "sample.jpg",
+		"image": "calculator.png",
 		"link": "https://calculator-lemredd.vercel.app"
 	},
 	{
 		"id": 5,
 		"name": "Drum Machine",
 		"description": "A certification project from freeCodeCamp.org",
-		"image": "sample.jpg",
+		"image": "drum_machine.png",
 		"link": "https://stackblitz.com/edit/lemredd-drum-machine"
 	},
 	{
 		"id": 6,
 		"name": "Markdown Previewer",
 		"description": "A certification project from freeCodeCamp.org",
-		"image": "sample.jpg",
+		"image": "markdown_previewer.png",
 		"link": "https://stackblitz.com/edit/lemredd-markdown-previewer"
 	},
 ];
@@ -61,8 +61,8 @@ const projects = [
 		<section id="projects">
 			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
-				{projects.map(({ id, name, description, link }) => (
-					<li class={`project-item project-${id}`}>
+				{projects.map(({ id, name, description, link, image }) => (
+					<li class={`project-item project-${id}`} style={`background-image: url('/images/${image}')`}>
 						<a href={link} class="project-info">
 							<h5>{name}</h5>
 							<p>{description}</p>
@@ -158,12 +158,20 @@ section:not(.hero) {
 			rounded-[.25rem]
 			w-full h-[256px]
 			relative
-			dark:bg-site-footer-black
-			sm:w-[initial]
+			bg-cover bg-center
+			sm:w-[initial] sm:bg-[position:initial]
 		;
+
+		&:hover::after {
+			@apply mix-blend-normal bg-transparent;
+		}
 
 		box-shadow: $shadow;
 		text-align: center;
+	}
+
+	.project-item::after {
+		@apply content-[""] absolute inset-0 bg-site-white mix-blend-darken;
 	}
 
 	.project-info {
