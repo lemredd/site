@@ -63,7 +63,7 @@ const projects = [
 			<ul class="projects-container">
 				{projects.map(({ id, name, description, link, image }) => (
 					<li class={`project-item project-${id}`} style={`background-image: url('/images/${image}')`}>
-						<a href={link} class="project-info">
+						<a href={link} target="_blank" class="project-info">
 							<h5>{name}</h5>
 							<p>{description}</p>
 						</a>
