@@ -4,46 +4,53 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import About from "@components/About.astro";
 
 const projects = [
+	// TODO: put in `src/content`
 	{
 		"id": 1,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
+		"name": "7UI Web Solutions",
+		"description": "Your niche, on the web.",
+		"image": "7ui.png",
+		"link": "https://techno2-landing-page.vercel.app/"
 	},
 	{
 		"id": 2,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
+		"name": "Talakutnangan",
+		"description": "Capstone project in MCC.",
+		"image": "talakutnangan.png",
+		"link": "https://www.github.com/JAJAKUnit16/talakutnangan"
 	},
 	{
 		"id": 3,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
+		"name": "Random Quote Machine",
+		"description": "A certification project from freeCodeCamp.org",
+		"image": "random_quote_machine.png",
+		"link": "https://stackblitz.com/edit/lemredd-random-quote-machine"
 	},
 	{
 		"id": 4,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
+		"name": "Calculator",
+		"description": "Basic Calculator Built with Vue.",
+		"image": "calculator.png",
+		"link": "https://calculator-lemredd.vercel.app"
 	},
 	{
 		"id": 5,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
+		"name": "Drum Machine",
+		"description": "A certification project from freeCodeCamp.org",
+		"image": "drum_machine.png",
+		"link": "https://stackblitz.com/edit/lemredd-drum-machine"
 	},
 	{
 		"id": 6,
-		"name": "Project",
-		"description": "Project short description",
-		"image": "sample.jpg"
+		"name": "Markdown Previewer",
+		"description": "A certification project from freeCodeCamp.org",
+		"image": "markdown_previewer.png",
+		"link": "https://stackblitz.com/edit/lemredd-markdown-previewer"
 	},
 ];
 ---
 
-<BaseLayout page_title="Home">
+<BaseLayout page_title="Lemredd">
 	<div class="container">
 		<section class="hero">
 			<h1 class="name">Jarlem <span class="red">Red</span></h1>
@@ -54,13 +61,17 @@ const projects = [
 		<section id="projects">
 			<h2 class="section-heading">Projects</h2>
 			<ul class="projects-container">
-				{projects.map(({ id, name, description }) => (
-					<li class={`project-item project-${id}`}>
-						<div class="project-info">
-							<h5>{name} #{id}</h5>
+				{projects.map(({ id, name, description, link, image }) => (
+					<li class={`project-item project-${id}`} style={`background-image: url('/images/${image}')`}>
+						<a href={link} target="_blank" class="project-info">
+							<h5>{name}</h5>
 							<p>{description}</p>
-						</div>
+						</a>
 					</li>
+					<section class="mobile-project-info">
+						<h5><a href={link} target="_blank">{name}</a></h5>
+						<p>{description}</p>
+					</section>
 				))}
 			</ul>
 			<a id="github-link" href="https://github.com/lemredd?tab=repositories">See all the things I've built</a>
@@ -151,25 +162,42 @@ section:not(.hero) {
 			rounded-[.25rem]
 			w-full h-[256px]
 			relative
-			dark:bg-site-footer-black
-			sm:w-[initial]
+			bg-cover bg-center
+			sm:w-[initial] md:bg-[position:initial]
 		;
 
 		box-shadow: $shadow;
 		text-align: center;
 	}
 
+	.project-item::after {
+		@apply
+			content-[""] absolute inset-0
+			bg-site-white mix-blend-darken
+			pointer-events-none
+		;
+	}
+
+	.mobile-project-info {
+		@apply text-center border-b last:border-none sm:hidden;
+
+		h5 {
+			@apply font-bold;
+		}
+	}
 	.project-info {
 		@apply
+			block
 			pl-4 pb-4
 			absolute
 			inset-0
 			flex flex-col justify-end
 			gap-y-2
 			text-site-white text-left
-			bg-gradient-to-t from-site-black to-50%
+			bg-gradient-to-t from-dark-100 to-50%
 			opacity-0
 			transition-opacity duration-300
+			<sm:hidden
 		;
 
 		h5 {

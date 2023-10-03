@@ -31,6 +31,11 @@
 			"item_title": "JavaScript Algorithms and Data Structures",
 			"item_subcategory": "certification",
 			"item_link": "https://www.freecodecamp.org/certification/lemredd/javascript-algorithms-and-data-structures"
+		},
+		{
+			"item_title": "Front End Development Libraries",
+			"item_subcategory": "certification",
+			"item_link": "https://www.freecodecamp.org/certification/lemredd/front-end-development-libraries"
 		}
 	]
 }
