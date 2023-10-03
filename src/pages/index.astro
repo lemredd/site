@@ -15,7 +15,7 @@ const projects = [
 	{
 		"id": 2,
 		"name": "Talakutnangan",
-		"description": "A capstone project aim to create a consultation chat platform for MCC.",
+		"description": "Capstone project in MCC.",
 		"image": "talakutnangan.png",
 		"link": "https://www.github.com/JAJAKUnit16/talakutnangan"
 	},
@@ -159,19 +159,19 @@ section:not(.hero) {
 			w-full h-[256px]
 			relative
 			bg-cover bg-center
-			sm:w-[initial] sm:bg-[position:initial]
+			sm:w-[initial] md:bg-[position:initial]
 		;
-
-		&:hover::after {
-			@apply mix-blend-normal bg-transparent;
-		}
 
 		box-shadow: $shadow;
 		text-align: center;
 	}
 
 	.project-item::after {
-		@apply content-[""] absolute inset-0 bg-site-white mix-blend-darken pointer-events-none;
+		@apply
+			content-[""] absolute inset-0
+			bg-site-white mix-blend-darken
+			pointer-events-none
+		;
 	}
 
 	.project-info {
@@ -183,7 +183,7 @@ section:not(.hero) {
 			flex flex-col justify-end
 			gap-y-2
 			text-site-white text-left
-			bg-gradient-to-t from-site-black to-50%
+			bg-gradient-to-t from-dark-100 to-50%
 			opacity-0
 			transition-opacity duration-300
 		;
