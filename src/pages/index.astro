@@ -68,6 +68,10 @@ const projects = [
 							<p>{description}</p>
 						</a>
 					</li>
+					<section class="mobile-project-info">
+						<h5><a href={link} target="_blank">{name}</a></h5>
+						<p>{description}</p>
+					</section>
 				))}
 			</ul>
 			<a id="github-link" href="https://github.com/lemredd?tab=repositories">See all the things I've built</a>
@@ -174,6 +178,13 @@ section:not(.hero) {
 		;
 	}
 
+	.mobile-project-info {
+		@apply text-center border-b last:border-none sm:hidden;
+
+		h5 {
+			@apply font-bold;
+		}
+	}
 	.project-info {
 		@apply
 			block
@@ -186,6 +197,7 @@ section:not(.hero) {
 			bg-gradient-to-t from-dark-100 to-50%
 			opacity-0
 			transition-opacity duration-300
+			<sm:hidden
 		;
 
 		h5 {
