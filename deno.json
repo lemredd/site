@@ -2,7 +2,11 @@
   "tasks": {
     "dev": "deno run --watch main.ts"
   },
+	"fmt": {
+		"use-tabs": true
+	},
   "imports": {
-    "@std/assert": "jsr:@std/assert@1"
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/http": "jsr:@std/http@^1.0.12"
   }
 }
