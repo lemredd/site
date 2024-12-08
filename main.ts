@@ -3,7 +3,12 @@ import { serveFile } from "@std/http/file-server";
 // @deno-types="npm:@types/nunjucks"
 import nunjucks from "nunjucks";
 
-nunjucks.configure("html", { autoescape: true, noCache: true });
+const template = nunjucks.configure("html", {
+  autoescape: true,
+  noCache: true,
+  trimBlocks: true,
+  lstripBlocks: true,
+});
 
 const mainHandler = (async (request: Request) => {
   const url = new URL(request.url);
@@ -13,7 +18,7 @@ const mainHandler = (async (request: Request) => {
   }
 
   return new Response(
-    nunjucks.render("home/index.html", { title: "Hello", message: "World" }),
+    template.render("home/index.html", { request, title: "Hello" }),
     { headers: { "content-type": "text/html" } },
   );
 }) satisfies Deno.ServeHandler;
