@@ -31,4 +31,6 @@ jobs:
         with:
           project: "lemredd"
           entrypoint: "main.ts"
-          root: "."
+          root: ""
+          
+          
