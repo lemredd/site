@@ -48,4 +48,4 @@ const mainHandler = (async (request: Request) => {
   return ROUTES[url.pathname](request);
 }) satisfies Deno.ServeHandler;
 
-Deno.serve(mainHandler);
+Deno.serve({ port: Number(Deno.env.get("PORT") ?? 8000) }, mainHandler);
