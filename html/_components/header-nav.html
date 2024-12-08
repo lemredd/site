@@ -8,7 +8,7 @@
 				<a
 					href="/{{ nav }}"
 					class="capitalize text-sm rounded px-2 py-1 [&[aria-current=page]]:font-bold [&[aria-current=page]]:text-primary"
-					{% if request.url.includes(nav) %}aria-current="page"{% endif %}
+					{% if request.url.includes(nav) or (request.url.endsWith("/") and nav === "home") %}aria-current="page"{% endif %}{# request is not deeply cloned (request.url.pathname is not accessible) #}
 				>{{ nav }}</a>
 			</li>
 		{% endfor %}
