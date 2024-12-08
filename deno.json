@@ -1,12 +1,15 @@
 {
-  "tasks": {
-    "dev": "deno run --watch main.ts"
-  },
+	"tasks": {
+		"tw-dev": "deno -A npm:tailwindcss -i ./input.css -o ./static/tailwind.css --watch",
+		"tw-build": "deno -A npm:tailwindcss -i ./input.css -o ./static/tailwind.css --minify --build",
+		"dev": "deno -A --watch main.ts",
+		"build": "deno task tw-build"
+	},
 	"fmt": {
 		"use-tabs": true
 	},
-  "imports": {
-    "@std/assert": "jsr:@std/assert@1",
-    "@std/http": "jsr:@std/http@^1.0.12"
-  }
+	"imports": {
+		"@std/assert": "jsr:@std/assert@1",
+		"@std/http": "jsr:@std/http@^1.0.12"
+	}
 }
