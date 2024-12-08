@@ -5,15 +5,17 @@ import nunjucks from "nunjucks";
 
 nunjucks.configure("html", { autoescape: true, noCache: true });
 
-Deno.serve(async (_req: Request) => {
-  const url = new URL(_req.url);
+const mainHandler = (async (request: Request) => {
+  const url = new URL(request.url);
 
   if (url.pathname.startsWith("/static")) {
-    return await serveFile(_req, `./${url.pathname}`);
+    return await serveFile(request, `./${url.pathname}`);
   }
 
   return new Response(
-    nunjucks.render("index.html", { title: "Hello", message: "World" }),
+    nunjucks.render("home/index.html", { title: "Hello", message: "World" }),
     { headers: { "content-type": "text/html" } },
   );
-});
+}) satisfies Deno.ServeHandler;
+
+Deno.serve(mainHandler);
