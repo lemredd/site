@@ -1,8 +1,3 @@
-/**
- * TODO:
- * 1. Run web server on a separate thread
- */
-
 import { expect } from "@std/expect";
 import { describe, it } from "@std/testing/bdd";
 
@@ -22,6 +17,17 @@ describe("Main Handler", () => {
     );
 
     response.blob(); // Close the response
+    expect(response.status).toBe(200);
+  });
+});
+
+describe("HTMX on templates", () => {
+  it("navigates with boost", async () => {
+    const response = await mainHandler(
+      new Request("http://localhost:8000/"),
+    );
+    const html = await response.text();
+    expect(html.includes('hx-boost="true')).toBe(true);
     expect(response.status).toBe(200);
   });
 });
