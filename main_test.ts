@@ -16,4 +16,12 @@ describe("Main Handler", () => {
 
     expect(response.status).toBe(404);
   });
+  it("serves static or `/favicon.ico`", async () => {
+    const response = await mainHandler(
+      new Request("http://localhost:8000/favicon.ico"),
+    );
+
+    response.blob(); // Close the response
+    expect(response.status).toBe(200);
+  });
 });
