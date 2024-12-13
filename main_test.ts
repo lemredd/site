@@ -3,11 +3,17 @@
  * 1. Run web server on a separate thread
  */
 
-import { assert } from "@std/assert";
+import { expect } from "@std/expect";
+import { describe, it } from "@std/testing/bdd";
+
 import { mainHandler } from "./main.ts";
 
-Deno.test("404 for unknown routes", async () => {
-  const request = new Request("http://localhost:8000/unknown");
-  const response = await mainHandler(request);
-  assert(response.status === 404);
+describe("Main Handler", () => {
+  it("returns 404", async () => {
+    const response = await mainHandler(
+      new Request("http://localhost:8000/unknown"),
+    );
+
+    expect(response.status).toBe(404);
+  });
 });
