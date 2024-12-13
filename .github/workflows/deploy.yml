@@ -26,11 +26,12 @@ jobs:
       - name: Build step
         run: "deno task build"
 
+      - name: Test step
+        run: "deno test -A"
+
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "lemredd"
           entrypoint: "main.ts"
           root: ""
-          
-          
