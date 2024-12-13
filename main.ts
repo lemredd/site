@@ -38,14 +38,18 @@ const ROUTES: Record<string, (request: Request) => Response> = {
   "/contact": contactHandler,
 };
 
-const mainHandler = (async (request: Request) => {
+export const mainHandler = (async (request: Request) => {
   const url = new URL(request.url);
 
-  if (url.pathname.startsWith("/static")) {
+  if (url.pathname.startsWith("/static") || url.pathname === "/favicon.ico") {
     return await serveFile(request, `./${url.pathname}`);
   }
 
-  return ROUTES[url.pathname](request);
+  try {
+    return ROUTES[url.pathname](request);
+  } catch {
+    return new Response("Not Found", { status: 404 });
+  }
 }) satisfies Deno.ServeHandler;
 
 Deno.serve({ port: Number(Deno.env.get("PORT") ?? 8000) }, mainHandler);
