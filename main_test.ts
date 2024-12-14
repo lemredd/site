@@ -30,4 +30,6 @@ describe("HTMX on templates", () => {
     expect(html.includes('hx-boost="true')).toBe(true);
     expect(response.status).toBe(200);
   });
+
+  it.skip("perf: requests `htmx.min.js` once", () => {});
 });
