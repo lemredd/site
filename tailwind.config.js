@@ -3,14 +3,25 @@ export default {
   content: ["./html/**/*.html"],
   theme: {
     extend: {
-      fontFamily: {
-        inter: ["Inter", "sans-serif"],
-      },
       colors: {
         primary: "#2EEBAA",
+        secondary: "#FFEE4A",
+        tertiary: "#44AAFF",
         fg: "#FFFFFF",
         "fg-2": "#999",
         bg: "#000000",
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+      keyframes: {
+        "scroll-rtl": {
+          to: { transform: "translateX(-100%)" },
+        },
+        "scroll-ltr": {
+          from: { transform: "translateX(-55%)" },
+          to: { transform: "translateX(0%)" },
+        },
       },
     },
   },
