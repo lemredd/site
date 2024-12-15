@@ -1,0 +1,11 @@
+{% extends "_layouts/base.html" %}
+
+{% block body %}
+{% include "_components/header-nav.html" %}
+	<div class="flex items-start my-16 justify-center gap-x-16 min-h-screen relative">
+		{% include "_components/aside-avatar.html" %}
+		<main class="basis-2/3 ml-auto">
+			{% block content %}{% endblock content %}
+		</main>
+	</div>
+{% endblock %}
