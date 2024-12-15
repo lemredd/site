@@ -1,14 +1,13 @@
 {# Header Navigation Component #}
-{% set navs = ["home", "work", "contact"] %}
-<header hx-boost="true">
+{% set navs = ["about", "work", "contact"] %}
 	<nav>
 		<ul class="container mx-auto flex justify-end gap-x-4 py-8">
 		{% for nav in navs %}
 			<li>
 				<a
 					href="/{{ nav }}"
-					class="capitalize text-sm rounded px-2 py-1 [&[aria-current=page]]:font-bold [&[aria-current=page]]:text-primary"
-					{% if request.url.includes(nav) or (request.url.endsWith("/") and nav === "home") %}aria-current="page"{% endif %}{# request is not deeply cloned (request.url.pathname is not accessible) #}
+					class="capitalize text-lg rounded px-2 py-1 [&[aria-current=page]]:font-bold [&[aria-current=page]]:text-primary"
+					{% if request.url.includes(nav) or (request.url.endsWith("/") and ["home", "about"].includes(nav)) %}aria-current="page"{% endif %}{# request is not deeply cloned (request.url.pathname is not accessible) #}
 				>{{ nav }}</a>
 			</li>
 		{% endfor %}
