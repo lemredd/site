@@ -4,6 +4,6 @@ import { RouteHandler } from "@/handlers/types.ts";
 export const workHandler = ((request: Request): Response => {
   return render({
     name: "work/index.html",
-    context: { request, title: "Hello" },
+    context: { request, title: "Work" },
   });
 }) satisfies RouteHandler;
