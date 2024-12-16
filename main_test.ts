@@ -1,7 +1,7 @@
 import { expect } from "@std/expect";
 import { describe, it } from "@std/testing/bdd";
 
-import { mainHandler } from "./main.ts";
+import { mainHandler } from "@/handlers/index.ts";
 
 describe("Main Handler", () => {
   it("returns 404", async () => {

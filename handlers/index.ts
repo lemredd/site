@@ -3,7 +3,7 @@ import { serveFile } from "@std/http/file-server";
 // @deno-types="npm:@types/nunjucks"
 import nunjucks from "nunjucks";
 
-import { RouteHandler } from "@/types.ts";
+import { RouteHandler } from "@/handlers/types.ts";
 import { workHandler } from "@/handlers/work/index.ts";
 import { aboutHandler } from "@/handlers/about/index.ts";
 import { contactHandler } from "@/handlers/contact/index.ts";
