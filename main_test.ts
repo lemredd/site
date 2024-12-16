@@ -16,7 +16,7 @@ describe("Main Handler", () => {
       new Request("http://localhost:8000/favicon.ico"),
     );
 
-    response.blob(); // Close the response
+    await response.blob(); // Close the response
     expect(response.status).toBe(200);
   });
 });
@@ -30,6 +30,4 @@ describe("HTMX on templates", () => {
     expect(html.includes('hx-boost="true')).toBe(true);
     expect(response.status).toBe(200);
   });
-
-  it.skip("perf: requests `htmx.min.js` once", () => {});
 });
