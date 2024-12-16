@@ -39,3 +39,4 @@ Untitled*.ipynb
 
 # Project specific ignores
 *.exe
+tmp/
