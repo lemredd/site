@@ -11,14 +11,21 @@ const ROUTES: Record<string, RouteHandler> = {
   "/contact": contactHandler,
 };
 
+const handleByURLPattern = (request: Request): Response => {
+  const url = new URL(request.url);
+  for (const pathname in ROUTES) {
+    const pattern = new URLPattern({ pathname });
+    if (pattern.test(url)) return ROUTES[pathname](request);
+  }
+
+  return new Response("Not Found", { status: 404 });
+};
+
 export const mainHandler = (async (request: Request) => {
   const url = new URL(request.url);
   if (url.pathname.startsWith("/static") || url.pathname === "/favicon.ico") {
     return await serveFile(request, `./${url.pathname}`);
   }
-  try {
-    return ROUTES[url.pathname](request);
-  } catch {
-    return new Response("Not Found", { status: 404 });
-  }
+
+  return handleByURLPattern(request);
 }) satisfies Deno.ServeHandler;
