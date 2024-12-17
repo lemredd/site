@@ -6,19 +6,7 @@
 		<h3 class="text-primary text-3xl capitalize">portfolio</h3>
 		{# TODO: integrate GitHub API #}
 		<h2 class="text-4xl capitalize">featured projects</h2>
-		<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20">
-			<li class="rounded-3xl col-span-full bg-zinc-900 p-4">
-				<a href="#" class="w-full h-full block">
-					foo
-				</a>
-			</li>
-			<li class="rounded-3xl bg-zinc-900 p-4">
-				<a href="#" class="w-full h-full block">foo</a>
-			</li>
-			<li class="rounded-3xl bg-zinc-900 p-4">
-				<a href="#" class="w-full h-full block">foo</a>
-			</li>
-		</ul>
+		{% include "work/projects.hx.html" %}
 	</section>
 	<section id="services" class="space-y-10">
 		<h3 class="text-primary text-3xl capitalize">services</h3>
@@ -42,12 +30,12 @@
 		{# TODO: make properly infinite #}
 		<div class="w-full max-w-[inherit] overflow-x-hidden h-[120px] relative before:absolute before:top-0 before:left-0 before:h-[120px] before:w-[240px] before:z-10 before:bg-gradient-to-r before:from-bg after:absolute after:top-0 after:right-0 after:h-[120px] after:w-[240px] after:z-10 after:bg-gradient-to-r after:from-transparent after:to-bg">
 			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-rtl_120s_linear_infinite] hover:[animation-play-state:paused]">
-				<img src="/static/images/skills/langs.svg" alt="languages" class="max-w-max">
+				<img src="/images/skills/langs.svg" alt="languages" class="max-w-max">
 			</div>
 		</div>
 		<div class="w-full max-w-[inherit] overflow-x-hidden h-[120px] relative before:absolute before:top-0 before:left-0 before:h-[120px] before:w-[240px] before:z-10 before:bg-gradient-to-r before:from-bg after:absolute after:top-0 after:right-0 after:h-[120px] after:w-[240px] after:z-10 after:bg-gradient-to-r after:from-transparent after:to-bg">
 			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-ltr_50s_linear_infinite] hover:[animation-play-state:paused]">
-				<img src="/static/images/skills/others.svg" alt="others" class="max-w-max">
+				<img src="/images/skills/others.svg" alt="others" class="max-w-max">
 			</div>
 		</div>
 	</section>
