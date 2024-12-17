@@ -1,7 +1,17 @@
-<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20" hx-swap-oob="true">
-	{% for i in [1,2,3] %}
-		<li class="rounded-3xl first:col-span-full bg-zinc-900 animate-pulse p-4">
-			<a href="#" class="w-full h-full block">foo</a>
-		</li>
-	{% endfor %}
+<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20">
+	{% if not projects %}
+		{% for i in [1,2,3] %}
+			<li class="rounded-3xl first:col-span-full bg-zinc-900 animate-pulse p-4">
+				<div class="size-[50px] bg-slate-700 rounded-full"></div>
+				<a href="#" class="w-full h-full block">foo</a>
+			</li>
+		{% endfor %}
+	{% else %}
+		{% for project in projects %}
+			<li class="rounded-3xl first:col-span-full bg-zinc-900 p-4">
+				<div class="size-[50px] bg-slate-700 rounded-full"></div>
+				<a href="#" class="w-full h-full block">{{ project.title }}</a>
+			</li>
+		{% endfor %}
+	{% endif %}
 </ul>
