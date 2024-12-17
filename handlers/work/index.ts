@@ -7,3 +7,10 @@ export const workHandler = ((request: Request): Response => {
     context: { request, title: "Work" },
   });
 }) satisfies RouteHandler;
+
+export const projectsHandler = ((request: Request): Response => {
+  return render({
+    name: "work/projects.hx.html",
+    context: { request, title: "Projects" },
+  });
+}) satisfies RouteHandler;
