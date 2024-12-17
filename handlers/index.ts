@@ -1,13 +1,15 @@
 import { serveFile } from "@std/http/file-server";
 
 import { RouteHandler } from "@/handlers/types.ts";
-import { workHandler } from "@/handlers/work/index.ts";
 import { aboutHandler } from "@/handlers/about/index.ts";
 import { contactHandler } from "@/handlers/contact/index.ts";
+import { projectsHandler, workHandler } from "@/handlers/work/index.ts";
 
+// TODO: couple pathname pattern next to handler declaration
 const ROUTES: Record<string, RouteHandler> = {
   "(/home|/about|/)": aboutHandler,
   "/work": workHandler,
+  "/work/projects": projectsHandler,
   "/contact": contactHandler,
 };
 
