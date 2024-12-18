@@ -8,7 +8,9 @@ export const workHandler = ((request: Request): Response => {
   });
 }) satisfies RouteHandler;
 
-export const projectsHandler = ((request: Request): Response => {
+export const projectsHandler = (async (request: Request): Promise<Response> => {
+  const sample = await fetch("https://example.com");
+  const result = await sample.text();
   return render({
     name: "work/projects.hx.html",
     context: { request, title: "Projects" },
