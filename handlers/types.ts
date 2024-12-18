@@ -1,1 +1,1 @@
-export type RouteHandler = (request: Request) => Response;
+export type RouteHandler = (request: Request) => Response | Promise<Response>;

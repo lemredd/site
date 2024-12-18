@@ -13,7 +13,9 @@ const ROUTES: Record<string, RouteHandler> = {
   "/contact": contactHandler,
 };
 
-const handleByURLPattern = (request: Request): [Response, boolean] => {
+const handleByURLPattern = (
+  request: Request,
+): [ReturnType<RouteHandler>, boolean] => {
   // TODO: use `@std/http/route` once stable
   const url = new URL(request.url);
   for (const pathname in ROUTES) {
@@ -26,12 +28,12 @@ const handleByURLPattern = (request: Request): [Response, boolean] => {
 
 export const mainHandler = (async (request: Request) => {
   const [response, matched] = handleByURLPattern(request);
-  if (matched) return response;
+  if (matched) return await response;
 
   try {
     const url = new URL(request.url);
     return await serveFile(request, `./static${url.pathname}`);
   } catch {
-    return response; // 404 by default
+    return await response; // 404 by default
   }
 }) satisfies Deno.ServeHandler;
