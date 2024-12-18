@@ -1,4 +1,4 @@
-<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20">
+<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20" hx-get="/work/projects" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
 	{% if not projects %}
 		{% for i in [1,2,3] %}
 			<li class="rounded-3xl first:col-span-full bg-zinc-900 animate-pulse p-4">
