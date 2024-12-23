@@ -1,17 +1,18 @@
-<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20" hx-get="/work/projects" hx-swap="outerHTML" hx-target="this" hx-trigger="load">
-	{% if not projects %}
-		{% for i in [1,2,3] %}
-			<li class="rounded-3xl first:col-span-full bg-zinc-900 animate-pulse p-4">
-				<div class="size-[50px] bg-slate-700 rounded-full"></div>
-				<a href="#" class="w-full h-full block">foo</a>
-			</li>
-		{% endfor %}
-	{% else %}
-		{% for project in projects %}
-			<li class="rounded-3xl first:col-span-full bg-zinc-900 p-4">
-				<div class="size-[50px] bg-slate-700 rounded-full"></div>
-				<a href="#" class="w-full h-full block">{{ project.title }}</a>
-			</li>
-		{% endfor %}
-	{% endif %}
+{# Projects #}
+{% if not projects %}
+<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20 htmx-indicator">
+	{% for i in [1,2,3] %}
+		<li class="rounded-3xl first:col-span-full bg-zinc-900 animate-pulse">
+			<div class="w-full h-full block p-4">foo</div>
+		</li>
+	{% endfor %}
 </ul>
+{% else %}
+<ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20">
+	{% for project in projects %}
+		<li class="rounded-3xl first:col-span-full bg-zinc-900">
+			<a href="#" class="w-full h-full block p-4">{{ project.title }}</a>
+		</li>
+	{% endfor %}
+</ul>
+{% endif %}
