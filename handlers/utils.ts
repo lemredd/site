@@ -19,6 +19,6 @@ export const render = (
   { name, context, headers }: RenderParameters,
 ): Response =>
   new Response(
-    template.render(name, context),
+    template.render(name, context), // TODO(perf): trim whitespaces manually
     { headers: { ...headers, "content-type": "text/html" } },
   );
