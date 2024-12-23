@@ -14,13 +14,13 @@ describe("Work: Projects", () => {
     expect($("li").hasClass("animate-pulse")).toBe(true);
   });
 
-  it("replaces itself on load (HTMX)", () => {
-    const rendered = template.render("work/projects.hx.html", {});
+  it("replaces its contents on load (HTMX)", () => {
+    const rendered = template.render("work/index.html", {
+      request: new Request("http://localhost:8000/work"),
+    });
     const $ = load(rendered);
 
-    expect($("ul").attr("hx-get")).toBe("/work/projects");
-    expect($("ul").attr("hx-swap")).toBe("outerHTML");
-    expect($("ul").attr("hx-target")).toBe("this");
-    expect($("ul").attr("hx-trigger")).toBe("load");
+    expect($("#projects").attr("hx-get")).toBe("/work/projects");
+    expect($("#projects").attr("hx-trigger")).toBe("load");
   });
 });
