@@ -23,7 +23,7 @@ const getFeaturedProjects = (project: Record<string, unknown>): boolean =>
 const extractProjects = (projects: Record<string, unknown>[]): Project[] =>
   projects.filter(getFeaturedProjects).slice(0, 3).map((project) =>
     ({
-      name: String(project["name"]),
+      name: String(project["full_name"]),
       description: String(project["description"]),
       html_url: String(project["html_url"]),
       topics: project["topics"] as string[],
@@ -40,8 +40,10 @@ const fallBackProjects = (): Project[] => [
 ];
 
 export const projectsHandler = (async (_: Request): Promise<Response> => {
-  // TODO: cache projects
-  const projects = await fetch("https://api.github.com/users/lemredd/repos")
+  // TODO: cache projects using `Deno.kv`
+  const projects = await fetch(
+    "https://api.github.com/users/lemredd/repos?sort=created&direction=desc",
+  )
     .then((response) => {
       if (!response.ok) throw response;
       return response.json();
