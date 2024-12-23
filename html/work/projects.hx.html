@@ -3,7 +3,7 @@
 <ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20 htmx-indicator">
 	{% for i in [1,2,3] %}
 		<li class="rounded-3xl first:col-span-full bg-zinc-900 animate-pulse">
-			<div class="w-full h-full block p-4">foo</div>
+			<div class="w-full h-full block p-4"></div>
 		</li>
 	{% endfor %}
 </ul>
@@ -11,7 +11,7 @@
 <ul class="grid gap-8 grid-cols-2 grid-rows-[300px_250px] mt-20">
 	{% for project in projects %}
 		<li class="rounded-3xl first:col-span-full bg-zinc-900">
-			<a href="#" class="w-full h-full block p-4">{{ project.title }}</a>
+			<a href="{{project.html_url}}" class="w-full h-full block p-4" target="_blank">{{ project.title }}</a>
 		</li>
 	{% endfor %}
 </ul>
