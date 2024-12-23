@@ -34,4 +34,28 @@ describe("Work: API Integration", () => {
     const gotRequestURL = new URL(String(fetchStub.calls[0].args[0]));
     expect(wantedURLPattern.test(gotRequestURL)).toBeTruthy();
   });
+  it("falls back to local data", async () => {
+    const mockHeaders = {
+      "Content-Type": "application/json",
+    } satisfies HeadersInit;
+    const mockResponseInit = {
+      headers: mockHeaders,
+      status: 429, // Rate limited
+    } satisfies ResponseInit;
+    const mockResponse = new Response(
+      JSON.stringify({ "message": "Rate Limit Exceeded" }) satisfies BodyInit,
+      mockResponseInit,
+    );
+    using _fetchStub = stub(
+      globalThis,
+      "fetch",
+      () => Promise.resolve(mockResponse),
+    );
+
+    const response = await mainHandler(
+      new Request("http://localhost:8000/work/projects"),
+    );
+
+    expect(response.status).toBe(200);
+  });
 });
