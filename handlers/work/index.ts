@@ -30,10 +30,24 @@ const extractProjects = (projects: Record<string, unknown>[]): Project[] =>
     }) satisfies Project
   );
 
+const fallBackProjects = (): Project[] => [
+  {
+    name: "Portfolio",
+    description: "This portfolio site",
+    html_url: "https://github.com/lemredd/lemredd.github.io",
+    topics: ["portfolio-featured"],
+  },
+];
+
 export const projectsHandler = (async (_: Request): Promise<Response> => {
+  // TODO: cache projects
   const projects = await fetch("https://api.github.com/users/lemredd/repos")
-    .then((response) => response.json())
-    .then(extractProjects);
+    .then((response) => {
+      if (!response.ok) throw response;
+      return response.json();
+    })
+    .then(extractProjects)
+    .catch(fallBackProjects);
 
   return render({
     name: "work/projects.hx.html",
