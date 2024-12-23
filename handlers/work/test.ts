@@ -30,6 +30,7 @@ describe("Work: API Integration", () => {
       protocol: "https",
       hostname: "api.github.com",
       pathname: "/users/:username/repos",
+      search: "sort=created&direction=desc",
     });
     const gotRequestURL = new URL(String(fetchStub.calls[0].args[0]));
     expect(wantedURLPattern.test(gotRequestURL)).toBeTruthy();
