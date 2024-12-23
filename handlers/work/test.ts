@@ -10,7 +10,7 @@ const PROJECTS_FIXTURE = [
 ];
 
 describe("Work: API Integration", () => {
-  it("lists projects from GitHub", async () => {
+  it("calls from GitHub API", async () => {
     const mockHeaders = {
       "Content-Type": "application/json",
     } satisfies HeadersInit;
@@ -24,11 +24,14 @@ describe("Work: API Integration", () => {
       () => Promise.resolve(mockResponse),
     );
 
-    const response = await mainHandler(
-      new Request("http://localhost:8000/work/projects"),
-    );
+    await mainHandler(new Request("http://localhost:8000/work/projects"));
 
-    expect(response.status).toBe(200);
-    console.log(fetchStub);
+    const wantedURLPattern = new URLPattern({
+      protocol: "https",
+      hostname: "api.github.com",
+      pathname: "/users/:username/repos",
+    });
+    const gotRequestURL = new URL(String(fetchStub.calls[0].args[0]));
+    expect(wantedURLPattern.test(gotRequestURL)).toBeTruthy();
   });
 });
