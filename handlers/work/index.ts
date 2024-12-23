@@ -14,8 +14,14 @@ interface Project {
   html_url: string;
   topics: string[];
 }
+
+const FEATURED_PROJECT_TOPIC = "portfolio-featured";
+
+const getFeaturedProjects = (project: Record<string, unknown>): boolean =>
+  (project["topics"] as string[]).includes(FEATURED_PROJECT_TOPIC);
+
 const extractProjects = (projects: Record<string, unknown>[]): Project[] =>
-  projects.map((project) =>
+  projects.filter(getFeaturedProjects).slice(0, 3).map((project) =>
     ({
       name: String(project["name"]),
       description: String(project["description"]),
@@ -26,13 +32,9 @@ const extractProjects = (projects: Record<string, unknown>[]): Project[] =>
 
 export const projectsHandler = (async (_: Request): Promise<Response> => {
   const projects = await fetch("https://api.github.com/users/lemredd/repos")
-    .then((response) => {
-      console.log(response);
-      response.json();
-    })
+    .then((response) => response.json())
     .then(extractProjects);
 
-  console.log(projects);
   return render({
     name: "work/projects.hx.html",
     context: { projects },
