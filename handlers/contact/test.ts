@@ -3,6 +3,24 @@ import { describe, it } from "@std/testing/bdd";
 import { assertSpyCalls, stub } from "@std/testing/mock";
 
 import { mainHandler } from "@/handlers/index.ts";
+import { submitContactForm } from "@/handlers/contact/index.ts";
+
+describe("contact: Form Validation", () => {
+  it("validates form", async () => {
+    const body = new FormData();
+    // body.append("name", "John Doe"); // missing `name`
+    body.append("email", "R2eQ3@example.com");
+    body.append("message", "Test message");
+    const request = new Request("http://localhost:8000/contact", {
+      method: "POST",
+      body,
+    });
+
+    const gotResponse = await submitContactForm(request),
+      wantedResponseStatus = 400;
+    expect(gotResponse.status).toBeGreaterThanOrEqual(wantedResponseStatus);
+  });
+});
 
 describe("Contact: API Integration", () => {
   it("submits to Google Apps Script", async () => {
