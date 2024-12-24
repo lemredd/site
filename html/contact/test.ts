@@ -6,10 +6,10 @@ import { load } from "cheerio";
 import { template } from "@/handlers/utils.ts";
 
 describe("Contact: Form", () => {
-  it("has required fields", () => {
-    const rendered = template.render("contact/form.html");
-    const $ = load(rendered);
+  const rendered = template.render("contact/form.html");
+  const $ = load(rendered);
 
+  it("has required fields", () => {
     const gotFields = $("form [name]"),
       wantedFieldNames = ["name", "email", "message"];
     gotFields.each((_idx, el) => {
@@ -17,10 +17,17 @@ describe("Contact: Form", () => {
     });
   });
 
-  it("Posts to own endpoint (HTMX)", () => {
-    const rendered = template.render("contact/form.html");
-    const $ = load(rendered);
-
+  it("posts to own endpoint (HTMX)", () => {
     expect($("form").attr("hx-post")).toBe("/contact");
+  });
+
+  it("renders CloudFlare Turnstile widget implicitly", () => {
+    const gotElement = $(".cf-turnstile[data-sitekey]");
+    expect(gotElement.length).toBeGreaterThan(0);
+  });
+});
+
+describe("Contact: Script Integration", () => {
+  it.skip("integrates CloudFlare Turnstile", () => {
   });
 });
