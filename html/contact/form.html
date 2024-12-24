@@ -13,6 +13,6 @@
 		<textarea name="message" id="message" placeholder="Write a brief message about your concern..." rows="5" class="py-2 border-b-2 border-b-[#fff2] placeholder:text-[#fff2] text-2xl"></textarea>
 	</div>
 	{# TODO: integrate CloudFlare Turnstile #}
-	<button class="border border-fg-2" id="turnstile">placeholder</button>
+	<div class="border border-fg-2 cf-turnstile" data-sitekey="{{CF_TURNSTILE_SITE_KEY}}"></div>
 	<button class="uppercase px-4 py-2 border border-fg-2 rounded-lg text-fg-2 w-full max-w-[200px] justify-self-end">Send</button>
 </form>
