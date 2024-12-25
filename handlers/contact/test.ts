@@ -3,7 +3,10 @@ import { describe, it } from "@std/testing/bdd";
 import { assertSpyCalls, stub } from "@std/testing/mock";
 
 import { mainHandler } from "@/handlers/index.ts";
-import { submitContactForm } from "@/handlers/contact/index.ts";
+import {
+  submitContactForm,
+  verifyTurnstileToken,
+} from "@/handlers/contact/index.ts";
 
 describe("contact: Form Validation", () => {
   it("validates form", async () => {
@@ -23,6 +26,37 @@ describe("contact: Form Validation", () => {
 });
 
 describe("Contact: API Integration", () => {
+  it("verifies Cloudflare Turnstile client token", async () => {
+    const mockHeaders = {
+        "Content-Type": "application/json",
+      } satisfies HeadersInit,
+      mockResponse = new Response(JSON.stringify({}), { headers: mockHeaders });
+    using fetchStub = stub(
+      globalThis,
+      "fetch",
+      () => Promise.resolve(mockResponse),
+    );
+
+    const token = "sample-token";
+    await verifyTurnstileToken(token);
+
+    const gotFetchURL = fetchStub.calls[0].args[0],
+      gotRequestInit = fetchStub.calls[0].args[1],
+      wantedURLPattern = new URLPattern({
+        baseURL: "https://challenges.cloudflare.com",
+        pathname: "/turnstile/v0/siteverify",
+      }),
+      wantedRequestInit = { method: "POST", body: new FormData() };
+    wantedRequestInit.body.append(
+      "secret",
+      String(Deno.env.get("CF_TURNSTILE_SECRET_KEY")),
+    );
+    wantedRequestInit.body.append("token", token);
+
+    expect(wantedURLPattern.test(String(gotFetchURL))).toBeTruthy();
+    expect(gotRequestInit).toEqual(wantedRequestInit);
+  });
+
   it("submits to Google Apps Script", async () => {
     const mockHeaders = { "Content-Type": "text/html" } satisfies HeadersInit,
       mockResponse = new Response("Test response", { headers: mockHeaders });
