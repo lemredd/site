@@ -28,6 +28,11 @@ describe("Contact: Form", () => {
 });
 
 describe("Contact: Script Integration", () => {
-  it.skip("integrates CloudFlare Turnstile", () => {
+  it("loads CDN script", () => {
+    const rendered = template.render("contact/index.html", {
+      request: new Request("http://localhost:8000/work"),
+    });
+    const $ = load(rendered);
+    expect($("script[src*=turnstile]").length).toEqual(1);
   });
 });
