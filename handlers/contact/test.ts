@@ -51,7 +51,7 @@ describe("Contact: API Integration", () => {
       "secret",
       String(Deno.env.get("CF_TURNSTILE_SECRET_KEY")),
     );
-    wantedRequestInit.body.append("token", token);
+    wantedRequestInit.body.append("response", token);
 
     expect(wantedURLPattern.test(String(gotFetchURL))).toBeTruthy();
     expect(gotRequestInit).toEqual(wantedRequestInit);

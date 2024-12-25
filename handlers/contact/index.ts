@@ -7,19 +7,30 @@ const validateContactForm = (form: Record<string, FormDataEntryValue>) => {
   return isValid;
 };
 
-export const verifyTurnstileToken = async (token: string) => {
+export const verifyTurnstileToken = async (
+  token: string,
+): Promise<Response> => {
   const verifyURL = new URL(
     "/turnstile/v0/siteverify",
     "https://challenges.cloudflare.com",
   );
   const body = new FormData();
   body.append("secret", String(Deno.env.get("CF_TURNSTILE_SECRET_KEY")));
-  body.append("token", token);
-  const response = await fetch(verifyURL, {
+  body.append("response", token);
+  const ERROR_MESSAGE =
+    "Cloudflare could not verify this form right now. Please try again later.";
+
+  return await fetch(verifyURL, {
     method: "POST",
     body,
-  });
-  return response.json();
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const { success } = data;
+      if (!success) return new Response(ERROR_MESSAGE, { status: 400 });
+      return new Response("Verification succeeded", { status: 202 });
+    })
+    .catch(() => new Response(ERROR_MESSAGE, { status: 503 }));
 };
 
 export const postToAppScript = async (body: FormData): Promise<Response> =>
@@ -42,8 +53,13 @@ const submitContactForm = (async (request: Request): Promise<Response> => {
   }
   // TODO: integrate Web3Forms
 
-  //const response = await postToAppScript(formData);
-  //if (!response.ok) { TODO: return error hypermedia }
+  const turnstileResponse = await verifyTurnstileToken(
+    String(formData.get("cf-turnstile-response")) ?? "",
+  );
+  if (!turnstileResponse.ok) return turnstileResponse;
+
+  const appScriptResponse = await postToAppScript(formData);
+  if (!appScriptResponse.ok) return appScriptResponse;
 
   return new Response("TODO");
 }) satisfies RouteHandler;
