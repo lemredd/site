@@ -35,7 +35,11 @@ const contactHandler = (async (request: Request): Promise<Response> => {
   if (request.method === "POST") return await submitContactForm(request);
   return render({
     name: "contact/index.html",
-    context: { request, title: "Contact" },
+    context: {
+      request,
+      title: "Contact",
+      siteKey: Deno.env.get("CF_TURNSTILE_SITE_KEY"),
+    },
   });
 }) satisfies RouteHandler;
 
