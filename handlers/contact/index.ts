@@ -7,17 +7,6 @@ const validateContactForm = (form: Record<string, FormDataEntryValue>) => {
   return isValid;
 };
 
-export const postToAppScript = async (body: FormData): Promise<Response> =>
-  await fetch(
-    `https://script.google.com/macros/s/${
-      Deno.env.get("GOOGLE_APPS_SCRIPT_DEPLOYMENT_ID")
-    }/exec`,
-    {
-      method: "POST",
-      body,
-    },
-  );
-
 export const verifyTurnstileToken = async (token: string) => {
   const verifyURL = new URL(
     "/turnstile/v0/siteverify",
@@ -32,6 +21,17 @@ export const verifyTurnstileToken = async (token: string) => {
   });
   return response.json();
 };
+
+export const postToAppScript = async (body: FormData): Promise<Response> =>
+  await fetch(
+    `https://script.google.com/macros/s/${
+      Deno.env.get("GOOGLE_APPS_SCRIPT_DEPLOYMENT_ID")
+    }/exec`,
+    {
+      method: "POST",
+      body,
+    },
+  );
 
 const submitContactForm = (async (request: Request): Promise<Response> => {
   const formData = await request.formData();
