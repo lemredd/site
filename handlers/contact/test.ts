@@ -2,8 +2,8 @@ import { expect } from "@std/expect";
 import { describe, it } from "@std/testing/bdd";
 import { assertSpyCalls, stub } from "@std/testing/mock";
 
-import { mainHandler } from "@/handlers/index.ts";
 import {
+  postToAppScript,
   submitContactForm,
   verifyTurnstileToken,
 } from "@/handlers/contact/index.ts";
@@ -70,11 +70,7 @@ describe("Contact: API Integration", () => {
     body.append("name", "John Doe");
     body.append("email", "R2eQ3@example.com");
     body.append("message", "Test message");
-    const request = new Request("http://localhost:8000/contact", {
-      method: "POST",
-      body,
-    });
-    await mainHandler(request);
+    await postToAppScript(body);
 
     const gotFetchURL = fetchStub.calls[0].args[0],
       wantedURLPattern = new URLPattern({
