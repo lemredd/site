@@ -19,7 +19,6 @@ export default {
           to: { transform: "translateX(-100%)" },
         },
         "scroll-ltr": {
-          from: { transform: "translateX(-55%)" },
           to: { transform: "translateX(0%)" },
         },
       },

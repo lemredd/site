@@ -29,15 +29,13 @@
 	<section id="skills" class="space-y-10">
 		<h3 class="text-primary text-3xl capitalize">Skills</h3>
 		<h4 class="text-4xl capitalize">What I use to get things done</h4>
-		{# TODO: make properly infinite #}
 		<div class="w-full max-w-[inherit] overflow-x-hidden h-[130px] marquee-overlay">
-		{#<div class="w-full max-w-[inherit] overflow-x-hidden h-[120px] relative before:absolute before:top-0 before:-left-3 before:h-[120px] before:w-[240px] before:z-10 before:bg-gradient-to-r before:from-bg after:absolute after:top-0 after:-right-1 after:h-[120px] after:w-[240px] after:z-10 after:bg-gradient-to-r after:from-transparent after:to-bg">#}
-			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-rtl_120s_linear_infinite] hover:[animation-play-state:paused]">
+			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-rtl_120s_linear_infinite] hover:[animation-play-state:paused] translate-x-[500px]">
 				<img src="/images/skills/langs.svg" alt="languages" class="max-w-max">
 			</div>
 		</div>
 		<div class="w-full max-w-[inherit] overflow-x-hidden h-[130px] marquee-overlay">
-			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-ltr_50s_linear_infinite] hover:[animation-play-state:paused]">
+			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-ltr_50s_linear_infinite] hover:[animation-play-state:paused] items-end -translate-x-[100%]">
 				<img src="/images/skills/others.svg" alt="others" class="max-w-max">
 			</div>
 		</div>
