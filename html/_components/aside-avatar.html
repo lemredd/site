@@ -1,6 +1,6 @@
 {# Aside Avatar #}
-<aside class="fixed left-[max(0px,calc(50%-40rem))] top-0 bottom-0 basis-1/3 z-10 flex flex-col items-center justify-center gap-y-8 h-full">
-	<img src="https://placehold.co/360x360" class="rounded-3xl" alt="lemredd's image">
+<aside class="hidden sticky ml-8 xl:ml-0 left-[max(0px,calc(50%-40rem))] top-40 bottom-0 basis-1/3 z-10 lg:flex flex-col items-center justify-center gap-y-8 h-full">
+	<img src="https://placehold.co/360x360" class="rounded-xl lg:rounded-3xl size-[200px] lg:size-[unset]" alt="lemredd's image">
 	<div class="relative w-full h-max">
 		{% set socials = {
 			"github": "github.com/lemredd",
@@ -8,7 +8,7 @@
 			"dailydev": "app.daily.dev/lemredd"
 		} %}
 		{# TODO: use singular `socials.svg` and imitate McMaster Carr #}
-			<ul class="flex justify-evenly items-center">
+			<ul class="flex justify-center gap-x-8 lg:justify-evenly lg:gap-x-0 items-center">
 				{% for social, link in socials %}
 					<li>
 						<a href="https://{{ link }}" target="_blank">
