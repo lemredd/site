@@ -7,3 +7,13 @@
 		@apply appearance-none bg-transparent focus:outline-none focus:ring-0 focus:border-0;
 	}
 }
+
+@layer {
+	.marquee-overlay {
+		@apply relative;
+	}
+	.marquee-overlay:before {
+		@apply content-none absolute h-[inherit] z-10 -left-2 -right-2 px-4;
+		background: linear-gradient(90deg, #000 0%, transparent 25%, transparent 75%, #000 100%);
+	}
+}
