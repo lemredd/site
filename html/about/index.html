@@ -1,14 +1,31 @@
 {% extends "_layouts/body.html" %}
 
 {% block content %}
-<div class="space-y-28 lg:space-y-40">
+<aside class="flex lg:hidden flex-col items-center justify-center gap-y-8 size-full">
+	<img src="https://placehold.co/360x360" class="rounded-xl lg:rounded-3xl size-[200px] lg:size-[unset]" alt="lemredd's image">
+	<div class="relative w-full h-max">
+		{% set socials = {
+			"github": "github.com/lemredd",
+			"linkedin": "linkedin.com/in/jarlemred",
+			"dailydev": "app.daily.dev/lemredd"
+		} %}
+		{# TODO: use singular `socials.svg` and imitate McMaster Carr #}
+			<ul class="flex justify-center gap-x-8 lg:justify-evenly lg:gap-x-0 items-center">
+				{% for social, link in socials %}
+					<li>
+						<a href="https://{{ link }}" target="_blank">
+							<img src="/images/socials/social-{{ social }}.svg" alt="{{ social }}">
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+	</div>
+</aside>
+<div class="space-y-28 lg:space-y-40 mt-8 lg:mt-0">
 	<section class="lg:max-w-[768px] space-y-6 lg:space-y-10 flex flex-col items-center lg:block">
 		{% set extras = ["FOSS Advocate", "Calisthenics Athlete"] %}
-		<h1 class="text-[32px] lg:text-[64px]">I'm <strong class="text-primary">Lem</strong>. Web Developer & {{extras | random }}</h1>
-		<p class="text-fg-2 text-xl max-w-[768px]">I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.</p>
-		{#
-		<p class="text-fg-2 text-xl">I craft elegant solutions to complex challenges, blending design and development for seamless applications.</p>
-		#}
+		<h1 class="text-[32px] lg:text-[64px] text-center lg:text-left">I'm <strong class="text-primary">Lem</strong>. Web Developer & {{extras | random }}</h1>
+		<p class="text-fg-2 text-xl text-center lg:text-left max-w-[768px]">I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.</p>
 	</section>
 	<section>
 		<ul class="flex flex-row flex-wrap xl:flex-nowrap items-center lg:items-end gap-y-8 gap-x-4 sm:gap-x-0 xl:gap-0 justify-center w-full">
@@ -23,7 +40,7 @@
 	</section>
 	<section id="about" class="space-y-10">
 		<h3 class="text-primary text-3xl">About</h3>
-		<h4 class="text-4xl capitalize">a self-improving web artisan</h4>
+		<h4 class="text-3xl lg:text-4xl capitalize">self-improving web artisan</h4>
 		<p class="text-fg-2 text-xl">
 			Since starting my journey as a full stack web developer nearly 4 years ago, I have built web solutions for diverse clients and collaborated with talented teams to develop impactful digital products for businesses and consumers. I’m confident, curious, and always refining my skills, tackling one coding challenge at a time.
 		</p>
