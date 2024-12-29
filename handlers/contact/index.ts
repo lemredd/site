@@ -61,7 +61,10 @@ const submitContactForm = (async (request: Request): Promise<Response> => {
   const appScriptResponse = await postToAppScript(formData);
   if (!appScriptResponse.ok) return appScriptResponse;
 
-  return new Response("TODO");
+  return render({
+    name: "contact/status.hx.html",
+    context: { status: "success", message: "Your message has been sent." },
+  });
 }) satisfies RouteHandler;
 
 const contactHandler = (async (request: Request): Promise<Response> => {
