@@ -21,6 +21,10 @@ describe("Contact: Form", () => {
     expect($("form").attr("hx-post")).toBe("/contact");
   });
 
+  it("replaces output's contents (HTMX)", () => {
+    expect($("form").attr("hx-target")).toBe("find output");
+  });
+
   it("renders CloudFlare Turnstile widget implicitly", () => {
     const gotElement = $(".cf-turnstile[data-sitekey]");
     expect(gotElement.length).toBeGreaterThan(0);
