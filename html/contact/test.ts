@@ -21,8 +21,16 @@ describe("Contact: Form", () => {
     expect($("form").attr("hx-post")).toBe("/contact");
   });
 
+  it("uses status code target extension (HTMX)", () => {
+    const rendered = template.render("contact/index.html", {
+      request: new Request("http://localhost:8000/work"),
+    });
+    const $ = load(rendered);
+    expect($("#skills").attr("hx-ext")).toBe("response-targets");
+  });
+
   it("replaces output's contents (HTMX)", () => {
-    expect($("form").attr("hx-target")).toBe("find output");
+    expect($("form").attr("hx-target-*")).toBe("find output");
   });
 
   it("renders CloudFlare Turnstile widget implicitly", () => {
