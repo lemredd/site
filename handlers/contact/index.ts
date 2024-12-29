@@ -3,7 +3,7 @@ import { RouteHandler } from "@/handlers/types.ts";
 
 const validateContactForm = (form: Record<string, FormDataEntryValue>) => {
   const isValid = form.name && form.email && form.message;
-  if (!isValid) throw new Error("Invalid form");
+  if (!isValid) throw new Error("Fill in all required fields.");
   return isValid;
 };
 
@@ -19,6 +19,7 @@ export const verifyTurnstileToken = async (
   body.append("response", token);
   const ERROR_MESSAGE =
     "Cloudflare could not verify this form right now. Please try again later.";
+  return new Response(ERROR_MESSAGE, { status: 503 });
 
   return await fetch(verifyURL, {
     method: "POST",
@@ -69,8 +70,10 @@ const submitContactForm = (async (request: Request): Promise<Response> => {
   const formData = await request.formData();
   try {
     validateContactForm(Object.fromEntries(formData));
-  } catch {
-    return await renderStatus(new Response("Invalid form", { status: 400 }));
+  } catch (e) {
+    return await renderStatus(
+      new Response((e as Error).message, { status: 400 }),
+    );
   }
   // TODO: integrate Web3Forms
 
