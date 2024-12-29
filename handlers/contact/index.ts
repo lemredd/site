@@ -54,19 +54,15 @@ export const postToAppScript = async (body: FormData): Promise<Response> => {
 };
 
 const renderStatus = async (response: Response): Promise<Response> => {
-  if (!response.ok) {
-    return render(
-      {
-        name: "contact/status.hx.html",
-        context: { status: "error", message: await response.text() },
-      },
-    );
-  }
+  const context = {
+    status: response.ok ? "success" : "error",
+    message: await response.text(),
+  };
+  const responseInit = {
+    status: response.status,
+  } satisfies ResponseInit;
 
-  return render({
-    name: "contact/status.hx.html",
-    context: { status: "success", message: await response.text() },
-  });
+  return render({ context, responseInit, name: "contact/status.hx.html" });
 };
 
 const submitContactForm = (async (request: Request): Promise<Response> => {
@@ -74,17 +70,17 @@ const submitContactForm = (async (request: Request): Promise<Response> => {
   try {
     validateContactForm(Object.fromEntries(formData));
   } catch {
-    return renderStatus(new Response("Invalid form", { status: 400 }));
+    return await renderStatus(new Response("Invalid form", { status: 400 }));
   }
   // TODO: integrate Web3Forms
 
   const token = String(formData.get("cf-turnstile-response")) ?? "";
   const turnstileResponse = await verifyTurnstileToken(token);
-  if (!turnstileResponse.ok) return renderStatus(turnstileResponse);
+  if (!turnstileResponse.ok) return await renderStatus(turnstileResponse);
   const appScriptResponse = await postToAppScript(formData);
-  if (!appScriptResponse.ok) return renderStatus(appScriptResponse);
+  if (!appScriptResponse.ok) return await renderStatus(appScriptResponse);
 
-  return renderStatus(
+  return await renderStatus(
     new Response("Your message has been sent.", { status: 202 }),
   );
 }) satisfies RouteHandler;
