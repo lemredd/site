@@ -33,38 +33,60 @@ export const verifyTurnstileToken = async (
     .catch(() => new Response(ERROR_MESSAGE, { status: 503 }));
 };
 
-export const postToAppScript = async (body: FormData): Promise<Response> =>
-  await fetch(
-    `https://script.google.com/macros/s/${
-      Deno.env.get("GOOGLE_APPS_SCRIPT_DEPLOYMENT_ID")
-    }/exec`,
+export const postToAppScript = async (body: FormData): Promise<Response> => {
+  const appScriptURL = new URL(
+    `/macros/s/${Deno.env.get("GOOGLE_APPS_SCRIPT_DEPLOYMENT_ID")}/exec`,
+    "https://script.google.com",
+  );
+  const ERROR_MESSAGE =
+    "Could not submit this form right now. Please try again later.";
+  return await fetch(
+    appScriptURL,
     {
       method: "POST",
       body,
     },
-  );
+  ).then((response) => {
+    if (!response.ok) return new Response(ERROR_MESSAGE, { status: 500 });
+    return new Response("Form submitted", { status: 202 });
+  })
+    .catch(() => new Response(ERROR_MESSAGE, { status: 503 }));
+};
+
+const renderStatus = async (response: Response): Promise<Response> => {
+  if (!response.ok) {
+    return render(
+      {
+        name: "contact/status.hx.html",
+        context: { status: "error", message: await response.text() },
+      },
+    );
+  }
+
+  return render({
+    name: "contact/status.hx.html",
+    context: { status: "success", message: await response.text() },
+  });
+};
 
 const submitContactForm = (async (request: Request): Promise<Response> => {
   const formData = await request.formData();
   try {
     validateContactForm(Object.fromEntries(formData));
   } catch {
-    return new Response("Invalid form", { status: 400 });
+    return renderStatus(new Response("Invalid form", { status: 400 }));
   }
   // TODO: integrate Web3Forms
 
-  const turnstileResponse = await verifyTurnstileToken(
-    String(formData.get("cf-turnstile-response")) ?? "",
-  );
-  if (!turnstileResponse.ok) return turnstileResponse;
-
+  const token = String(formData.get("cf-turnstile-response")) ?? "";
+  const turnstileResponse = await verifyTurnstileToken(token);
+  if (!turnstileResponse.ok) return renderStatus(turnstileResponse);
   const appScriptResponse = await postToAppScript(formData);
-  if (!appScriptResponse.ok) return appScriptResponse;
+  if (!appScriptResponse.ok) return renderStatus(appScriptResponse);
 
-  return render({
-    name: "contact/status.hx.html",
-    context: { status: "success", message: "Your message has been sent." },
-  });
+  return renderStatus(
+    new Response("Your message has been sent.", { status: 202 }),
+  );
 }) satisfies RouteHandler;
 
 const contactHandler = (async (request: Request): Promise<Response> => {
