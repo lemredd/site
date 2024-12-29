@@ -5,7 +5,7 @@ import { Environment as TemplateEnvironment } from "npm:@types/nunjucks";
 interface RenderParameters {
   name: Parameters<TemplateEnvironment["render"]>[0];
   context: Parameters<TemplateEnvironment["render"]>[1];
-  headers?: HeadersInit;
+  requestInit?: RequestInit;
 }
 
 export const template = nunjucks.configure("html", {
@@ -16,9 +16,12 @@ export const template = nunjucks.configure("html", {
 });
 
 export const render = (
-  { name, context, headers }: RenderParameters,
+  { name, context, requestInit }: RenderParameters,
 ): Response =>
   new Response(
     template.render(name, context), // TODO(perf): trim whitespaces manually
-    { headers: { ...headers, "content-type": "text/html" } },
+    {
+      ...requestInit,
+      headers: { ...requestInit?.headers ?? {}, "Content-Type": "text/html" },
+    },
   );
