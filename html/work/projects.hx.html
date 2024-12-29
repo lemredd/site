@@ -21,7 +21,11 @@
 				<p>{{project.description}}</p>
 				<ul class="flex flex-wrap gap-4 items-center">
 				{% for topic in project.topics %}
+				{% if loop.index0 <= 3 %}
+				{% if topic !== "portfolio-featured" %}
 					<li class="text-sm text-fg-2 bg-fg py-1 px-2 rounded-full">{{topic}}</li>
+				{% endif %}
+				{% endif %}
 				{% endfor %}
 				</ul>
 			</div>
