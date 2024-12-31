@@ -1,16 +1,42 @@
 import { expect } from "@std/expect";
-import { stub } from "@std/testing/mock";
+import { spy, stub } from "@std/testing/mock";
 import { describe, it } from "@std/testing/bdd";
 
-import { mainHandler } from "@/handlers/index.ts";
+// @deno-types="npm:@types/memory-cache"
+import cache from "memory-cache";
+
+import { Project, projectsHandler } from "@/handlers/work/index.ts";
 
 const PROJECTS_FIXTURE = [
-  { id: 1 },
-  { id: 2 },
-];
+  {
+    description: "Project 1",
+    html_url: "https://example.com/1",
+    name: "Project 1",
+    topics: ["topic-1", "topic-2"],
+  },
+  {
+    description: "Project 2",
+    html_url: "https://example.com/2",
+    name: "Project 2",
+    topics: ["topic-1", "topic-2"],
+  },
+] satisfies Project[];
 
 describe("Work: API Integration", () => {
+  it("checks cache first", async () => {
+    using fetchSpy = spy(globalThis, "fetch");
+    using cacheGetStub = stub(cache, "get", () => PROJECTS_FIXTURE);
+
+    const response = await projectsHandler(
+      new Request("http://localhost:8000/work/projects"),
+    );
+    expect(cacheGetStub.calls).toHaveLength(1);
+    expect(fetchSpy.calls).toHaveLength(0);
+    expect(response.status).toBe(304);
+  });
+
   it("calls from GitHub API", async () => {
+    using cachePutStub = stub(cache, "put");
     const mockHeaders = {
       "Content-Type": "application/json",
     } satisfies HeadersInit;
@@ -24,7 +50,7 @@ describe("Work: API Integration", () => {
       () => Promise.resolve(mockResponse),
     );
 
-    await mainHandler(new Request("http://localhost:8000/work/projects"));
+    await projectsHandler(new Request("http://localhost:8000/work/projects"));
 
     const wantedURLPattern = new URLPattern({
       protocol: "https",
@@ -34,7 +60,9 @@ describe("Work: API Integration", () => {
     });
     const gotRequestURL = new URL(String(fetchStub.calls[0].args[0]));
     expect(wantedURLPattern.test(gotRequestURL)).toBeTruthy();
+    expect(cachePutStub.calls).toHaveLength(1);
   });
+
   it("falls back to local data", async () => {
     const mockHeaders = {
       "Content-Type": "application/json",
@@ -53,7 +81,7 @@ describe("Work: API Integration", () => {
       () => Promise.resolve(mockResponse),
     );
 
-    const response = await mainHandler(
+    const response = await projectsHandler(
       new Request("http://localhost:8000/work/projects"),
     );
 
