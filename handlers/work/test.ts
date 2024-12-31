@@ -23,13 +23,25 @@ const PROJECTS_FIXTURE = [
 ] satisfies Project[];
 
 describe("Work: API Integration", () => {
+  const hxRequest = new Request("http://localhost:8000/work/projects", {
+    headers: {
+      "HX-Request": "true",
+      "HX-Current-URL": "http://localhost:8000/work",
+    },
+  });
+
+  it("guards against non-hypermedia requests", async () => {
+    const response = await projectsHandler(
+      new Request("http://localhost:8000/work"),
+    );
+    expect(response.status).toBe(403);
+  });
+
   it("checks cache first", async () => {
     using fetchSpy = spy(globalThis, "fetch");
     using cacheGetStub = stub(cache, "get", () => PROJECTS_FIXTURE);
 
-    const response = await projectsHandler(
-      new Request("http://localhost:8000/work/projects"),
-    );
+    const response = await projectsHandler(hxRequest);
     expect(cacheGetStub.calls).toHaveLength(1);
     expect(fetchSpy.calls).toHaveLength(0);
     expect(response.status).toBe(304);
@@ -50,7 +62,7 @@ describe("Work: API Integration", () => {
       () => Promise.resolve(mockResponse),
     );
 
-    await projectsHandler(new Request("http://localhost:8000/work/projects"));
+    await projectsHandler(hxRequest);
 
     const wantedURLPattern = new URLPattern({
       protocol: "https",
@@ -81,9 +93,7 @@ describe("Work: API Integration", () => {
       () => Promise.resolve(mockResponse),
     );
 
-    const response = await projectsHandler(
-      new Request("http://localhost:8000/work/projects"),
-    );
+    const response = await projectsHandler(hxRequest);
 
     expect(response.status).toBe(200);
   });
