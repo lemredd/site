@@ -5,7 +5,6 @@ import { aboutHandler } from "@/handlers/about/index.ts";
 import { contactHandler } from "@/handlers/contact/index.ts";
 import { projectsHandler, workHandler } from "@/handlers/work/index.ts";
 
-// TODO: couple pathname pattern next to handler declaration
 const ROUTES: Record<string, RouteHandler> = {
   "(/home|/about|/)": aboutHandler,
   "/work": workHandler,
