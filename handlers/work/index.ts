@@ -55,19 +55,27 @@ const checkHXHeaders = (request: Request): boolean =>
     "/work",
   );
 
+const returnByCache = (
+  request: Request,
+  cachedProjects: Project[],
+): Response => {
+  if (request.headers.get("Cache-Control") === "no-cache") {
+    return render({
+      name: "work/projects.hx.html",
+      context: { projects: cachedProjects },
+    });
+  }
+
+  return new Response(null, { status: 304 });
+};
+
 export const projectsHandler = (async (request: Request): Promise<Response> => {
   if (!checkHXHeaders(request)) {
     return new Response("You cannot access this page.", { status: 403 });
   }
-  // ?: Should I cache in-memory or let the browser cache?
+
   const cachedProjects = cache.get(PROJECTS_CACHE_KEY);
-  if (cachedProjects) {
-    return new Response(null, { status: 304 });
-    // return render({
-    //   name: "work/projects.hx.html",
-    //   context: { projects: cachedProjects },
-    // });
-  }
+  if (cachedProjects) return returnByCache(request, cachedProjects);
 
   const projects = await fetch(
     "https://api.github.com/users/lemredd/repos?sort=created&direction=desc",
