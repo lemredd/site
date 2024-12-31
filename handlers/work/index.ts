@@ -49,11 +49,24 @@ const fallBackProjects = (): Project[] => [
   },
 ];
 
-export const projectsHandler = (async (_: Request): Promise<Response> => {
-  // TODO: cache projects using `Deno.kv` once stable
+const checkHXHeaders = (request: Request): boolean =>
+  request.headers.get("HX-Request") === "true" &&
+  new URL(request.headers.get("HX-Current-URL") ?? "").pathname.endsWith(
+    "/work",
+  );
+
+export const projectsHandler = (async (request: Request): Promise<Response> => {
+  if (!checkHXHeaders(request)) {
+    return new Response("You cannot access this page.", { status: 403 });
+  }
+  // ?: Should I cache in-memory or let the browser cache?
   const cachedProjects = cache.get(PROJECTS_CACHE_KEY);
   if (cachedProjects) {
     return new Response(null, { status: 304 });
+    // return render({
+    //   name: "work/projects.hx.html",
+    //   context: { projects: cachedProjects },
+    // });
   }
 
   const projects = await fetch(
