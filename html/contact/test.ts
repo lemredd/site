@@ -33,8 +33,8 @@ describe("Contact: Form", () => {
     expect($("form").attr("hx-target-*")).toBe("find output");
   });
 
-  it("renders CloudFlare Turnstile widget implicitly", () => {
-    const gotElement = $(".cf-turnstile[data-sitekey]");
+  it("has Cloudflare Turnstile container", () => {
+    const gotElement = $("#contact-form-turnstile");
     expect(gotElement.length).toBeGreaterThan(0);
   });
 });
@@ -45,6 +45,12 @@ describe("Contact: Script Integration", () => {
       request: new Request("http://localhost:8000/work"),
     });
     const $ = load(rendered);
-    expect($("script[src*=turnstile]").length).toEqual(1);
+    expect($("script[src*=render=explicit]")).toHaveLength(1);
+    expect($("script[src*=turnstile.js]")).toHaveLength(1);
+  });
+
+  it.skip("renders widget explicitly", async () => {
+    // TODO: test properly
+    const _module = await import("@/static/turnstile.js");
   });
 });
