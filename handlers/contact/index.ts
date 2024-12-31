@@ -19,7 +19,6 @@ export const verifyTurnstileToken = async (
   body.append("response", token);
   const ERROR_MESSAGE =
     "Cloudflare could not verify this form right now. Please try again later.";
-  return new Response(ERROR_MESSAGE, { status: 503 });
 
   return await fetch(verifyURL, {
     method: "POST",
