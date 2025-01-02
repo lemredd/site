@@ -33,6 +33,37 @@ export const verifyTurnstileToken = async (
     .catch(() => new Response(ERROR_MESSAGE, { status: 503 }));
 };
 
+const handleWeb3FormResponse = (response: Response): Response => {
+  if (!response.ok) {
+    return new Response(
+      "Could not submit this form right now. Please try again later.",
+      { status: 500 },
+    );
+  }
+  return new Response("Submitted! I'll get back to you as soon as I can.", {
+    status: 202,
+  });
+};
+
+export const submitToWeb3Forms = async (_body: FormData): Promise<Response> => {
+  const web3FormsURL = new URL("/submit", "https://api.web3forms.com");
+  const body = new FormData();
+
+  body.append("email", _body.get("email") ?? "");
+  body.append("name", _body.get("name") ?? "");
+  body.append("message", _body.get("message") ?? "");
+  body.append("access_key", Deno.env.get("WEB3FORMS_ACCESS_KEY") ?? "");
+  body.append(
+    "subject",
+    "You received a message from your website",
+  );
+  body.append("bot_check", "true");
+
+  return await fetch(web3FormsURL, { method: "POST", body }).then(
+    handleWeb3FormResponse,
+  );
+};
+
 export const postToAppScript = async (body: FormData): Promise<Response> => {
   const appScriptURL = new URL(
     `/macros/s/${Deno.env.get("GOOGLE_APPS_SCRIPT_DEPLOYMENT_ID")}/exec`,
@@ -74,11 +105,13 @@ const submitContactForm = (async (request: Request): Promise<Response> => {
       new Response((e as Error).message, { status: 400 }),
     );
   }
-  // TODO: integrate Web3Forms
 
   const token = String(formData.get("cf-turnstile-response")) ?? "";
   const turnstileResponse = await verifyTurnstileToken(token);
   if (!turnstileResponse.ok) return await renderStatus(turnstileResponse);
+
+  const web3FormsResponse = await submitToWeb3Forms(formData);
+  if (web3FormsResponse.ok) return await renderStatus(web3FormsResponse);
   const appScriptResponse = await postToAppScript(formData);
   if (!appScriptResponse.ok) return await renderStatus(appScriptResponse);
 
