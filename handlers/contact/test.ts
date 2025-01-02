@@ -5,6 +5,7 @@ import { assertSpyCalls, stub } from "@std/testing/mock";
 import {
   postToAppScript,
   submitContactForm,
+  submitToWeb3Forms,
   verifyTurnstileToken,
 } from "@/handlers/contact/index.ts";
 
@@ -41,8 +42,8 @@ describe("Contact: API Integration", () => {
     await verifyTurnstileToken(token);
 
     const gotFetchURL = fetchStub.calls[0].args[0],
-      gotRequestInit = fetchStub.calls[0].args[1],
-      wantedURLPattern = new URLPattern({
+      gotRequestInit = fetchStub.calls[0].args[1];
+    const wantedURLPattern = new URLPattern({
         baseURL: "https://challenges.cloudflare.com",
         pathname: "/turnstile/v0/siteverify",
       }),
@@ -55,6 +56,53 @@ describe("Contact: API Integration", () => {
 
     expect(wantedURLPattern.test(String(gotFetchURL))).toBeTruthy();
     expect(gotRequestInit).toEqual(wantedRequestInit);
+  });
+
+  it("submits to Web3Forms", async () => {
+    const mockHeaders = { "Content-Type": "text/html" } satisfies HeadersInit,
+      mockResponse = new Response("Test response", { headers: mockHeaders });
+    using fetchStub = stub(
+      globalThis,
+      "fetch",
+      () => Promise.resolve(mockResponse),
+    );
+
+    const body = new FormData();
+    const name = "John Doe";
+    body.append("email", "R2eQ3@example.com");
+    body.append("name", name);
+    body.append("message", "Test message");
+    body.append("unknown-field", ""); // Should not be included in request
+    const response = await submitToWeb3Forms(body);
+
+    expect(response.status).toBe(202);
+
+    const gotFetchURL = fetchStub.calls[0].args[0];
+    const wantedURLPattern = new URLPattern({
+      baseURL: "https://api.web3forms.com",
+      pathname: "/submit",
+    });
+    const gotRequestInit = fetchStub.calls[0].args[1] as RequestInit;
+    const wantedRequestInit = {
+      method: "POST",
+      body,
+    };
+    wantedRequestInit.body.delete("unknown-field");
+    wantedRequestInit.body.append(
+      "access_key",
+      Deno.env.get("WEB3FORMS_ACCESS_KEY") ?? "",
+    );
+    wantedRequestInit.body.append(
+      "subject",
+      "You received a message from your website",
+    );
+    wantedRequestInit.body.append("bot_check", "true");
+
+    assertSpyCalls(fetchStub, 1);
+    expect(wantedURLPattern.test(gotFetchURL.toString())).toBeTruthy();
+    expect(gotRequestInit).toEqual(wantedRequestInit);
+    expect((gotRequestInit.body as FormData).get("unknown-field"))
+      .toBeNull();
   });
 
   it("submits to Google Apps Script", async () => {
