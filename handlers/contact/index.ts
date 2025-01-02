@@ -57,7 +57,7 @@ export const submitToWeb3Forms = async (_body: FormData): Promise<Response> => {
     "subject",
     "You received a message from your website",
   );
-  body.append("bot_check", "true");
+  body.append("botcheck", "");
 
   return await fetch(web3FormsURL, { method: "POST", body }).then(
     handleWeb3FormResponse,

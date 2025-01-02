@@ -96,7 +96,7 @@ describe("Contact: API Integration", () => {
       "subject",
       "You received a message from your website",
     );
-    wantedRequestInit.body.append("bot_check", "true");
+    wantedRequestInit.body.append("botcheck", "");
 
     assertSpyCalls(fetchStub, 1);
     expect(wantedURLPattern.test(gotFetchURL.toString())).toBeTruthy();
