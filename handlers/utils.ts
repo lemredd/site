@@ -25,3 +25,42 @@ export const render = (
       headers: { ...responseInit?.headers ?? {}, "Content-Type": "text/html" },
     },
   );
+
+export const DIRECTIONS = ["R", "L"] as const;
+export type Direction = typeof DIRECTIONS[number];
+const NAVIGATION_DIRECTIONS: Record<Direction, [string, string][]> = {
+  [DIRECTIONS[0]]: [
+    ["/", "/work"],
+    ["/home", "/work"],
+    ["/about", "/work"],
+    ["/", "/contact"],
+    ["/home", "/contact"],
+    ["/about", "/contact"],
+    ["/work", "/contact"],
+  ],
+  [DIRECTIONS[1]]: [
+    ["/work", "/"],
+    ["/work", "/home"],
+    ["/work", "/about"],
+    ["/contact", "/"],
+    ["/contact", "/home"],
+    ["/contact", "/about"],
+    ["/contact", "/work"],
+  ],
+};
+export const getBoostDirection = (request: Request): Direction => {
+  if (!request.headers.has("HX-Boosted")) return DIRECTIONS[0];
+
+  const from = new URL(request.headers.get("HX-Current-URL") ?? "").pathname;
+  const to = new URL(request.url).pathname;
+
+  for (const navigationDirection in NAVIGATION_DIRECTIONS) {
+    const directions = NAVIGATION_DIRECTIONS[navigationDirection as Direction];
+    for (const direction of directions) {
+      if (direction[0] === from && direction[1] === to) {
+        return navigationDirection as Direction;
+      }
+    }
+  }
+  return DIRECTIONS[0];
+};
