@@ -12,8 +12,38 @@
 	.marquee-overlay {
 		@apply relative;
 	}
+
 	.marquee-overlay:before {
 		@apply content-none absolute h-[inherit] z-10 -left-2 -right-2 px-4;
 		background: linear-gradient(90deg, #000 0%, transparent 25%, transparent 75%, #000 100%);
 	}
 }
+
+@keyframes swipe-r {
+	from {
+		transform: translateX(5%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}
+@keyframes swipe-l {
+	from {
+		transform: translateX(-5%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}
+.animate-swipe-r {
+	animation: swipe-r 300ms ease-in-out 1;
+}
+.animate-swipe-l {
+	animation: swipe-l 300ms ease-in-out 1;
+}
+
+
