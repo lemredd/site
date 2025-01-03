@@ -48,8 +48,8 @@ const NAVIGATION_DIRECTIONS: Record<Direction, [string, string][]> = {
     ["/contact", "/work"],
   ],
 };
-export const getBoostDirection = (request: Request): Direction => {
-  if (!request.headers.has("HX-Boosted")) return DIRECTIONS[0];
+export const getBoostDirection = (request: Request): Direction | "" => {
+  if (!request.headers.has("HX-Boosted")) return "";
 
   const from = new URL(request.headers.get("HX-Current-URL") ?? "").pathname;
   const to = new URL(request.url).pathname;
