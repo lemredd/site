@@ -21,6 +21,30 @@ export default {
         "scroll-ltr": {
           to: { transform: "translateX(0%)" },
         },
+        "swipe-l": {
+          from: {
+            transform: "translateX(-5%)",
+            opacity: "0",
+          },
+          to: {
+            transform: "translateX(0%)",
+            opacity: "1",
+          },
+        },
+        "swipe-r": {
+          from: {
+            transform: "translateX(5%)",
+            opacity: "0",
+          },
+          to: {
+            transform: "translateX(0%)",
+            opacity: "1",
+          },
+        },
+      },
+      animation: {
+        "swipe-l": "swipe-l 300ms ease-in-out 1",
+        "swipe-r": "swipe-r 300ms ease-in-out 1",
       },
     },
   },
