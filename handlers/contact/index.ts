@@ -1,4 +1,4 @@
-import { render } from "@/handlers/utils.ts";
+import { getBoostDirection, render } from "@/handlers/utils.ts";
 import { RouteHandler } from "@/handlers/types.ts";
 
 const validateContactForm = (form: Record<string, FormDataEntryValue>) => {
@@ -128,6 +128,7 @@ const contactHandler = (async (request: Request): Promise<Response> => {
       request,
       title: "Contact",
       siteKey: Deno.env.get("CF_TURNSTILE_SITE_KEY"),
+      boostDirection: getBoostDirection(request),
     },
   });
 }) satisfies RouteHandler;

@@ -1,13 +1,17 @@
 // @deno-types="npm:@types/memory-cache"
 import cache from "memory-cache";
 
-import { render } from "@/handlers/utils.ts";
 import { RouteHandler } from "@/handlers/types.ts";
+import { getBoostDirection, render } from "@/handlers/utils.ts";
 
 export const workHandler = ((request: Request): Response => {
   return render({
     name: "work/index.html",
-    context: { request, title: "Work" },
+    context: {
+      request,
+      title: "Work",
+      boostDirection: getBoostDirection(request),
+    },
   });
 }) satisfies RouteHandler;
 
