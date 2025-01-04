@@ -6,6 +6,10 @@
 	input, textarea {
 		@apply appearance-none bg-transparent focus:outline-none focus:ring-0 focus:border-0;
 	}
+
+	form:has(input[type="hidden"][value]:not([value=""])) button {
+		@apply visible;
+	}
 }
 
 @layer {
