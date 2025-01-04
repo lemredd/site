@@ -1,5 +1,5 @@
 {# Contact Form #}
-<form method="POST" class="grid grid-cols-1 sm:grid-cols-2 grid-rows-auto gap-y-6 sm:gap-10 text-fg-2 [&:has([type=hidden][value])_button]:visible" hx-post="/contact" hx-target-*="find output" hx-swap="outerHTML" hx-disabled-elt="find button">
+<form method="POST" class="grid grid-cols-1 sm:grid-cols-2 grid-rows-auto gap-y-6 sm:gap-10 text-fg-2" hx-post="/contact" hx-target-*="find output" hx-swap="outerHTML" hx-disabled-elt="find button">
 	<output class="sm:col-span-2 hidden"></output>
 	<div class="flex flex-col gap-4">
 		<label for="name" class="text-fg-2">Name</label>
