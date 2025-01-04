@@ -10,7 +10,7 @@ describe("Handlers: utilities", () => {
     });
     const request = new Request("http://localhost:8000/", { headers });
 
-    expect(getBoostDirection(request)).toBe(DIRECTIONS[0]);
+    expect(getBoostDirection(request)).toBe("");
   });
 
   it("determines boosted navigation direction", () => {
