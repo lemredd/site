@@ -1,6 +1,6 @@
 {
 	"tasks": {
-		"tw-dev": "deno -A npm:tailwindcss -i ./input.css -o ./static/tailwind.css --watch",
+		"tw-dev": "deno -A npm:tailwindcss -i ./input.css -o ./static/tailwind.css --minify --watch",
 		"tw-build": "deno -A npm:tailwindcss -i ./input.css -o ./static/tailwind.css --minify --build",
 		"dev": "deno -A --watch --env-file=.env.local main.ts",
 		"build": "deno task tw-build"
