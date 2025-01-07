@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jarlem Red de Peralta",
+  "image": "https://lemredd.deno.dev/static/images/logo.png",
+  "description": "I'm Lem. I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.",
+  "telephone": "+63 907 054 9038",
+	"url": "https://www.yourwebsite.com",
+  "sameAs": [
+    "https://github.com/lemredd",
+    "https://www.linkedin.com/in/jarlemred/",
+    "https://app.daily.dev/lemredd"
+  ],
+  "jobTitle": "Full Stack Web Developer"
+}
