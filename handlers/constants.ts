@@ -20,14 +20,14 @@ export const COMMON_META: Metadata["meta"] = [
   {
     nameOrProperty: "property",
     key: "og:image",
-    content: `${Deno.env.get("BASE_URL")}/websiteog.png`,
+    content: `${Deno.env.get("BASE_URL")}/images/websiteog.png`,
   },
 ];
 
 export const COMMON_LINKS: Metadata["links"] = [
   {
     rel: "apple-touch-icon",
-    href: "/apple-touch-icon.png",
+    href: "/images/apple-touch-icon.png",
   },
   {
     rel: "manifest",
