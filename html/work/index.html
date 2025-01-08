@@ -42,3 +42,42 @@
 	</section>
 </div>
 {% endblock %}
+{% block jsonLd %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Jarlem Red de Peralta",
+    "url": "/",
+		"image": "/images/me.png",
+    "sameAs": [
+      "https://github.com/lemredd",
+      "https://linkedin.com/in/jarlemred",
+			"https://app.daily.dev/lemredd"
+    ],
+    "jobTitle": "Full Stack Web Developer",
+		"skills": [
+			"Golang",
+			"Python",
+			"JavaScript",
+			"TypeScript",
+			"HTML",
+			"CSS",
+			"SQL",
+			"Shell",
+			"Lua",
+			"JSON",
+			"Protobuf",
+			"Docker",
+			"Figma",
+			"Vercel",
+			"GitHub",
+			"GitLab",
+			"Linux"
+		]
+  }
+}
+</script>
+{% endblock %}
