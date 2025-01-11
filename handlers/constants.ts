@@ -34,3 +34,5 @@ export const COMMON_LINKS: Metadata["links"] = [
     href: "/manifest.json",
   },
 ];
+
+export const TURNSTILE_WIDGET_ID = "contact-form-turnstile";
