@@ -1,5 +1,4 @@
 {% extends "_layouts/body.html" %}
-
 {% block content %}
 <div class="space-y-40">
 	<section id="portfolio" class="lg:max-w-[768px] space-y-10">
@@ -29,13 +28,19 @@
 	<section id="skills" class="space-y-10">
 		<h3 class="text-primary text-3xl capitalize">Skills</h3>
 		<h4 class="text-4xl capitalize">What I use to get things done</h4>
-		<div class="w-full max-w-[inherit] overflow-x-hidden h-[130px] gap-x-[120px] relative marquee-overlay">
-			<div id="marquee-observer" class="absolute flex gap-x-[120px] animate-[scroll-rtl_120s_linear_infinite]">
+		<div id="{{marqueeData["marquee-observer-id"]}}" class="w-full max-w-[inherit] overflow-x-hidden h-[130px] gap-x-[120px] relative marquee-overlay">
+			<div id="{{marqueeData["marquee-id"]}}" class="absolute flex gap-x-[120px] animate-[scroll-rtl_150s_linear_infinite]">
 				{% for id in [1,2] %}
-				<div id="dup-{{id}}" class="gap-x-[120px] h-[inherit] flex">
+				<div id="{{marqueeData["marquee-dup-id-prefix"]}}{{id}}" class="gap-x-[120px] h-[inherit] flex items-center">
+					{% if id == 1 %}
 					{% for skill in skills %}
 					<div class="size-[120px]" id="{{skill}}" style="background: url('/images/skills.svg') -{{loop.index0 * 240}}px 0;"></div>
 					{% endfor %}
+					{% else %}
+					{% for skill in skills | slice(4) %}
+					<div class="size-[120px]" id="{{skill}}" style="background: url('/images/skills.svg') -{{loop.index0 * 240}}px 0;"></div>
+					{% endfor %}
+					{% endif %}
 				</div>
 				{% endfor %}
 			</div>
@@ -68,3 +73,6 @@
 }
 </script>
 {% endblock %}
+{% block script %}
+<script src="/marquee.js" {% for key, val in marqueeData %}data-{{key}}="{{val}}"{% endfor %}></script>
+{% endblock script %}
