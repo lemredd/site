@@ -29,14 +29,15 @@
 	<section id="skills" class="space-y-10">
 		<h3 class="text-primary text-3xl capitalize">Skills</h3>
 		<h4 class="text-4xl capitalize">What I use to get things done</h4>
-		<div class="w-full max-w-[inherit] overflow-x-hidden h-[130px] marquee-overlay">
-			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-rtl_120s_linear_infinite] hover:[animation-play-state:paused] translate-x-[500px]">
-				<img src="/images/skills/langs.svg" alt="languages" class="max-w-max">
-			</div>
-		</div>
-		<div class="w-full max-w-[inherit] overflow-x-hidden h-[130px] marquee-overlay">
-			<div class="gap-x-[120px] h-[inherit] absolute flex animate-[scroll-ltr_50s_linear_infinite] hover:[animation-play-state:paused] items-end -translate-x-[100%]">
-				<img src="/images/skills/others.svg" alt="others" class="max-w-max">
+		<div class="w-full max-w-[inherit] overflow-x-hidden h-[130px] gap-x-[120px] relative marquee-overlay">
+			<div id="marquee-observer" class="absolute flex gap-x-[120px] animate-[scroll-rtl_120s_linear_infinite]">
+				{% for id in [1,2] %}
+				<div id="dup-{{id}}" class="gap-x-[120px] h-[inherit] flex">
+					{% for skill in skills %}
+					<div class="size-[120px]" id="{{skill}}" style="background: url('/images/skills.svg') -{{loop.index0 * 240}}px 0;"></div>
+					{% endfor %}
+				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
