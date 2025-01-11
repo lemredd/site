@@ -3,6 +3,11 @@ import cache from "memory-cache";
 
 import { RouteHandler } from "@/handlers/types.ts";
 import { getBoostDirection, render } from "@/handlers/utils.ts";
+import {
+  MARQUEE_DUP_ID_PREFIX,
+  MARQUEE_ID,
+  MARQUEE_OBSERVER_ID,
+} from "@/handlers/constants.ts";
 
 export const workHandler = ((request: Request): Response => {
   const SKILLS = [
@@ -29,10 +34,16 @@ export const workHandler = ((request: Request): Response => {
     "Linux",
     "Figma",
   ];
+  const marqueeData = {
+    "marquee-observer-id": MARQUEE_OBSERVER_ID,
+    "marquee-id": MARQUEE_ID,
+    "marquee-dup-id-prefix": MARQUEE_DUP_ID_PREFIX,
+  };
   return render({
     name: "work/index.html",
     context: {
       request,
+      marqueeData,
       title: "Work",
       skills: SKILLS,
       boostDirection: getBoostDirection(request),
