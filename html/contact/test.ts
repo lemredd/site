@@ -7,9 +7,12 @@ import { Window } from "happy-dom";
 
 import { template } from "@/handlers/utils.ts";
 import { mainHandler } from "@/handlers/index.ts";
+import { TURNSTILE_WIDGET_ID } from "@/handlers/constants.ts";
 
 describe("Contact: Form", () => {
-  const rendered = template.render("contact/form.html");
+  const rendered = template.render("contact/form.html", {
+    turnstileWidgetId: TURNSTILE_WIDGET_ID,
+  });
   const $ = load(rendered);
 
   it("has required fields", () => {
@@ -34,11 +37,6 @@ describe("Contact: Form", () => {
 
   it("replaces output's contents (HTMX)", () => {
     expect($("form").attr("hx-target-*")).toBe("find output");
-  });
-
-  it("has Cloudflare Turnstile container", () => {
-    const gotElement = $("#contact-form-turnstile");
-    expect(gotElement.length).toBeGreaterThan(0);
   });
 });
 
@@ -75,5 +73,7 @@ describe("Contact: Script Integration", () => {
 
     expect(readySpy.calls).toHaveLength(1);
     expect(renderSpy.calls).toHaveLength(1);
+    const renderSpyArgs = renderSpy.calls[0].args;
+    expect(renderSpyArgs[0]).toContain(TURNSTILE_WIDGET_ID);
   });
 });

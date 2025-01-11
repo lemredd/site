@@ -13,7 +13,7 @@
 		<label for="message">Message</label>
 		<textarea name="message" id="message" placeholder="Write a brief message about your concern..." rows="5" class="py-2 border-b-2 border-b-[#fff2] placeholder:text-[#fff2]  lg:text-lg"></textarea>
 	</div>
-	<div id="contact-form-turnstile"></div>
+	<div id="{{ turnstileWidgetId }}"></div>
 	<button class="invisible transition-colors capitalize px-4 py-2 bg-primary rounded-lg text-bg w-full sm:max-w-[200px] sm:max-h-[48px] sm:self-center sm:justify-self-end disabled:opacity-50 [&:disabled_.loading]:inline-flex [&:disabled_.idle]:hidden">
 		<span class="capitalize loading hidden items-center justify-center gap-x-2">
 			<img src="/images/loading.svg" alt="Loading..." class="w-4 h-4">
