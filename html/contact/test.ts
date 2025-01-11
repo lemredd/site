@@ -1,9 +1,12 @@
 import { expect } from "@std/expect";
+import { Spy, spy } from "@std/testing/mock";
 import { describe, it } from "@std/testing/bdd";
 
 import { load } from "cheerio";
+import { Window } from "happy-dom";
 
 import { template } from "@/handlers/utils.ts";
+import { mainHandler } from "@/handlers/index.ts";
 
 describe("Contact: Form", () => {
   const rendered = template.render("contact/form.html");
@@ -49,8 +52,28 @@ describe("Contact: Script Integration", () => {
     expect($("script[src*=turnstile.js]")).toHaveLength(1);
   });
 
-  it.skip("renders widget explicitly", async () => {
-    // TODO: test properly
-    const _module = await import("@/static/turnstile.js");
+  it("renders widget explicitly", async () => {
+    const module = await mainHandler(
+      new Request("http://localhost:8000/turnstile.js"),
+    ).then((res) => res.text());
+
+    const window = new Window();
+    const document = window.document;
+    const script = document.createElement("script");
+    script.textContent = module;
+
+    window.turnstile = {
+      ready: spy(),
+      render: spy(),
+    };
+    const readySpy = window.turnstile.ready as Spy;
+    const renderSpy = window.turnstile.render as Spy;
+
+    document.head.appendChild(script);
+    readySpy.calls[0].args[0]();
+    await window.happyDOM.waitUntilComplete();
+
+    expect(readySpy.calls).toHaveLength(1);
+    expect(renderSpy.calls).toHaveLength(1);
   });
 });
