@@ -5,11 +5,36 @@ import { RouteHandler } from "@/handlers/types.ts";
 import { getBoostDirection, render } from "@/handlers/utils.ts";
 
 export const workHandler = ((request: Request): Response => {
+  const SKILLS = [
+    "Golang",
+    "Python",
+    "SQL",
+    "JSON",
+    "Protobuf",
+    "JavaScript",
+    "TypeScript",
+    "CSS",
+    "HTML",
+    "Shell",
+    "Lua",
+    "REST API",
+    "GraphQL",
+    "Deno",
+    "Cloudflare",
+    "Vercel",
+    "GitHub",
+    "GitLab",
+    "PWA",
+    "Docker",
+    "Linux",
+    "Figma",
+  ];
   return render({
     name: "work/index.html",
     context: {
       request,
       title: "Work",
+      skills: SKILLS,
       boostDirection: getBoostDirection(request),
     },
   });
