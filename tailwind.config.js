@@ -16,7 +16,6 @@ export default {
       },
       keyframes: {
         "scroll-rtl": {
-          from: { transform: "translateX(30%)" },
           to: { transform: "translateX(-100%)" },
         },
         "scroll-ltr": {
