@@ -17,6 +17,7 @@ describe("Work: Projects", () => {
   it("replaces its contents on load (HTMX)", () => {
     const rendered = template.render("work/index.html", {
       request: new Request("http://localhost:8000/work"),
+      skills: [],
     });
     const $ = load(rendered);
 
