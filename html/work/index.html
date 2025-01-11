@@ -59,27 +59,9 @@
     ],
     "jobTitle": "Full Stack Web Developer",
 		"skills": [
-			"Golang",
-			"Python",
-			"SQL",
-			"JSON",
-			"Protobuf",
-			"JavaScript",
-			"TypeScript",
-			"CSS",
-			"HTML",
-			"Shell",
-			"Lua",
-			"REST API",
-			"GraphQL",
-			"Deno",
-			"Vercel",
-			"GitHub",
-			"GitLab",
-			"PWA",
-			"Docker",
-			"Linux",
-			"Figma"
+			{% for skill in skills %}
+			"{{skill}}"{% if not loop.last %},{% endif %}
+			{% endfor %}
 		]
   }
 }
