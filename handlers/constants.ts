@@ -36,3 +36,6 @@ export const COMMON_LINKS: Metadata["links"] = [
 ];
 
 export const TURNSTILE_WIDGET_ID = "contact-form-turnstile";
+export const MARQUEE_OBSERVER_ID = "marquee-observer";
+export const MARQUEE_ID = "marquee";
+export const MARQUEE_DUP_ID_PREFIX = "dup-";
