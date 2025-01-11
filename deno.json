@@ -16,7 +16,11 @@
 		"@std/testing": "jsr:@std/testing@^1.0.7",
 		"@types/memory-cache": "npm:@types/memory-cache@^0.2.6",
 		"cheerio": "npm:cheerio@^1.0.0",
+		"happy-dom": "npm:happy-dom@16.5.3",
 		"memory-cache": "npm:memory-cache@0.2.0",
 		"nunjucks": "npm:nunjucks@3.2.4"
+	},
+	"compilerOptions": {
+		"types": ["./global.d.ts"]
 	}
 }
