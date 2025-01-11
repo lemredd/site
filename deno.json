@@ -21,6 +21,7 @@
 		"nunjucks": "npm:nunjucks@3.2.4"
 	},
 	"compilerOptions": {
+		"lib": ["deno.window", "dom"],
 		"types": ["./global.d.ts"]
 	}
 }
