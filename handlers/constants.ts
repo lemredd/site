@@ -22,6 +22,18 @@ export const COMMON_META: Metadata["meta"] = [
     key: "og:image",
     content: `${Deno.env.get("BASE_URL")}/images/websiteog.png`,
   },
+  {
+    nameOrProperty: "name",
+    key: "description",
+    content:
+      "I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.",
+  },
+  {
+    nameOrProperty: "property",
+    key: "og:description",
+    content:
+      "I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.",
+  },
 ];
 
 export const COMMON_LINKS: Metadata["links"] = [
