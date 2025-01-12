@@ -1,6 +1,8 @@
 {
 	"name": "Lemredd - Full Stack Developer",
 	"short_name": "Lemredd",
+	"description": "I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.",
+	"start_url": "/",
 	"icons": [
 		{
 			"src": "/images/manifest-icon-192.png",
@@ -11,6 +13,20 @@
 			"src": "/images/manifest-icon-512.png",
 			"sizes": "512x512",
 			"type": "image/png"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "/images/manifest-screenshot-mobile.png",
+			"type": "image/png",
+			"sizes": "412x576",
+			"platform": "mobile"
+		},
+		{
+			"src": "/images/websiteog.png",
+			"type": "image/png",
+			"sizes": "1200x600",
+			"form_factor": "wide"
 		}
 	],
 	"theme_color": "#ffffff",
