@@ -14,7 +14,7 @@
 				{% for social, link in socials %}
 					<li>
 						<a href="https://{{ link }}" target="_blank">
-							<img src="/images/socials/social-{{ social }}.svg" alt="{{ social }}">
+							<div class="hover:scale-125 transition-transform duration-300 {% if social === "dailydev" %}h-[32px] w-[45px]{% else %}size-[32px]{% endif %}" style="background: url('/images/socials.svg') -{{loop.index0 * 64}}px 0;"></div>
 						</a>
 					</li>
 				{% endfor %}
