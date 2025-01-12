@@ -32,5 +32,7 @@
 </script>
 {% endblock jsonLd %}
 {% block script %}
+<script src="/htmx-response-targets.js" defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
 <script src="/turnstile.js" siteKey="{{ siteKey }}"></script>
 {% endblock script %}
