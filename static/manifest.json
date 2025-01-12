@@ -23,7 +23,7 @@
 			"platform": "mobile"
 		},
 		{
-			"src": "/images/websiteog.png",
+			"src": "/images/manifest-screenshot-wide.png",
 			"type": "image/png",
 			"sizes": "1200x600",
 			"form_factor": "wide"
