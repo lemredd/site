@@ -1,13 +1,29 @@
 // @deno-types="npm:@types/memory-cache"
 import cache from "memory-cache";
 
-import { RouteHandler } from "@/handlers/types.ts";
+import { Metadata, RouteHandler } from "@/handlers/types.ts";
 import { getBoostDirection, render } from "@/handlers/utils.ts";
 import {
+  COMMON_LINKS as links,
+  COMMON_META,
   MARQUEE_DUP_ID_PREFIX,
   MARQUEE_ID,
   MARQUEE_OBSERVER_ID,
 } from "@/handlers/constants.ts";
+
+const meta: Metadata["meta"] = [
+  {
+    nameOrProperty: "property",
+    key: "og:title",
+    content: "Work | Lemredd",
+  },
+  ...COMMON_META,
+];
+
+const metadata = {
+  meta,
+  links,
+} satisfies Metadata;
 
 export const workHandler = ((request: Request): Response => {
   const SKILLS = [
@@ -43,6 +59,7 @@ export const workHandler = ((request: Request): Response => {
     name: "work/index.html",
     context: {
       request,
+      metadata,
       marqueeData,
       title: "Work",
       skills: SKILLS,

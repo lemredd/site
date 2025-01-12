@@ -1,6 +1,24 @@
+import { Metadata, RouteHandler } from "@/handlers/types.ts";
 import { getBoostDirection, render } from "@/handlers/utils.ts";
-import { RouteHandler } from "@/handlers/types.ts";
-import { TURNSTILE_WIDGET_ID } from "@/handlers/constants.ts";
+import {
+  COMMON_LINKS as links,
+  COMMON_META,
+  TURNSTILE_WIDGET_ID,
+} from "@/handlers/constants.ts";
+
+const meta: Metadata["meta"] = [
+  {
+    nameOrProperty: "property",
+    key: "og:title",
+    content: "Work | Lemredd",
+  },
+  ...COMMON_META,
+];
+
+const metadata = {
+  meta,
+  links,
+} satisfies Metadata;
 
 const validateContactForm = (form: Record<string, FormDataEntryValue>) => {
   const isValid = form.name && form.email && form.message;
@@ -127,6 +145,7 @@ const contactHandler = (async (request: Request): Promise<Response> => {
     name: "contact/index.html",
     context: {
       request,
+      metadata,
       title: "Contact",
       turnstileWidgetId: TURNSTILE_WIDGET_ID,
       siteKey: Deno.env.get("CF_TURNSTILE_SITE_KEY"),
