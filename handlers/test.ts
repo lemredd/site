@@ -1,7 +1,7 @@
 import { expect } from "@std/expect";
 import { describe, it } from "@std/testing/bdd";
 
-import { HTMLScriptElement, Window } from "happy-dom";
+import { Window } from "happy-dom";
 
 import { Direction, DIRECTIONS, getBoostDirection } from "@/handlers/utils.ts";
 
