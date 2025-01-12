@@ -22,7 +22,7 @@
 		"nunjucks": "npm:nunjucks@3.2.4"
 	},
 	"compilerOptions": {
-		"lib": ["deno.window", "dom"],
+		"lib": ["deno.window", "webworker", "dom"],
 		"types": ["./global.d.ts"]
 	}
 }
