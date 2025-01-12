@@ -8,18 +8,6 @@ const meta: Metadata["meta"] = [
     key: "og:title",
     content: "About | Lemredd",
   },
-  {
-    nameOrProperty: "name",
-    key: "description",
-    content:
-      "I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.",
-  },
-  {
-    nameOrProperty: "property",
-    key: "og:description",
-    content:
-      "I craft elegant, scalable solutions to complex challenges, combining my expertise in front-end design and back-end development to build seamless, user-focused web applications.",
-  },
   ...COMMON_META,
 ];
 
