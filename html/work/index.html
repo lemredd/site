@@ -2,19 +2,19 @@
 {% block content %}
 <div class="space-y-40">
 	<section id="portfolio" class="lg:max-w-[768px] space-y-10">
-		<h3 class="text-primary text-3xl capitalize">portfolio</h3>
+		<h3 class="text-primary text-xl lg:text-3xl capitalize">portfolio</h3>
 		{# TODO: integrate GitHub API #}
-		<h2 class="text-4xl capitalize">featured projects</h2>
-		<div id="projects" hx-get="/work/projects" hx-trigger="load">
+		<h2 class="text-2xl lg:text-4xl capitalize">featured projects</h2>
+		<div id="projects" hx-get="/work/projects" class="lg:!mt-20" hx-trigger="load">
 			{% include "work/projects.hx.html" %}
 		</div>
 	</section>
 	<section id="services" class="space-y-10">
-		<h3 class="text-primary text-3xl capitalize">services</h3>
-		<h4 class="text-4xl capitalize">my expertise and passion</h4>
+		<h3 class="text-primary text-xl lg:text-3xl capitalize">services</h3>
+		<h4 class="text-2xl lg:text-4xl capitalize">my expertise and passion</h4>
 		{# TODO: integrate GitHub API #}
 		{% set services = {"full stack": 10, "UIs": 8, "APIs": 12} %}
-		<ul class="flex flex-col lg:flex-row justify-stretch items-center gap-8">
+		<ul class="flex flex-col lg:flex-row justify-stretch items-center gap-8 lg:!mt-20">
 			{% for service, count in services %}
 			<li class="w-full h-full">
 					<a href="#" class="flex flex-col items-center basis-1/3 border border-fg-2 px-8 py-4 rounded-2xl hover:border-primary transition-colors duration-300">
@@ -26,9 +26,9 @@
 		</ul>
 	</section>
 	<section id="skills" class="space-y-10">
-		<h3 class="text-primary text-3xl capitalize">Skills</h3>
-		<h4 class="text-4xl capitalize">What I use to get things done</h4>
-		<div id="{{marqueeData["marquee-observer-id"]}}" class="w-full max-w-[inherit] overflow-x-hidden h-[130px] gap-x-[120px] relative marquee-overlay">
+		<h3 class="text-primary text-xl lg:text-3xl capitalize">Skills</h3>
+		<h4 class="text-2xl lg:text-4xl capitalize">What I use to get things done</h4>
+		<div id="{{marqueeData["marquee-observer-id"]}}" class="lg:!mt-20 w-full max-w-[inherit] overflow-x-hidden h-[130px] gap-x-[120px] relative marquee-overlay">
 			<div id="{{marqueeData["marquee-id"]}}" class="absolute flex gap-x-[120px] animate-[scroll-rtl_150s_linear_infinite]">
 				{% for id in [1,2] %}
 				<div id="{{marqueeData["marquee-dup-id-prefix"]}}{{id}}" class="gap-x-[120px] h-[inherit] flex items-center">
