@@ -1,3 +1,4 @@
+/// <reference types="npm:@types/workbox-sw" />
 import type { Window as _Window } from "happy-dom";
 
 declare global {
