@@ -7,14 +7,14 @@
 	<link rel="stylesheet" href="/tailwind.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+	<link href="/inter.css" rel="stylesheet">
 	{% for meta in metadata.meta %}
 	<meta {{ meta.nameOrProperty }}="{{ meta.key }}" content="{{ meta.content }}">
 	{% endfor %}
 	{% for link in metadata.links %}
 	<link rel="{{ link.rel }}" href="{{ link.href }}">
 	{% endfor %}
-	<script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+	<script src="/htmx.min.js" defer></script>
 </head>
 <body class="flex flex-col max-w-[960px] xl:max-w-[1200px] mx-auto bg-bg text-fg font-inter">
 	{% block body %}{% endblock %}
