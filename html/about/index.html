@@ -2,7 +2,7 @@
 
 {% block content %}
 <aside class="flex lg:hidden flex-col items-center justify-center gap-y-8 size-full">
-	<img src="/images/me.png" class="rounded-xl lg:rounded-3xl size-[200px] lg:size-[unset]" alt="lemredd's image">
+	<img src="/images/me.webp" class="rounded-xl lg:rounded-3xl size-[200px] lg:size-[unset]" width="200" height="200" alt="lemredd's image">
 	<div class="relative w-full h-max">
 		{% set socials = {
 			"github": "github.com/lemredd",
@@ -13,7 +13,7 @@
 			<ul class="flex justify-center gap-x-8 lg:justify-evenly lg:gap-x-0 items-center">
 				{% for social, link in socials %}
 					<li>
-						<a href="https://{{ link }}" target="_blank">
+						<a href="https://{{ link }}" target="_blank" aria-label="{{ social }}">
 							<div class="hover:scale-125 transition-transform duration-300 {% if social === "dailydev" %}h-[32px] w-[45px]{% else %}size-[32px]{% endif %}" style="background: url('/images/socials.svg') -{{loop.index0 * 64}}px 0;"></div>
 						</a>
 					</li>
@@ -59,7 +59,7 @@
     "@type": "Person",
     "name": "Jarlem Red de Peralta",
     "url": "/",
-		"image": "/images/me.png",
+		"image": "/images/me.webp",
     "sameAs": [
       "https://github.com/lemredd",
       "https://linkedin.com/in/jarlemred",
