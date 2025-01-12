@@ -6,6 +6,31 @@
 	{% include "contact/form.html" %}
 </section>
 {% endblock %}
+{% block jsonLd %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Jarlem Red de Peralta",
+    "url": "/",
+		"image": "/images/me.png",
+    "sameAs": [
+      "https://github.com/lemredd",
+      "https://linkedin.com/in/jarlemred",
+			"https://app.daily.dev/lemredd"
+    ],
+    "jobTitle": "Full Stack Web Developer",
+		"contactPoint": {
+			"@type": "ContactPoint",
+			"email": "jarlemdeperalta@proton.me",
+			"contactType": "email"
+		}
+  }
+}
+</script>
+{% endblock jsonLd %}
 {% block script %}
 <script src="/turnstile.js" siteKey="{{ siteKey }}"></script>
 {% endblock script %}
