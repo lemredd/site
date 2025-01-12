@@ -3,10 +3,10 @@ import { Spy, spy } from "@std/testing/mock";
 import { describe, it } from "@std/testing/bdd";
 
 import { load } from "cheerio";
-import { Window } from "happy-dom";
 
 import { template } from "@/handlers/utils.ts";
 import { mainHandler } from "@/handlers/index.ts";
+import { fakeWindowForScript } from "@/handlers/test.ts";
 import { TURNSTILE_WIDGET_ID } from "@/handlers/constants.ts";
 
 describe("Contact: Form", () => {
@@ -55,11 +55,7 @@ describe("Contact: Script Integration", () => {
       new Request("http://localhost:8000/turnstile.js"),
     ).then((res) => res.text());
 
-    const window = new Window();
-    const document = window.document;
-    const script = document.createElement("script");
-    script.textContent = module;
-
+    const { window, appendScript } = fakeWindowForScript(module);
     window.turnstile = {
       ready: spy(),
       render: spy(),
@@ -67,7 +63,7 @@ describe("Contact: Script Integration", () => {
     const readySpy = window.turnstile.ready as Spy;
     const renderSpy = window.turnstile.render as Spy;
 
-    document.head.appendChild(script);
+    appendScript();
     readySpy.calls[0].args[0]();
     await window.happyDOM.waitUntilComplete();
 
