@@ -1,20 +1,7 @@
 import { expect } from "@std/expect";
 import { describe, it } from "@std/testing/bdd";
 
-import { Window } from "happy-dom";
-
 import { Direction, DIRECTIONS, getBoostDirection } from "@/handlers/utils.ts";
-
-export const fakeWindowForScript = (scriptContent: string) => {
-  const window = new Window();
-  const document = window.document;
-  const script = document.createElement("script");
-  script.textContent = scriptContent;
-
-  const appendScript = () => document.head.appendChild(script);
-
-  return { window, document, script, appendScript };
-};
 
 describe("Handlers: utilities", () => {
   it("returns empty string if not boosted", () => {
