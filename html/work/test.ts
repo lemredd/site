@@ -1,4 +1,5 @@
 import { expect } from "@std/expect";
+import { spy } from "@std/testing/mock";
 import { describe, it } from "@std/testing/bdd";
 
 import { load } from "cheerio";
@@ -11,8 +12,7 @@ import {
 } from "@/handlers/constants.ts";
 
 import { mainHandler } from "@/handlers/index.ts";
-import { fakeWindowForScript } from "@/handlers/test.ts";
-import { spy } from "@std/testing/mock";
+import { fakeWindowForScript } from "@/main_test.ts";
 import { IntersectionObserverEntry } from "happy-dom";
 
 describe("Work: Projects", () => {

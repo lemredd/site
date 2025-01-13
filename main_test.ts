@@ -1,7 +1,21 @@
 import { expect } from "@std/expect";
 import { describe, it } from "@std/testing/bdd";
 
+import { HTMLScriptElement, Window } from "happy-dom";
+
 import { mainHandler } from "@/handlers/index.ts";
+
+export const fakeWindowForScript = (scriptContent: string) => {
+  const window = new Window();
+  const document = window.document;
+  const script = document.createElement("script");
+  script.textContent = scriptContent;
+
+  const appendScript = (scriptToAppend?: HTMLScriptElement) =>
+    document.head.appendChild(scriptToAppend ?? script);
+
+  return { window, document, script, appendScript };
+};
 
 describe("Main Handler", () => {
   it("returns 404", async () => {
