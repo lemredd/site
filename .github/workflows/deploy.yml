@@ -26,6 +26,9 @@ jobs:
       - name: Build step
         run: "deno task build"
 
+      - name: Puppeteer step
+        run: "deno -A npm:puppeteer browsers install chrome"
+
       - name: Test step
         run: "deno test -A"
 
