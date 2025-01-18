@@ -19,7 +19,8 @@
 		"cheerio": "npm:cheerio@^1.0.0",
 		"happy-dom": "npm:happy-dom@16.5.3",
 		"memory-cache": "npm:memory-cache@0.2.0",
-		"nunjucks": "npm:nunjucks@3.2.4"
+		"nunjucks": "npm:nunjucks@3.2.4",
+		"puppeteer": "npm:puppeteer@^24.0.0"
 	},
 	"compilerOptions": {
 		"lib": ["deno.window", "webworker", "dom"],
