@@ -12,8 +12,8 @@ import {
 } from "@/handlers/constants.ts";
 
 import { mainHandler } from "@/handlers/index.ts";
-import { fakeWindowForScript } from "@/main_test.ts";
 import { IntersectionObserverEntry } from "happy-dom";
+import { fakeWindowForScript } from "@/test/utils.ts";
 
 describe("Work: Projects", () => {
   it("displays skeletons initially", () => {
