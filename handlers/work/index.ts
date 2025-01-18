@@ -112,27 +112,18 @@ const checkHXHeaders = (request: Request): boolean =>
     "/work",
   );
 
-const returnByCache = (
-  request: Request,
-  cachedProjects: Project[],
-): Response => {
-  if (request.headers.get("Cache-Control") === "no-cache") {
-    return render({
-      name: "work/projects.hx.html",
-      context: { projects: cachedProjects },
-    });
-  }
-
-  return new Response(null, { status: 304 });
-};
-
 export const projectsHandler = (async (request: Request): Promise<Response> => {
   if (!checkHXHeaders(request)) {
     return new Response("You cannot access this page.", { status: 403 });
   }
 
   const cachedProjects = cache.get(PROJECTS_CACHE_KEY);
-  if (cachedProjects) return returnByCache(request, cachedProjects);
+  if (cachedProjects) {
+    return render({
+      name: "work/projects.hx.html",
+      context: { projects: cachedProjects },
+    });
+  }
 
   const projects = await fetch(
     "https://api.github.com/users/lemredd/repos?sort=created&direction=desc",

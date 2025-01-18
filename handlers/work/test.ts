@@ -41,10 +41,9 @@ describe("Work: API Integration", () => {
     using fetchSpy = spy(globalThis, "fetch");
     using cacheGetStub = stub(cache, "get", () => PROJECTS_FIXTURE);
 
-    const response = await projectsHandler(hxRequest);
+    await projectsHandler(hxRequest);
     expect(cacheGetStub.calls).toHaveLength(1);
     expect(fetchSpy.calls).toHaveLength(0);
-    expect(response.status).toBe(304);
   });
 
   it("calls from GitHub API", async () => {
