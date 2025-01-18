@@ -6,7 +6,7 @@ import { load } from "cheerio";
 
 import { template } from "@/handlers/utils.ts";
 import { mainHandler } from "@/handlers/index.ts";
-import { fakeWindowForScript } from "@/main_test.ts";
+import { fakeWindowForScript } from "@/test/utils.ts";
 import { TURNSTILE_WIDGET_ID } from "@/handlers/constants.ts";
 
 describe("Contact: Form", () => {
