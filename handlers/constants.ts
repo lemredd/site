@@ -20,7 +20,7 @@ export const COMMON_META: Metadata["meta"] = [
   {
     nameOrProperty: "property",
     key: "og:image",
-    content: `${Deno.env.get("BASE_URL")}/images/websiteog.png`,
+    content: "/images/websiteog.png",
   },
   {
     nameOrProperty: "name",
