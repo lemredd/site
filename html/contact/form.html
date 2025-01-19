@@ -1,5 +1,5 @@
 {# Contact Form #}
-<form method="POST" class="grid grid-cols-1 sm:grid-cols-2 grid-rows-auto gap-y-6 sm:gap-10 text-fg-2" hx-post="/contact" hx-target-*="find output" hx-swap="outerHTML" hx-disabled-elt="find button">
+<form method="POST" class="grid grid-cols-1 sm:grid-cols-2 grid-rows-auto gap-y-6 sm:gap-10 text-fg-2 w-full" hx-post="/contact" hx-target-*="find output" hx-swap="outerHTML" hx-disabled-elt="find button">
 	<output class="sm:col-span-2 hidden"></output>
 	<div class="flex flex-col gap-4">
 		<label for="name" class="text-fg-2">Name</label>
@@ -13,7 +13,7 @@
 		<label for="message">Message</label>
 		<textarea name="message" id="message" placeholder="Write a brief message about your concern..." rows="5" class="py-2 border-b-2 border-b-[#fff2] placeholder:text-[#fff2]  lg:text-lg"></textarea>
 	</div>
-	<div id="{{ turnstileWidgetId }}"></div>
+	<div id="{{ turnstileWidgetId }}" class="min-w-[300px]"></div>
 	<button class="invisible transition-colors capitalize px-4 py-2 bg-primary rounded-lg text-bg w-full sm:max-w-[200px] sm:max-h-[48px] sm:self-center sm:justify-self-end disabled:opacity-50 [&:disabled_.loading]:inline-flex [&:disabled_.idle]:hidden">
 		<span class="capitalize loading hidden items-center justify-center gap-x-2">
 			<img src="/images/loading.svg" alt="Loading..." class="w-4 h-4">
