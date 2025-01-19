@@ -2,7 +2,7 @@
 
 {% block body %}
 {% include "_components/header-nav.html" %}
-	<main class="max-w-[960px] mx-auto my-16 px-4 lg:px-0 {% if boostDirection %}animate-swipe-{{ boostDirection | lower }}{% endif %}">
+	<main class="max-w-[960px] mx-auto my-16 px-4 lg:px-0 w-full{% if boostDirection %} animate-swipe-{{ boostDirection | lower }}{% endif %}">
 		{% block content %}{% endblock content %}
 	</main>
 	{% block jsonLd %}{% endblock jsonLd %}
