@@ -55,12 +55,25 @@ export const workHandler = ((request: Request): Response => {
     "marquee-id": MARQUEE_ID,
     "marquee-dup-id-prefix": MARQUEE_DUP_ID_PREFIX,
   };
+	const services = [
+		{
+			"name": "Full Stack Web Development",
+			"link": "https://github.com/lemredd",
+			"image": ""
+		},
+		{
+			"name": "UIs",
+      "link": "https://figma.com/@lemredd",
+      "image": ""
+		},
+	]
   return render({
     name: "work/index.html",
     context: {
       request,
       metadata,
       marqueeData,
+			services,
       title: "Work",
       skills: SKILLS,
       boostDirection: getBoostDirection(request),
@@ -101,7 +114,7 @@ const fallBackProjects = (): Project[] => [
   {
     name: "Portfolio",
     description: "This portfolio site",
-    html_url: "https://github.com/lemredd/lemredd.github.io",
+    html_url: "https://github.com/lemredd/site",
     topics: ["portfolio-featured"],
   },
 ];
